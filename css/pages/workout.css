@@ -126,3 +126,16 @@
   display: flex;
   gap: 10px;
 }
+
+#workout-status:empty { display: none; }
+
+@media (max-width: 48rem) {
+  .player__canvas { aspect-ratio: auto; display: flex; flex-direction: column; }
+  .player__image { position: static; aspect-ratio: 16 / 9; }
+  .player__canvas::after { display: none; }
+  .player__top { position: static; flex-direction: column; gap: var(--space-16); padding: var(--space-16); }
+  .up-next { width: 100%; }
+  .player__controls { padding: var(--space-16); }
+  .set-view, .rest-view { flex-direction: column; align-items: stretch; }
+  .player__buttons > .button { flex: 1; }
+}

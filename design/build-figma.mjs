@@ -7,7 +7,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { buildPlan } from '../server/planner.js';
+import { buildPlan } from '../js/lib/planner.js';
+import { finishFigmaExport } from './lib/figma-export.mjs';
+import { buildPrototype } from './lib/prototype.mjs';
+import { upgradeDesignSystem } from './lib/design-system.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.dirname(here);
@@ -167,15 +170,17 @@ for (const [i, selected] of [false, true].entries()) {
       primaryAxisSizing: 'FIXED', counterAxisSizing: 'FIXED',
       paddingLeft: 12, paddingRight: 12,
     });
-  text(m, selected ? '✓  Legs' : '+  Shoulders', 0, 0, 176, 14,
-    selected ? 'accent' : 'secondary', 500, { textAlignHorizontal: 'CENTER', layoutGrow: 1 });
+  text(m, selected ? '✓' : '+', 0, 0, 16, 14, selected ? 'accent' : 'secondary', 500,
+    { name: 'Indicator', textAlignHorizontal: 'CENTER' });
+  text(m, selected ? 'Legs' : 'Shoulders', 0, 0, 152, 14,
+    selected ? 'accent' : 'secondary', 500, { name: 'Label', textAlignHorizontal: 'CENTER', layoutGrow: 1 });
   masters[selected ? 'chipOn' : 'chipOff'] = m;
 }
 function chip(p, caption, x, y, w, selected = false) {
   const m = masters[selected ? 'chipOn' : 'chipOff'];
   const n = graph.createInstance(m.id, p.id, { name: `Area / ${caption}${selected ? ' / selected' : ''}`, x, y, width: w });
-  const t = graph.getChildren(n.id)[0];
-  graph.updateNode(t.id, { text: `${selected ? '✓' : '+'}  ${caption}`, name: caption, width: w - 24 });
+  const t = graph.getChildren(n.id).find(child => child.name === 'Label');
+  graph.updateNode(t.id, { text: caption, name: 'Label', width: w - 40 });
   n.overrides[`${t.id}:text`] = t.text;
   return n;
 }
@@ -215,6 +220,7 @@ masters.row = rowMaster;
 const rowCompact = graph.cloneTree(rowMaster.id, componentsBoard.id, {
   name: 'Exercise row/Compact', x: 704, y: 992, width: 342,
 });
+masters.rowCompact = rowCompact;
 const [, compactHeading, compactDetail, compactIndex] = graph.getChildren(rowCompact.id);
 graph.updateNode(compactHeading.id, { width: 170, fontSize: 15 });
 graph.updateNode(compactDetail.id, { width: 202, fontSize: 11 });
@@ -252,7 +258,7 @@ text(componentsBoard, 'Exercise 3 of 6', 64, 1120, 576, 14, 'secondary');
 label(componentsBoard, 'Status / meaning in words, not color alone', 64, 1200);
 pill(componentsBoard, '✓  Plan saved', 64, 1244, 154, true);
 pill(componentsBoard, 'No equipment', 242, 1244, 154);
-text(componentsBoard, 'Could not load your plan. Try again.', 64, 1330, 600, 15, 'error', 500);
+text(componentsBoard, 'Could not save. Allow site storage and try again.', 64, 1330, 600, 15, 'error', 500);
 text(componentsBoard, 'Minimum control target: 44 px. Body text: 16 px.\nMuted color is reserved for decorative or nonessential marks.',
   64, 1420, 1100, 15, 'secondary');
 
@@ -261,14 +267,21 @@ const bodySource = await fs.readFile(path.join(root, 'js/components/body-map.js'
 const front = bodySource.match(/const FRONT = `([\s\S]*?)`;/)[1];
 const back = bodySource.match(/const BACK = `([\s\S]*?)`;/)[1];
 function bodyMap(p, x, y, w, selected = ['core', 'legs']) {
-  let s = (front + back).replace(/<text[\s\S]*?<\/text>/g, '');
-  s = s.replace(/<g class="body-map__area" data-part="([^"]+)">/g,
-    (_, id) => `<g fill="${selected.includes(id) ? C.accent : C.line}">`);
-  s = s.replaceAll('class="body-map__skin"', `fill="${C.raised}"`);
-  s = s.replaceAll('class="body-map__lines"', `fill="none" stroke="${C.base}" stroke-width="1.5"`);
-  return createSVGNodes(graph, p.id,
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${w}" viewBox="0 0 260 260">${s}</svg>`,
-    { name: 'Body map / front and back / editable vectors', x, y });
+  const root = frame(p, 'Body map / front and back / editable vectors', x, y, w, w, null);
+  const source = (front + back).replace(/<text[\s\S]*?<\/text>/g, '');
+  const regions = [front, back].flatMap((side, index) => [...side.matchAll(/<g class="body-map__area" data-part="([^"]+)">([\s\S]*?)<\/g>/g)]
+    .map(match => [match[0], match[1], index ? `<g transform="translate(140 0)">${match[2]}</g>` : match[2]]));
+  const background = source.replace(/<g class="body-map__area" data-part="([^"]+)">[\s\S]*?<\/g>/g, '')
+    .replaceAll('class="body-map__skin"', `fill="${C.raised}"`)
+    .replaceAll('class="body-map__lines"', `fill="none" stroke="${C.base}" stroke-width="1.5"`);
+  const svg = content => `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${w}" viewBox="0 0 260 260">${content}</svg>`;
+  createSVGNodes(graph, root.id, svg(background), { name: 'Anatomy / background', x: 0, y: 0 });
+  for (const id of new Set(regions.map(match => match[1]))) {
+    const content = regions.filter(match => match[1] === id).map(match => match[2]).join('');
+    createSVGNodes(graph, root.id, svg(`<g fill="${selected.includes(id) ? C.accent : C.line}">${content}</g>`),
+      { name: `focus-${id}`, x: 0, y: 0 });
+  }
+  return root;
 }
 
 // Foundations and reference.
@@ -457,11 +470,11 @@ title(states, '05 / State reference', 'Make every outcome clear.',
   'These are proposed UI states for the same three-page app, with implementation notes in the flow guide.');
 for (const [i, [heading, body, caption, key]] of [
   ['Choose your focus', 'Select at least one body area\nto build your workout.', 'Choose body areas', 'Disabled'],
-  ['Your plan is on its way', 'Keep your choices while\nthe server builds your plan.', 'Building your plan…', 'Loading'],
-  ['Let’s try that again', 'We couldn’t load your plan.\nYour choices are still here.', 'Try again', 'Primary'],
+  ['Ready when you are', 'Your routine updates instantly\nas you choose your focus.', 'Start workout   →', 'Primary'],
+  ['Keep your progress', 'Allow site storage to keep\nyour progress between pages.', 'Try again', 'Primary'],
 ].entries()) {
-  const f = frame(states, ['Empty selection', 'Loading', 'Request error'][i], 64 + i * 440, 300, 416, 356, 'surface', { cornerRadius: 12 });
-  label(f, ['Empty selection', 'Loading', 'Request error'][i], 24, 28, 368, i === 2 ? 'error' : 'accent');
+  const f = frame(states, ['Empty selection', 'Plan ready', 'Storage unavailable'][i], 64 + i * 440, 300, 416, 356, 'surface', { cornerRadius: 12 });
+  label(f, ['Empty selection', 'Plan ready', 'Storage unavailable'][i], 24, 28, 368, i === 2 ? 'error' : 'accent');
   text(f, heading, 24, 84, 368, 24, 'text', 600);
   text(f, body, 24, 140, 368, 16, 'secondary');
   button(f, caption, 24, 264, 368, key);
@@ -493,7 +506,7 @@ text(cover, 'FORMA × STITCH REFERENCE     /     20 OCT 2026', 64, 918, 1200, 11
 
 const flow = board(pFlow, 'Forma / Flow and implementation guide', 1440, 1390, 0, 0, 'flow-handoff');
 title(flow, '06 / Flow & handoff', 'Three pages. One clear loop.',
-  'Design proposal grounded in the current HTML/CSS/JavaScript + Node.js repository.');
+  'Plain HTML, CSS and browser JavaScript, hosted directly on GitHub Pages.');
 const steps = [
   ['01 / Build', 'index.html', 'Select areas, time, equipment.\nReview 4, 6, or 8 exercises.\nStart saves the active workout.'],
   ['02 / Train + rest', 'workout.html', '3 sets per exercise.\n45 sec rest; add 15 sec or skip.\nFinish the last set to complete.'],
@@ -510,7 +523,7 @@ label(flow, 'Component → implementation', 64, 598, 900);
 const mapping = [
   ['Design variables', 'css/tokens.css', 'Translate the visual theme into CSS variables.'],
   ['Area chips + body map', 'js/components/body-map.js', 'Same seven areas. Text controls accompany the map.'],
-  ['Plan preview', 'js/pages/builder.js', 'GET /v1/plan with selected parts, minutes, equipment.'],
+  ['Plan preview', 'js/pages/builder.js', 'Build a plan locally from areas, minutes and equipment.'],
   ['Set + rest states', 'js/pages/workout.js', 'Complete set → rest → next set; finish on the last set.'],
   ['Summary + save', 'js/pages/done.js', 'Elapsed minutes, exercise count, total sets, save once.'],
 ];
@@ -524,7 +537,7 @@ for (const [i, [a, b, c]] of mapping.entries()) {
 label(flow, 'Implementation / Runtime and local data', 64, 1012, 1200);
 for (const [i, [a, b]] of [
   ['Browser', 'HTML · CSS · JavaScript\nSession storage + local storage'],
-  ['Forma server', 'Node.js · HTTP\nStatic files + GET /v1/plan'],
+  ['GitHub Pages', 'Static HTML · CSS · JavaScript\nNo server or build step'],
   ['Exercise catalogue', 'Local JavaScript data\njs/data/exercises.js'],
 ].entries()) {
   const f = frame(flow, a, 64 + i * 448, 1056, 416, 142, 'surface', { cornerRadius: 12 });
@@ -533,11 +546,31 @@ for (const [i, [a, b]] of [
   if (i < 2) text(flow, '→', 486 + i * 448, 1110, 24, 24, 'accent');
 }
 text(flow, 'SCOPE', 64, 1250, 150, 11, 'accent', 600, { letterSpacing: 1.5 });
-text(flow, 'The dark theme is a design proposal. The running app still uses its existing theme.\nFlow arrows are documentation; clickable prototype connections are not included.\nThe reference’s video player is omitted because the current app uses exercise illustrations.',
+text(flow, 'Use Present on the Desktop workout or Mobile workout starting point.\nChoose all areas, durations and equipment; complete sets, extend or skip rest, finish and save.\nNative variables and conditionals drive the complete prototype. Savings last for the session.',
   220, 1246, 1156, 15, 'secondary', 400, { lineHeight: 26 });
+
+const prototype = await buildPrototype({ graph, node, frame, text, button, illustration, masters,
+  componentsBoard, pDesktop, pMobile, builder, workout, rest, done,
+  mobileBuild, mobilePlan, mobileWorkout, mobileRest, mobileDone, plan, fill, exerciseRow });
+const system = upgradeDesignSystem({ graph, node, frame, text, componentsBoard, pTokens, fill, colors, C, bindings: prototype.bindings });
+graph.deleteNode(mobilePlan.id);
+previews.splice(previews.findIndex(p => p.id === mobilePlan.id), 1);
+for (const viewport of ['Desktop', 'Mobile']) {
+  const content = graph.getChildren(prototype.screens[viewport].builder.id).find(n => n.name.endsWith('Builder content'));
+  previews.push({ id: content.id, pageId: content.parentId, name: content.name, slug: `${viewport.toLowerCase()}-builder-content`, width: content.width, height: content.height });
+}
+
+for (const preview of previews) {
+  const target = graph.getNode(preview.id);
+  preview.width = target.width; preview.height = target.height;
+}
 
 await fs.mkdir(path.join(here, 'previews'), { recursive: true });
 computeAllLayouts(graph);
+for (const preview of previews) {
+  const target = graph.getNode(preview.id);
+  preview.width = target.width; preview.height = target.height;
+}
 // Persist resized label geometry alongside native text overrides. Instance
 // descendants are reconstructed from their masters when a .fig is imported.
 for (const instance of [...graph.getAllNodes()].filter(n => n.type === 'INSTANCE')) {
@@ -559,7 +592,9 @@ for (const p of previews) {
   await fs.writeFile(path.join(here, 'previews', `${p.slug}.svg`), svg);
 }
 const out = path.join(here, 'Forma.fig');
-await fs.writeFile(out, await exportFigFile(graph, undefined, undefined, pCover.id, true));
+const exported = await exportFigFile(graph, undefined, undefined, pCover.id, true);
+const finished = await finishFigmaExport(exported, { graph, lib, fontDirectory: path.join(here, 'fonts'), ...prototype });
+await fs.writeFile(out, finished.bytes);
 const data = await fs.readFile(out);
 const reloaded = await parseFigFile(data.buffer.slice(data.byteOffset, data.byteOffset + data.byteLength), { populate: 'all' });
 const all = [...reloaded.getAllNodes()];
@@ -575,13 +610,15 @@ for (const expected of expectedOverrides) {
 const validation = {
   file: 'Forma.fig', format: 'Native Figma / OpenPencil', bytes: data.length,
   pages: reloaded.getPages().map(p => p.name),
-  counts: Object.fromEntries(['TEXT', 'VECTOR', 'COMPONENT', 'INSTANCE', 'FRAME'].map(k => [k, all.filter(n => n.type === k).length])),
+  counts: Object.fromEntries(['TEXT', 'VECTOR', 'COMPONENT', 'COMPONENT_SET', 'INSTANCE', 'FRAME'].map(k => [k, all.filter(n => n.type === k).length])),
   variables: reloaded.variables.size, variableCollections: reloaded.variableCollections.size,
   autoLayoutNodes: all.filter(n => n.layoutMode !== 'NONE').length,
   boundNodes: all.filter(n => Object.keys(n.boundVariables ?? {}).length).length,
   previews, plan: plan.map(p => p.exercise.id),
-  roundTrip: 'Exported and read back with the OpenPencil native .fig codec; every instance text override verified',
-  limitations: ['Not opened in Figma itself', 'Flow guide is static; no interactive prototype links'],
+  roundTrip: 'Exported and read back with the OpenPencil native .fig codec; every instance text override, nonempty glyph payload, and prototype destination verified',
+  ...finished.report, ...system,
+  prototypeScope: prototype.note,
+  limitations: ['Native Figma import and Present mode not available in this session; binary text and prototype payloads validated after round trip.'],
 };
 if (validation.pages.length !== 7 || validation.counts.COMPONENT < 10 ||
     validation.counts.INSTANCE < 40 || validation.counts.TEXT < 100 || validation.variables < 20)

@@ -1,7 +1,7 @@
 {
   "file": "Forma.fig",
   "format": "Native Figma / OpenPencil",
-  "bytes": 143017,
+  "bytes": 393335,
   "pages": [
     "00 / Start here",
     "01 / Foundations",
@@ -12,16 +12,17 @@
     "06 / Flow & handoff"
   ],
   "counts": {
-    "TEXT": 361,
-    "VECTOR": 462,
-    "COMPONENT": 12,
-    "INSTANCE": 66,
-    "FRAME": 99
+    "TEXT": 507,
+    "VECTOR": 1917,
+    "COMPONENT": 60,
+    "COMPONENT_SET": 5,
+    "INSTANCE": 168,
+    "FRAME": 98
   },
-  "variables": 26,
-  "variableCollections": 1,
-  "autoLayoutNodes": 56,
-  "boundNodes": 602,
+  "variables": 204,
+  "variableCollections": 3,
+  "autoLayoutNodes": 103,
+  "boundNodes": 1023,
   "previews": [
     {
       "id": "0:38",
@@ -32,7 +33,7 @@
       "height": 1550
     },
     {
-      "id": "0:157",
+      "id": "0:162",
       "pageId": "0:32",
       "slug": "foundations",
       "name": "Forma / Foundations",
@@ -40,15 +41,15 @@
       "height": 1230
     },
     {
-      "id": "0:217",
+      "id": "0:222",
       "pageId": "0:34",
       "slug": "desktop-builder",
       "name": "01 / Build your workout",
       "width": 1440,
-      "height": 1080
+      "height": 1000
     },
     {
-      "id": "0:437",
+      "id": "0:470",
       "pageId": "0:34",
       "slug": "desktop-workout",
       "name": "02 / Workout / active set",
@@ -56,7 +57,7 @@
       "height": 1000
     },
     {
-      "id": "0:490",
+      "id": "0:523",
       "pageId": "0:34",
       "slug": "desktop-rest",
       "name": "03 / Workout / rest",
@@ -64,7 +65,7 @@
       "height": 1000
     },
     {
-      "id": "0:539",
+      "id": "0:572",
       "pageId": "0:34",
       "slug": "desktop-done",
       "name": "04 / Workout complete",
@@ -72,23 +73,15 @@
       "height": 1000
     },
     {
-      "id": "0:576",
+      "id": "0:624",
       "pageId": "0:35",
       "slug": "mobile-builder",
       "name": "01 / Build / scrollable content",
       "width": 390,
-      "height": 1940
+      "height": 844
     },
     {
-      "id": "0:784",
-      "pageId": "0:35",
-      "slug": "mobile-plan",
-      "name": "02 / Build / plan continuation",
-      "width": 390,
-      "height": 900
-    },
-    {
-      "id": "0:953",
+      "id": "0:1029",
       "pageId": "0:35",
       "slug": "mobile-workout",
       "name": "03 / Workout / active set",
@@ -96,7 +89,7 @@
       "height": 844
     },
     {
-      "id": "0:997",
+      "id": "0:1073",
       "pageId": "0:35",
       "slug": "mobile-rest",
       "name": "04 / Workout / rest",
@@ -104,15 +97,15 @@
       "height": 844
     },
     {
-      "id": "0:1015",
+      "id": "0:1091",
       "pageId": "0:35",
       "slug": "mobile-done",
       "name": "05 / Workout complete",
       "width": 390,
-      "height": 960
+      "height": 844
     },
     {
-      "id": "0:1045",
+      "id": "0:1136",
       "pageId": "0:36",
       "slug": "states",
       "name": "Forma / Interaction states",
@@ -120,7 +113,7 @@
       "height": 960
     },
     {
-      "id": "0:1071",
+      "id": "0:1162",
       "pageId": "0:31",
       "slug": "cover",
       "name": "Forma / Design file",
@@ -128,12 +121,28 @@
       "height": 960
     },
     {
-      "id": "0:1098",
+      "id": "0:1204",
       "pageId": "0:37",
       "slug": "flow-handoff",
       "name": "Forma / Flow and implementation guide",
       "width": 1440,
       "height": 1390
+    },
+    {
+      "id": "0:3093",
+      "pageId": "0:222",
+      "name": "Desktop / Builder content",
+      "slug": "desktop-builder-content",
+      "width": 1440,
+      "height": 1260
+    },
+    {
+      "id": "0:3094",
+      "pageId": "0:624",
+      "name": "Mobile / Builder content",
+      "slug": "mobile-builder-content",
+      "width": 390,
+      "height": 2120
     }
   ],
   "plan": [
@@ -144,9 +153,37 @@
     "mountain-climber",
     "push-up"
   ],
-  "roundTrip": "Exported and read back with the OpenPencil native .fig codec; every instance text override verified",
+  "roundTrip": "Exported and read back with the OpenPencil native .fig codec; every instance text override, nonempty glyph payload, and prototype destination verified",
+  "textNodesWithGlyphs": 307,
+  "textOverridesWithGlyphs": 117,
+  "prototypeConnections": 104,
+  "prototypeActions": 101166,
+  "dynamicTextBindings": 79,
+  "prototypeStartingPoints": [
+    "Desktop workout",
+    "Mobile workout"
+  ],
+  "componentSets": 5,
+  "textStyles": 14,
+  "semanticTokens": {
+    "base": "0:3099",
+    "surface": "0:3100",
+    "raised": "0:3101",
+    "line": "0:3102",
+    "accent": "0:3103",
+    "hover": "0:3104",
+    "soft": "0:3105",
+    "text": "0:3106",
+    "secondary": "0:3107",
+    "muted": "0:3108",
+    "success": "0:3109",
+    "warning": "0:3110",
+    "error": "0:3111"
+  },
+  "sharedTextStyles": 14,
+  "illustrationMasters": 45,
+  "prototypeScope": "All 762 nonempty area/time/equipment combinations. 12–24 sets. Live rest countdown, repeatable +15 seconds, skip, end, finish, save and history. Save is session-only; planned minutes are shown in the prototype summary.",
   "limitations": [
-    "Not opened in Figma itself",
-    "Flow guide is static; no interactive prototype links"
+    "Native Figma import and Present mode not available in this session; binary text and prototype payloads validated after round trip."
   ]
 }

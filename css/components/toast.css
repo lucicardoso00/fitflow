@@ -18,3 +18,10 @@
 .toast__icon {
   color: var(--color-success);
 }
+
+/* Keep the live region mounted before it receives a message. */
+.toast:empty {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}

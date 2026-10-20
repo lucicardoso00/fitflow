@@ -27,64 +27,16 @@
     <rect width="1440" height="1550" fill="#171A19"/>
     <g clip-path="url(#clip0)">
       <g transform="translate(64, 120)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">02 / REUSABLE COMPONENTS</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.2">02 / REUSABLE COMPONENTS</text>
       </g>
       <g transform="translate(64, 148)">
-        <text x="0" y="44" font-family="Space Grotesk" font-size="44" font-weight="600" fill="#F5F6F2" letter-spacing="-1.6">Small parts. One system.</text>
+        <text x="0" y="40" font-family="Space Grotesk" font-size="40" font-weight="600" fill="#F5F6F2" letter-spacing="-1.2">Small parts. One system.</text>
       </g>
       <g transform="translate(64, 204)">
         <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Edit a master to update its instances. Layout frames keep labels centered.</text>
       </g>
       <g transform="translate(64, 268)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">BUTTONS / 52 PX HIGH</text>
-      </g>
-      <g transform="translate(64, 304)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#C5F467"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
-        </g>
-      </g>
-      <g transform="translate(356, 304)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#B0DE50"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
-        </g>
-      </g>
-      <g transform="translate(648, 304)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#C5F467" stroke="#F5F6F2" stroke-width="2"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
-        </g>
-      </g>
-      <g transform="translate(940, 304)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#292E2B"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#AEB5AF" text-anchor="middle">Choose body areas</text>
-        </g>
-      </g>
-      <g transform="translate(64, 414)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="2"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2" text-anchor="middle">Save this plan</text>
-        </g>
-      </g>
-      <g transform="translate(356, 414)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#C5F467"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Complete set   ✓</text>
-        </g>
-      </g>
-      <g transform="translate(648, 414)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#292E2B"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#AEB5AF" text-anchor="middle">Building your plan…</text>
-        </g>
-      </g>
-      <g transform="translate(940, 414)">
-        <rect width="260" height="52" rx="8" ry="8" fill="#313C25"/>
-        <g transform="translate(20, 15.5)">
-          <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#C5F467" text-anchor="middle">Plan saved   ✓</text>
-        </g>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">BUTTONS / 52 PX HIGH</text>
       </g>
       <g transform="translate(64, 366)">
         <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">Default</text>
@@ -111,70 +63,37 @@
         <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">Saved / disabled</text>
       </g>
       <g transform="translate(64, 552)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">SELECTION / ALWAYS PAIRED WITH A TEXT LABEL</text>
-      </g>
-      <g transform="translate(64, 592)">
-        <rect width="200" height="48" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="1"/>
-        <g transform="translate(12, 14)">
-          <text x="88" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">+  Shoulders</text>
-        </g>
-      </g>
-      <g transform="translate(288, 592)">
-        <rect width="200" height="48" rx="8" ry="8" fill="#313C25" stroke="#C5F467" stroke-width="1"/>
-        <g transform="translate(12, 14)">
-          <text x="88" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">✓  Legs</text>
-        </g>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">SELECTION / ALWAYS PAIRED WITH A TEXT LABEL</text>
       </g>
       <g transform="translate(64, 672)">
         <rect width="200" height="48" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="1"/>
         <g transform="translate(12, 14)">
-          <text x="88" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">+  15 min · 4 moves</text>
+          <text x="8" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">+</text>
+        </g>
+        <g transform="translate(28, 14)">
+          <text x="80" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">15 min · 4 moves</text>
         </g>
       </g>
       <g transform="translate(288, 672)">
         <rect width="200" height="48" rx="8" ry="8" fill="#313C25" stroke="#C5F467" stroke-width="1"/>
         <g transform="translate(12, 14)">
-          <text x="88" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">✓  30 min · 6 moves</text>
+          <text x="8" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">✓</text>
+        </g>
+        <g transform="translate(28, 14)">
+          <text x="80" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">30 min · 6 moves</text>
         </g>
       </g>
       <g transform="translate(512, 672)">
         <rect width="200" height="48" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="1"/>
         <g transform="translate(12, 14)">
-          <text x="88" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">+  45 min · 8 moves</text>
+          <text x="8" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">+</text>
         </g>
-      </g>
-      <g transform="translate(64, 828)">
-        <rect width="576" height="84" rx="12" ry="12" fill="#212523" stroke="#444A45" stroke-width="1"/>
-        <g transform="translate(12, 12)">
-          <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
-        </g>
-        <g transform="translate(112, 18)">
-          <text x="0" y="17" font-family="Inter" font-size="17" font-weight="600" fill="#F5F6F2">Plank</text>
-        </g>
-        <g transform="translate(112, 47)">
-          <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">Core · 3 × 40 sec</text>
-        </g>
-        <g transform="translate(516, 29)">
-          <text x="36" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">01</text>
-        </g>
-      </g>
-      <g transform="translate(704, 992)">
-        <rect width="342" height="84" rx="12" ry="12" fill="#212523" stroke="#444A45" stroke-width="1"/>
-        <g transform="translate(12, 12)">
-          <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
-        </g>
-        <g transform="translate(112, 18)">
-          <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Plank</text>
-        </g>
-        <g transform="translate(112, 47)">
-          <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Core · 3 × 40 sec</text>
-        </g>
-        <g transform="translate(294, 29)">
-          <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">01</text>
+        <g transform="translate(28, 14)">
+          <text x="80" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">45 min · 8 moves</text>
         </g>
       </g>
       <g transform="translate(64, 780)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">EXERCISE LIST / SOURCE ARTWORK IS EDITABLE VECTOR GEOMETRY</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">EXERCISE LIST / SOURCE ARTWORK IS EDITABLE VECTOR GEOMETRY</text>
       </g>
       <g transform="translate(64, 932)">
         <g clip-path="url(#clip1)">
@@ -184,13 +103,13 @@
               <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
             </g>
             <g transform="translate(112, 18)">
-              <text x="0" y="17" font-family="Inter" font-size="17" font-weight="600" fill="#F5F6F2">Plank</text>
+              <text x="0" y="16" font-family="Inter" font-size="16" font-weight="600" fill="#F5F6F2">Plank</text>
             </g>
             <g transform="translate(112, 47)">
-              <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">Core · 3 × 40 sec</text>
+              <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">Core · 3 × 40 sec</text>
             </g>
             <g transform="translate(528, 29)">
-              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">01</text>
+              <text x="24" y="16" font-family="Inter" font-size="16" fill="#AEB5AF" text-anchor="end">01</text>
             </g>
           </g>
           <g transform="translate(12, 12)">
@@ -262,7 +181,7 @@
           </g>
         </g>
       </g>
-      <g transform="translate(704, 828)">
+      <g transform="translate(704, 932)">
         <g clip-path="url(#clip3)">
           <g>
             <rect width="576" height="84" rx="12" ry="12" fill="#212523"/>
@@ -270,13 +189,13 @@
               <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
             </g>
             <g transform="translate(112, 18)">
-              <text x="0" y="17" font-family="Inter" font-size="17" font-weight="600" fill="#F5F6F2">Squat</text>
+              <text x="0" y="16" font-family="Inter" font-size="16" font-weight="600" fill="#F5F6F2">Squat</text>
             </g>
             <g transform="translate(112, 47)">
-              <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">Legs · 3 × 12 reps</text>
+              <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">Legs · 3 × 12 reps</text>
             </g>
             <g transform="translate(528, 29)">
-              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">✓</text>
+              <text x="24" y="16" font-family="Inter" font-size="16" fill="#AEB5AF" text-anchor="end">✓</text>
             </g>
           </g>
           <g transform="translate(12, 12)">
@@ -347,11 +266,11 @@
           </g>
         </g>
       </g>
-      <g transform="translate(704, 934)">
-        <text x="0" y="17" font-family="Inter" font-size="17" fill="#AEB5AF">Default → active → completed</text>
+      <g transform="translate(704, 1040)">
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Default → active → completed</text>
       </g>
       <g transform="translate(64, 1060)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">PROGRESS / EXERCISE POSITION</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">PROGRESS / EXERCISE POSITION</text>
       </g>
       <g transform="translate(64, 1100)">
         <rect width="89.33" height="5" rx="2" ry="2" fill="#C5F467"/>
@@ -375,13 +294,13 @@
         <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Exercise 3 of 6</text>
       </g>
       <g transform="translate(64, 1200)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">STATUS / MEANING IN WORDS, NOT COLOR ALONE</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">STATUS / MEANING IN WORDS, NOT COLOR ALONE</text>
       </g>
       <g transform="translate(64, 1244)">
         <rect width="154" height="32" rx="16" ry="16" fill="#313C25"/>
         <g clip-path="url(#clip5)">
           <g transform="translate(12, 7)">
-            <text x="0" y="12" font-family="Inter" font-size="12" font-weight="500" fill="#C5F467">✓  Plan saved</text>
+            <text x="0" y="12" font-family="Inter" font-size="12" fill="#C5F467">✓  Plan saved</text>
           </g>
         </g>
       </g>
@@ -389,16 +308,118 @@
         <rect width="154" height="32" rx="16" ry="16" fill="#292E2B"/>
         <g clip-path="url(#clip6)">
           <g transform="translate(12, 7)">
-            <text x="0" y="12" font-family="Inter" font-size="12" font-weight="500" fill="#AEB5AF">No equipment</text>
+            <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">No equipment</text>
           </g>
         </g>
       </g>
       <g transform="translate(64, 1330)">
-        <text x="0" y="15" font-family="Inter" font-size="15" font-weight="500" fill="#FF5A5F">Could not load your plan. Try again.</text>
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#FF5A5F">Could not save. Allow site storage and try again.</text>
       </g>
       <g transform="translate(64, 1420)">
-        <text x="0" y="15" font-family="Inter" font-size="15" fill="#AEB5AF">Minimum control target: 44 px. Body text: 16 px.
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Minimum control target: 44 px. Body text: 16 px.
 Muted color is reserved for decorative or nonessential marks.</text>
+      </g>
+      <g transform="translate(64, 304)">
+        <g>
+          <rect width="260" height="52" rx="8" ry="8" fill="#C5F467"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
+          </g>
+        </g>
+        <g transform="translate(292, 0)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#B0DE50"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
+          </g>
+        </g>
+        <g transform="translate(584, 0)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#C5F467" stroke="#F5F6F2" stroke-width="2"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
+          </g>
+        </g>
+        <g transform="translate(876, 0)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#292E2B"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#AEB5AF" text-anchor="middle">Choose body areas</text>
+          </g>
+        </g>
+        <g transform="translate(0, 110)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="2"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2" text-anchor="middle">Save this plan</text>
+          </g>
+        </g>
+        <g transform="translate(292, 110)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#C5F467"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Complete set   ✓</text>
+          </g>
+        </g>
+        <g transform="translate(584, 110)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#292E2B"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#AEB5AF" text-anchor="middle">Building your plan…</text>
+          </g>
+        </g>
+        <g transform="translate(876, 110)">
+          <rect width="260" height="52" rx="8" ry="8" fill="#313C25"/>
+          <g transform="translate(20, 15)">
+            <text x="110" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#C5F467" text-anchor="middle">Plan saved   ✓</text>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(64, 592)">
+        <g>
+          <rect width="200" height="48" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="1"/>
+          <g transform="translate(16, 14)">
+            <text x="8" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">+</text>
+          </g>
+          <g transform="translate(32, 14)">
+            <text x="76" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="middle">Shoulders</text>
+          </g>
+        </g>
+        <g transform="translate(292, 0)">
+          <rect width="200" height="48" rx="8" ry="8" fill="#313C25" stroke="#C5F467" stroke-width="1"/>
+          <g transform="translate(16, 14)">
+            <text x="8" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">✓</text>
+          </g>
+          <g transform="translate(32, 14)">
+            <text x="76" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">Legs</text>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(64, 828)">
+        <g>
+          <rect width="576" height="84" rx="12" ry="12" fill="#212523" stroke="#444A45" stroke-width="1"/>
+          <g transform="translate(12, 12)">
+            <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+          </g>
+          <g transform="translate(112, 18)">
+            <text x="0" y="16" font-family="Inter" font-size="16" font-weight="600" fill="#F5F6F2">Plank</text>
+          </g>
+          <g transform="translate(112, 47)">
+            <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">Core · 3 × 40 sec</text>
+          </g>
+          <g transform="translate(516, 29)">
+            <text x="36" y="16" font-family="Inter" font-size="16" fill="#AEB5AF" text-anchor="end">01</text>
+          </g>
+        </g>
+        <g transform="translate(640, 0)">
+          <rect width="342" height="84" rx="12" ry="12" fill="#212523" stroke="#444A45" stroke-width="1"/>
+          <g transform="translate(12, 12)">
+            <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+          </g>
+          <g transform="translate(112, 18)">
+            <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Plank</text>
+          </g>
+          <g transform="translate(112, 47)">
+            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">Core · 3 × 40 sec</text>
+          </g>
+          <g transform="translate(294, 29)">
+            <text x="24" y="16" font-family="Inter" font-size="16" fill="#AEB5AF" text-anchor="end">01</text>
+          </g>
+        </g>
       </g>
     </g>
   </g>

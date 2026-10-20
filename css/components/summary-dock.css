@@ -55,3 +55,14 @@
 .summary-stat .pill-list {
   margin-top: var(--space-4);
 }
+
+@media (max-width: 75rem) {
+  .summary-dock { flex-wrap: wrap; }
+  .summary-dock__metrics { flex-wrap: wrap; gap: var(--space-16); }
+}
+
+@media (max-width: 48rem) {
+  .summary-dock { position: static; padding: var(--space-16); }
+  .summary-dock__divider { display: none; }
+  .summary-dock > .button { width: 100%; }
+}

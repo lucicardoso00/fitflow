@@ -27,22 +27,22 @@
     <rect width="1440" height="1390" fill="#171A19"/>
     <g clip-path="url(#clip0)">
       <g transform="translate(64, 120)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">06 / FLOW &amp; HANDOFF</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.2">06 / FLOW &amp; HANDOFF</text>
       </g>
       <g transform="translate(64, 148)">
-        <text x="0" y="44" font-family="Space Grotesk" font-size="44" font-weight="600" fill="#F5F6F2" letter-spacing="-1.6">Three pages. One clear loop.</text>
+        <text x="0" y="40" font-family="Space Grotesk" font-size="40" font-weight="600" fill="#F5F6F2" letter-spacing="-1.2">Three pages. One clear loop.</text>
       </g>
       <g transform="translate(64, 204)">
-        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Design proposal grounded in the current HTML/CSS/JavaScript + Node.js repository.</text>
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Plain HTML, CSS and browser JavaScript, hosted directly on GitHub Pages.</text>
       </g>
       <g transform="translate(64, 290)">
         <rect width="416" height="256" rx="12" ry="12" fill="#212523"/>
         <g clip-path="url(#clip1)">
           <g transform="translate(24, 24)">
-            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">01 / BUILD</text>
+            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.2">01 / BUILD</text>
           </g>
           <g transform="translate(24, 66)">
-            <text x="0" y="24" font-family="Inter" font-size="24" font-weight="600" fill="#F5F6F2">index.html</text>
+            <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#F5F6F2" letter-spacing="-0.5">index.html</text>
           </g>
           <g transform="translate(24, 124)">
             <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Select areas, time, equipment.
@@ -52,16 +52,16 @@ Start saves the active workout.</text>
         </g>
       </g>
       <g transform="translate(486, 390)">
-        <text x="0" y="24" font-family="Inter" font-size="24" fill="#C5F467">→</text>
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#C5F467" letter-spacing="-0.5">→</text>
       </g>
       <g transform="translate(512, 290)">
         <rect width="416" height="256" rx="12" ry="12" fill="#212523"/>
         <g clip-path="url(#clip2)">
           <g transform="translate(24, 24)">
-            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">02 / TRAIN + REST</text>
+            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.2">02 / TRAIN + REST</text>
           </g>
           <g transform="translate(24, 66)">
-            <text x="0" y="24" font-family="Inter" font-size="24" font-weight="600" fill="#F5F6F2">workout.html</text>
+            <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#F5F6F2" letter-spacing="-0.5">workout.html</text>
           </g>
           <g transform="translate(24, 124)">
             <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">3 sets per exercise.
@@ -71,16 +71,16 @@ Finish the last set to complete.</text>
         </g>
       </g>
       <g transform="translate(934, 390)">
-        <text x="0" y="24" font-family="Inter" font-size="24" fill="#C5F467">→</text>
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#C5F467" letter-spacing="-0.5">→</text>
       </g>
       <g transform="translate(960, 290)">
         <rect width="416" height="256" rx="12" ry="12" fill="#212523"/>
         <g clip-path="url(#clip3)">
           <g transform="translate(24, 24)">
-            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">03 / COMPLETE</text>
+            <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.2">03 / COMPLETE</text>
           </g>
           <g transform="translate(24, 66)">
-            <text x="0" y="24" font-family="Inter" font-size="24" font-weight="600" fill="#F5F6F2">done.html</text>
+            <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#F5F6F2" letter-spacing="-0.5">done.html</text>
           </g>
           <g transform="translate(24, 124)">
             <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Show elapsed time and totals.
@@ -90,7 +90,7 @@ Build another workout.</text>
         </g>
       </g>
       <g transform="translate(64, 598)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">COMPONENT → IMPLEMENTATION</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">COMPONENT → IMPLEMENTATION</text>
       </g>
       <g transform="translate(64, 646)">
         <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Design variables</text>
@@ -123,7 +123,7 @@ Build another workout.</text>
         <text x="0" y="14" font-family="Inter" font-size="14" fill="#C5F467">js/pages/builder.js</text>
       </g>
       <g transform="translate(810, 774)">
-        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">GET /v1/plan with selected parts, minutes, equipment.</text>
+        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Build a plan locally from areas, minutes and equipment.</text>
       </g>
       <g transform="translate(64, 818)">
         <rect width="1312" height="1" fill="#444A45"/>
@@ -153,7 +153,7 @@ Build another workout.</text>
         <rect width="1312" height="1" fill="#444A45"/>
       </g>
       <g transform="translate(64, 1012)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">IMPLEMENTATION / RUNTIME AND LOCAL DATA</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.2">IMPLEMENTATION / RUNTIME AND LOCAL DATA</text>
       </g>
       <g transform="translate(64, 1056)">
         <rect width="416" height="142" rx="12" ry="12" fill="#212523"/>
@@ -168,22 +168,22 @@ Session storage + local storage</text>
         </g>
       </g>
       <g transform="translate(486, 1110)">
-        <text x="0" y="24" font-family="Inter" font-size="24" fill="#C5F467">→</text>
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#C5F467" letter-spacing="-0.5">→</text>
       </g>
       <g transform="translate(512, 1056)">
         <rect width="416" height="142" rx="12" ry="12" fill="#212523"/>
         <g clip-path="url(#clip5)">
           <g transform="translate(24, 20)">
-            <text x="0" y="20" font-family="Inter" font-size="20" font-weight="600" fill="#F5F6F2">Forma server</text>
+            <text x="0" y="20" font-family="Inter" font-size="20" font-weight="600" fill="#F5F6F2">GitHub Pages</text>
           </g>
           <g transform="translate(24, 62)">
-            <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Node.js · HTTP
-Static files + GET /v1/plan</text>
+            <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Static HTML · CSS · JavaScript
+No server or build step</text>
           </g>
         </g>
       </g>
       <g transform="translate(934, 1110)">
-        <text x="0" y="24" font-family="Inter" font-size="24" fill="#C5F467">→</text>
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#C5F467" letter-spacing="-0.5">→</text>
       </g>
       <g transform="translate(960, 1056)">
         <rect width="416" height="142" rx="12" ry="12" fill="#212523"/>
@@ -198,12 +198,12 @@ js/data/exercises.js</text>
         </g>
       </g>
       <g transform="translate(64, 1250)">
-        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.5">SCOPE</text>
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.2">SCOPE</text>
       </g>
       <g transform="translate(220, 1246)">
-        <text x="0" y="15" font-family="Inter" font-size="15" fill="#AEB5AF">The dark theme is a design proposal. The running app still uses its existing theme.
-Flow arrows are documentation; clickable prototype connections are not included.
-The reference’s video player is omitted because the current app uses exercise illustrations.</text>
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Use Present on the Desktop workout or Mobile workout starting point.
+Choose all areas, durations and equipment; complete sets, extend or skip rest, finish and save.
+Native variables and conditionals drive the complete prototype. Savings last for the session.</text>
       </g>
     </g>
   </g>

@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forma — Workout</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/workout.css">
 
   <script type="module" src="js/pages/workout.js"></script>
 </head>
 <body class="page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="frame">
+    <noscript><p class="notice">Enable JavaScript to build and follow your workout.</p></noscript>
 
     <header class="site-header">
       <a class="logo" href="index.html">Forma</a>
@@ -32,9 +30,10 @@
       </a>
     </header>
 
-    <main class="site-main workout">
+    <main id="main-content" tabindex="-1" class="site-main workout">
 
       <h1 class="heading workout__title" id="workout-title"></h1>
+      <p id="workout-status" role="status"></p>
 
       <section class="player" aria-label="Current exercise">
 

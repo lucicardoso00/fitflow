@@ -36,6 +36,7 @@ ul {
 
 img {
   display: block;
+  max-width: 100%;
 }
 
 a {
@@ -73,6 +74,23 @@ strong {
 /* The `hidden` attribute must win over any `display` set by a class */
 [hidden] {
   display: none !important;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: 10;
+  padding: var(--space-12);
+  background: var(--color-surface-1);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus { transform: translateY(0); }
+
+.notice {
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -30,17 +30,22 @@ const workout = loadLastWorkout();
 // ---------- Actions ----------
 
 function saveThisPlan() {
-  savePlan({
+  const saved = savePlan({
     title: workout.title,
     parts: workout.parts,
     plan: workout.plan,
     savedAt: Date.now(),
   });
 
+  if (!saved) {
+    saveToast.textContent = 'Your browser could not save this plan. Allow site storage or free some space, then try again.';
+    return;
+  }
+
   workout.isSaved = true;
   saveLastWorkout(workout);
   drawSaveButton();
-  saveToast.hidden = false;
+  saveToast.textContent = 'Plan saved in this browser.';
 }
 
 // ---------- Drawing ----------

@@ -1,13 +1,14 @@
 {
-  "name": "forma",
+  "name": "fitflow",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "A small workout planner built with HTML, CSS, JavaScript and Node.js.",
+  "description": "A static workout planner built with HTML, CSS and browser JavaScript.",
   "engines": { "node": ">=22" },
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "node server/dev.js",
-    "test": "node --test --test-isolation=none"
+    "start": "node scripts/serve.js",
+    "dev": "node scripts/serve.js --dev",
+    "test": "node --test --test-isolation=none test/*.test.js",
+    "design:build": "node design/build-figma.mjs && node design/validate-prototype.mjs && node design/render-previews.mjs && node design/package-kit.mjs"
   }
 }

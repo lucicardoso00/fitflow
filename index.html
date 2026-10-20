@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forma — Build your workout</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/builder.css">
 
   <script type="module" src="js/pages/builder.js"></script>
 </head>
 <body class="page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="frame">
+    <noscript><p class="notice">Enable JavaScript to build and follow your workout.</p></noscript>
 
     <header class="site-header">
       <span class="logo">Forma</span>
@@ -35,7 +33,7 @@
       </a>
     </header>
 
-    <main class="site-main builder">
+    <main id="main-content" tabindex="-1" class="site-main builder">
 
       <div class="builder__intro">
         <h1 class="heading builder__title">What do you want to train?</h1>
@@ -138,7 +136,6 @@
           </div>
 
           <p class="plan-status" id="plan-status" role="status"></p>
-          <button class="button button--secondary" id="retry-plan" type="button" hidden>Try again</button>
 
           <div class="empty-state" id="plan-empty" hidden>
             <span class="empty-state__icon" aria-hidden="true">

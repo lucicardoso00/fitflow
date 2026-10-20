@@ -1,11 +1,12 @@
 /** The workout rules. No HTTP, DOM or storage in here. */
-import { FULL_BODY } from '../js/data/body-parts.js';
-import { EXERCISES } from '../js/data/exercises.js';
-import { EXERCISES_PER_WORKOUT } from '../js/data/settings.js';
-import { sortParts } from '../js/lib/choices.js';
+import { FULL_BODY } from '../data/body-parts.js';
+import { EXERCISES } from '../data/exercises.js';
+import { EXERCISES_PER_WORKOUT } from '../data/settings.js';
+import { normalizeChoices, sortParts } from './choices.js';
 
 /** Returns [{ partId, exercise }, …]: the exercises to do, each labelled with the area it is for. */
-export function buildPlan({ parts, minutes, equipment }) {
+export function buildPlan(choices) {
+  const { parts, minutes, equipment } = normalizeChoices(choices);
   const chosenParts = sortParts(parts);
   if (chosenParts.length === 0) return [];
 

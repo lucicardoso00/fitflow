@@ -48,3 +48,10 @@
   flex-direction: column;
   gap: var(--space-12);
 }
+
+@media (max-width: 65rem) {
+  .done { grid-template-columns: 1fr; gap: var(--space-24); }
+  .done__map { width: min(100%, 480px); }
+  .done__title { font-size: clamp(32px, 7vw, 56px); }
+  .done__actions { flex-wrap: wrap; }
+}

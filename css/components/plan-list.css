@@ -156,3 +156,14 @@
   text-transform: uppercase;
   color: var(--color-success);
 }
+
+.plan-item__name, .plan-item__amount { overflow-wrap: anywhere; }
+.plan-list--completed .plan-item__footer { flex-wrap: wrap; gap: var(--space-4); }
+
+@media (max-width: 75rem) {
+  .plan-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 24rem) {
+  .plan-list { grid-template-columns: 1fr; }
+}

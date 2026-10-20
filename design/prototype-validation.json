@@ -1,0 +1,20 @@
+{
+  "exportedCombinationChecks": 1524,
+  "completeWorkouts": 2,
+  "nativeVariableBindings": 2162,
+  "boundFields": [
+    "CORNER_RADIUS",
+    "FONT_SIZE",
+    "LINE_HEIGHT",
+    "LETTER_SPACING",
+    "FONT_FAMILY",
+    "STACK_SPACING",
+    "STACK_PADDING_LEFT",
+    "STACK_PADDING_RIGHT",
+    "STACK_PADDING_TOP",
+    "STACK_PADDING_BOTTOM",
+    "TEXT_DATA",
+    "VISIBLE"
+  ],
+  "verification": "Decoded native actions simulated in Node; not a Figma Present-mode verification."
+}

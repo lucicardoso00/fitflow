@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forma — Workout complete</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
-
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/done.css">
 
   <script type="module" src="js/pages/done.js"></script>
 </head>
 <body class="page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <div class="frame">
+    <noscript><p class="notice">Enable JavaScript to build and follow your workout.</p></noscript>
 
     <header class="site-header">
       <a class="logo" href="index.html">Forma</a>
@@ -28,7 +26,7 @@
       </nav>
     </header>
 
-    <main class="site-main done">
+    <main id="main-content" tabindex="-1" class="site-main done">
 
       <!-- Left: the numbers, the actions and the completed routine -->
       <section class="done__hero" aria-label="Summary">
@@ -55,10 +53,7 @@
           <a class="button button--primary button--large" href="index.html">Done</a>
         </div>
 
-        <p class="toast" id="save-toast" role="status" hidden>
-          <svg class="line-icon line-icon--small toast__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-          Plan saved to history
-        </p>
+        <p class="toast" id="save-toast" role="status"></p>
 
         <section class="done__deck" aria-label="Exercises done">
           <span class="caption">Your routine</span>

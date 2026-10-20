@@ -5,9 +5,9 @@
  */
 
 import { FULL_BODY, getPartLabel, isFullBody, togglePart } from '../data/body-parts.js';
-import { DEFAULT_CHOICES, EQUIPMENT_SUMMARY, EXERCISES_PER_WORKOUT } from '../data/settings.js';
-import { getPlanTitle, sortParts } from '../lib/choices.js';
-import { fetchPlan } from '../lib/api.js';
+import { EQUIPMENT_SUMMARY, EXERCISES_PER_WORKOUT } from '../data/settings.js';
+import { getPlanTitle, normalizeChoices, sortParts } from '../lib/choices.js';
+import { buildPlan } from '../lib/planner.js';
 import { loadChoices, saveChoices, loadLastWorkout, saveCurrentWorkout } from '../lib/storage.js';
 import { createBodyMap } from '../components/body-map.js';
 import { createExerciseCard } from '../components/exercise-card.js';
@@ -22,7 +22,6 @@ const planTitle = document.getElementById('plan-title');
 const planSummary = document.getElementById('plan-summary');
 const planEmpty = document.getElementById('plan-empty');
 const planStatus = document.getElementById('plan-status');
-const retryButton = document.getElementById('retry-plan');
 const planList = document.getElementById('plan-list');
 const planItemTemplate = document.getElementById('plan-item-template');
 const startLink = document.getElementById('start-workout');
@@ -43,12 +42,8 @@ const bodyMap = createBodyMap(document.getElementById('body-map'), { onPartClick
 // ---------- State ----------
 
 // What the person picked last time, or the defaults on a first visit
-const choices = { ...DEFAULT_CHOICES, ...loadChoices() };
+const choices = normalizeChoices(loadChoices());
 let plan = [];
-let planRequest;
-
-const LOADING = 'Building your plan…';
-const FAILED = 'Could not load your plan. Please try again.';
 
 // ---------- Actions ----------
 
@@ -73,8 +68,8 @@ function clearParts() {
 }
 
 // Saves the plan for workout.html, right before the link opens it
-function startWorkout() {
-  saveCurrentWorkout({
+function startWorkout(event) {
+  const saved = saveCurrentWorkout({
     title: getPlanTitle(choices.parts),
     parts: sortParts(choices.parts),
     plan,
@@ -82,22 +77,20 @@ function startWorkout() {
     exerciseIndex: 0,
     setNumber: 1,
   });
+  if (!saved) {
+    event.preventDefault();
+    planStatus.textContent = 'Your browser could not save this workout. Allow site storage or free some space, then try again.';
+  }
 }
 
-// Asks the server for a new plan. A newer request cancels the older one,
-// so rapid clicks can never show an out-of-date plan.
-async function update() {
-  planRequest?.abort();
-  planRequest = new AbortController();
+// The catalogue and selection rules run locally, so changes are immediate.
+function update() {
   saveChoices(choices);
+  plan = buildPlan(choices);
+  planStatus.textContent = '';
   drawPicker();
-  drawPlan([], LOADING);
-
-  try {
-    drawPlan(await fetchPlan(choices, planRequest.signal));
-  } catch (error) {
-    if (error.name !== 'AbortError') drawPlan([], FAILED);
-  }
+  drawPlan();
+  drawDock();
 }
 
 // ---------- Drawing ----------
@@ -124,9 +117,8 @@ function drawPicker() {
   exerciseEstimate.textContent = String(EXERCISES_PER_WORKOUT[choices.minutes]);
 }
 
-/** Shows the plan, or a status message while there is none. */
-function drawPlan(newPlan, status = '') {
-  plan = newPlan;
+/** Shows the plan, or the empty selection prompt. */
+function drawPlan() {
   const hasPlan = plan.length > 0;
 
   planTitle.textContent = getPlanTitle(choices.parts);
@@ -135,12 +127,8 @@ function drawPlan(newPlan, status = '') {
     : '';
   planList.replaceChildren(...plan.map((item) => createExerciseCard(planItemTemplate, item)));
 
-  planStatus.textContent = status;
-  retryButton.hidden = status !== FAILED;
-  planEmpty.hidden = hasPlan || status !== '';
+  planEmpty.hidden = hasPlan;
   startLink.hidden = !hasPlan;
-
-  drawDock();
 }
 
 /** The dock at the bottom: time, exercise count and the areas covered. */
@@ -170,7 +158,6 @@ for (const button of equipmentButtons) {
 }
 clearButton.addEventListener('click', clearParts);
 startLink.addEventListener('click', startWorkout);
-retryButton.addEventListener('click', update);
 
 // ---------- Start ----------
 

@@ -24,6 +24,7 @@ const upNextImage = document.getElementById('up-next-image');
 const upNextName = document.getElementById('up-next-name');
 const doneSetButton = document.getElementById('done-set');
 const finishLink = document.getElementById('finish-workout');
+const workoutStatus = document.getElementById('workout-status');
 
 const restView = document.getElementById('rest-view');
 const restNext = document.getElementById('rest-next');
@@ -36,7 +37,7 @@ const restTimer = createRestTimer(document.getElementById('rest-timer'), endRest
 
 // Saved by the builder when "Start workout" was clicked
 const workout = loadCurrentWorkout();
-let isResting = false;
+let isResting = workout?.restEndsAt > Date.now();
 
 function getExercise(index) {
   return workout.plan[index].exercise;
@@ -67,14 +68,15 @@ function getUpNext() {
 // ---------- Actions ----------
 
 function completeSet() {
+  if (isResting || isLastSet()) return;
   if (workout.setNumber < SETS_PER_EXERCISE) {
     workout.setNumber += 1;
   } else {
     workout.exerciseIndex += 1;
     workout.setNumber = 1;
   }
+  workout.restEndsAt = Date.now() + REST_SECONDS * 1000;
   saveCurrentWorkout(workout);
-
   isResting = true;
   draw();
   restTimer.start(REST_SECONDS);
@@ -84,13 +86,15 @@ function completeSet() {
 function endRest() {
   restTimer.stop();
   isResting = false;
+  delete workout.restEndsAt;
+  saveCurrentWorkout(workout);
   draw();
   (isLastSet() ? finishLink : doneSetButton).focus();
 }
 
 // Stores the result for done.html, right before the link opens it
-function finishWorkout() {
-  saveLastWorkout({
+function finishWorkout(event) {
+  const saved = saveLastWorkout({
     title: workout.title,
     parts: workout.parts,
     plan: workout.plan,
@@ -98,7 +102,19 @@ function finishWorkout() {
     finishedAt: Date.now(),
     isSaved: false,
   });
+  if (!saved) {
+    event.preventDefault();
+    workoutStatus.textContent = 'Your browser could not save the result. Allow site storage or free some space, then try again.';
+    return;
+  }
+  restTimer.stop();
   clearCurrentWorkout();
+}
+
+function extendRest() {
+  workout.restEndsAt += EXTRA_REST_SECONDS * 1000;
+  saveCurrentWorkout(workout);
+  restTimer.addTime(EXTRA_REST_SECONDS);
 }
 
 function endWorkout() {
@@ -164,10 +180,11 @@ if (!workout?.plan?.length) {
 
   doneSetButton.addEventListener('click', completeSet);
   skipRestButton.addEventListener('click', endRest);
-  addRestButton.addEventListener('click', () => restTimer.addTime(EXTRA_REST_SECONDS));
+  addRestButton.addEventListener('click', extendRest);
   finishLink.addEventListener('click', finishWorkout);
   endLink.addEventListener('click', endWorkout);
 
   drawProgressBar();
   draw();
+  if (isResting) restTimer.start(Math.ceil((workout.restEndsAt - Date.now()) / 1000));
 }
