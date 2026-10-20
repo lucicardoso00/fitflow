@@ -34,7 +34,7 @@ for (const p of graph.getPages()) graph.deleteNode(p.id);
 const C = {
   base: '#171A19', surface: '#212523', raised: '#292E2B', line: '#444A45',
   accent: '#C5F467', hover: '#B0DE50', soft: '#313C25',
-  text: '#F5F6F2', secondary: '#AEB5AF', muted: '#727B74',
+  text: '#F5F6F2', secondary: '#AEB5AF', muted: '#A1ABA3',
   success: '#4DAD72', warning: '#E5B842', error: '#FF5A5F',
 };
 const rgb = (hex) => {
@@ -558,6 +558,8 @@ previews.splice(previews.findIndex(p => p.id === mobilePlan.id), 1);
 for (const viewport of ['Desktop', 'Mobile']) {
   const content = graph.getChildren(prototype.screens[viewport].builder.id).find(n => n.name.endsWith('Builder content'));
   previews.push({ id: content.id, pageId: content.parentId, name: content.name, slug: `${viewport.toLowerCase()}-builder-content`, width: content.width, height: content.height });
+  const guide = prototype.screens[viewport].guide;
+  previews.push({ id: guide.id, pageId: guide.parentId, name: guide.name, slug: `${viewport.toLowerCase()}-exercise-guide`, width: guide.width, height: guide.height });
 }
 
 for (const preview of previews) {

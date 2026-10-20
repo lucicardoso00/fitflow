@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forma — Build your workout</title>
+  <meta name="description" content="Build a workout around your time, body areas and equipment. Learn each movement with exercise guides and video demonstrations.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/builder.css">
@@ -36,8 +38,9 @@
     <main id="main-content" tabindex="-1" class="site-main builder">
 
       <div class="builder__intro">
-        <h1 class="heading builder__title">What do you want to train?</h1>
-        <p class="builder__subtitle">Pick your body areas and your time. The routine on the right builds itself.</p>
+        <span class="caption builder__eyebrow">A little time. A stronger you.</span>
+        <h1 class="heading builder__title">Your next workout.</h1>
+        <p class="builder__subtitle">Choose your focus. Make it fit your day.</p>
       </div>
 
       <div class="builder__columns">
@@ -46,19 +49,17 @@
         <div class="builder__choices">
 
           <section class="panel muscle-selector" aria-label="Body areas">
-            <div class="panel--inset muscle-selector__map">
+            <div class="section-heading"><span class="section-heading__number" aria-hidden="true">01</span><h2>Choose your focus</h2><span id="targeted-count"></span></div>
+            <div class="muscle-selector__map">
               <!-- Drawn by js/components/body-map.js -->
               <div id="body-map"></div>
               <ul class="map-legend" aria-hidden="true">
-                <li><span class="map-legend__dot map-legend__dot--default"></span>Default</li>
-                <li><span class="map-legend__dot map-legend__dot--hover"></span>Hover</li>
-                <li><span class="map-legend__dot map-legend__dot--selected"></span>Selected</li>
+                <li><span class="map-legend__dot map-legend__dot--selected"></span>Your focus</li>
               </ul>
             </div>
 
             <div class="muscle-selector__chips">
               <div class="shortcuts">
-                <span class="shortcuts__count" id="targeted-count"></span>
                 <div class="shortcuts__actions">
                   <button class="button button--secondary button--small" type="button" data-part-toggle="full-body" aria-pressed="false">Full body</button>
                   <button class="button button--ghost button--small button--danger" type="button" id="clear-parts">Clear all</button>
@@ -66,7 +67,7 @@
               </div>
 
               <div class="chip-group" role="group" aria-labelledby="group-upper">
-                <h2 class="caption" id="group-upper">Upper body</h2>
+                <h3 class="caption" id="group-upper">Upper body</h3>
                 <div class="chip-row">
                   <button class="chip" type="button" data-part-toggle="shoulders" aria-pressed="false">Shoulders</button>
                   <button class="chip" type="button" data-part-toggle="chest" aria-pressed="false">Chest</button>
@@ -76,14 +77,14 @@
               </div>
 
               <div class="chip-group" role="group" aria-labelledby="group-core">
-                <h2 class="caption" id="group-core">Core &amp; trunk</h2>
+                <h3 class="caption" id="group-core">Core</h3>
                 <div class="chip-row">
                   <button class="chip" type="button" data-part-toggle="core" aria-pressed="false">Core</button>
                 </div>
               </div>
 
               <div class="chip-group" role="group" aria-labelledby="group-lower">
-                <h2 class="caption" id="group-lower">Lower body</h2>
+                <h3 class="caption" id="group-lower">Lower body</h3>
                 <div class="chip-row">
                   <button class="chip" type="button" data-part-toggle="glutes" aria-pressed="false">Glutes</button>
                   <button class="chip" type="button" data-part-toggle="legs" aria-pressed="false">Legs</button>
@@ -95,8 +96,9 @@
           </section>
 
           <section class="panel duration" aria-label="Time and equipment">
+            <div class="section-heading"><span class="section-heading__number" aria-hidden="true">02</span><h2>Make it yours</h2></div>
             <fieldset>
-              <legend class="caption duration__legend">Quick duration presets</legend>
+              <legend class="caption duration__legend">Time available</legend>
               <div class="segmented">
                 <button class="segmented__tab" type="button" data-minutes="15" aria-pressed="false">15 min</button>
                 <button class="segmented__tab" type="button" data-minutes="30" aria-pressed="false">30 min</button>
@@ -107,22 +109,12 @@
             <fieldset>
               <legend class="caption duration__legend">Equipment</legend>
               <div class="segmented">
-                <button class="segmented__tab" type="button" data-equipment="none" aria-pressed="false">None</button>
+                <button class="segmented__tab" type="button" data-equipment="none" aria-pressed="false">Bodyweight</button>
                 <button class="segmented__tab" type="button" data-equipment="dumbbells" aria-pressed="false">Dumbbells</button>
               </div>
             </fieldset>
 
-            <div class="duration__readout">
-              <span class="caption">Selected time</span>
-              <p class="duration__value tabular"><span id="duration-minutes"></span> <span class="duration__unit">minutes</span></p>
-              <p class="duration__estimate">
-                <svg class="line-icon line-icon--small" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 8v4l3 2"/>
-                </svg>
-                ≈ <span id="exercise-estimate"></span> targeted exercises
-              </p>
-            </div>
+            <p class="duration__note" id="equipment-note">A mat is optional.</p>
           </section>
 
         </div>
@@ -130,12 +122,13 @@
         <!-- Right: the routine, rebuilt after every change -->
         <section class="panel routine" aria-labelledby="plan-title">
           <div class="routine__header" aria-live="polite">
-            <span class="caption">Your routine</span>
+            <span class="caption routine__eyebrow">Your session</span>
             <h2 class="heading routine__title" id="plan-title">Pick an area</h2>
             <span class="routine__summary" id="plan-summary"></span>
           </div>
 
           <p class="plan-status" id="plan-status" role="status"></p>
+          <div class="routine__list-heading"><span>Movement</span><span>3 sets each</span></div>
 
           <div class="empty-state" id="plan-empty" hidden>
             <span class="empty-state__icon" aria-hidden="true">
@@ -146,6 +139,10 @@
           </div>
 
           <ol class="plan-list" id="plan-list"></ol>
+          <div class="routine__guide-note">
+            <span class="routine__guide-icon" aria-hidden="true">↗</span>
+            <p>Select a movement for its guide and video demo.<br><span id="guide-status" role="status"></span></p>
+          </div>
         </section>
 
       </div>
@@ -160,7 +157,7 @@
           <span class="summary-dock__divider"></span>
           <div class="summary-stat">
             <span class="caption">Exercises</span>
-            <span class="summary-stat__value tabular"><span id="dock-count"></span> <small>blocks</small></span>
+            <span class="summary-stat__value tabular"><span id="dock-count"></span> <small>moves</small></span>
           </div>
           <span class="summary-dock__divider"></span>
           <div class="summary-stat">
@@ -184,20 +181,16 @@
   <template id="plan-item-template">
     <li class="plan-item">
       <div class="plan-item__thumb">
-        <img class="plan-item__image" alt="" width="160" height="90">
-        <span class="plan-item__play" aria-hidden="true">
-          <span class="plan-item__play-icon">
-            <svg class="line-icon line-icon--small line-icon--filled" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-          </span>
-        </span>
+        <img class="plan-item__image" alt="" width="80" height="60">
       </div>
       <div class="plan-item__body">
-        <h3 class="plan-item__name"></h3>
-        <span class="plan-item__area tag"></span>
+        <h3><button class="plan-item__name" type="button" aria-haspopup="dialog"></button></h3>
+        <span class="plan-item__area"></span>
       </div>
       <div class="plan-item__footer">
         <span class="plan-item__amount tabular"></span>
       </div>
+      <svg class="line-icon plan-item__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
     </li>
   </template>
 </body>

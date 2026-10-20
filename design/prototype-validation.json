@@ -1,7 +1,8 @@
 {
   "exportedCombinationChecks": 1524,
   "completeWorkouts": 2,
-  "nativeVariableBindings": 2162,
+  "guideChecks": 26,
+  "nativeVariableBindings": 2364,
   "boundFields": [
     "CORNER_RADIUS",
     "FONT_SIZE",

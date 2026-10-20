@@ -18,6 +18,7 @@ body {
   background: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
 }
+html { scroll-padding-block: var(--space-16) 110px; }
 
 h1,
 h2,

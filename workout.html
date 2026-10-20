@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forma — Workout</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/workout.css">
@@ -32,10 +33,10 @@
 
     <main id="main-content" tabindex="-1" class="site-main workout">
 
-      <h1 class="heading workout__title" id="workout-title"></h1>
+      <div class="workout__heading"><div><p class="caption">Stay with it</p><h1 class="heading workout__title" id="workout-title"></h1></div><p id="workout-count" class="workout__count tabular"></p></div>
       <p id="workout-status" role="status"></p>
 
-      <section class="player" aria-label="Current exercise">
+      <section class="player" id="workout-player" aria-label="Current exercise">
 
         <!-- The exercise, with its details on top -->
         <div class="player__canvas">
@@ -43,11 +44,12 @@
 
           <div class="player__top">
             <div class="player__meta">
-              <span class="badge-live"><span class="badge-live__dot"></span>Now performing</span>
+              <span class="badge-live" id="workout-phase" role="status">Now performing</span>
               <h2 class="heading player__exercise" id="exercise-name"></h2>
               <p class="player__counter tabular">
                 <span id="set-counter"></span> · Target: <strong><span id="set-amount"></span> <span id="set-unit"></span></strong>
               </p>
+              <button class="button button--secondary player__guide" id="exercise-guide-button" type="button" aria-haspopup="dialog">Exercise guide &amp; video</button>
             </div>
 
             <div class="up-next">
@@ -83,7 +85,7 @@
                 <span class="rest-timer__time tabular">0:45</span>
               </div>
               <div class="rest-widget__info">
-                <span class="rest-widget__title">Rest interval active</span>
+                <span class="rest-widget__title">Take a breath.</span>
                 <span class="rest-widget__desc">Breathe and prepare for <strong id="rest-next"></strong></span>
               </div>
             </div>

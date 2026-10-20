@@ -171,6 +171,8 @@ export async function finishFigmaExport(bytes, { graph, lib, fontDirectory, conn
   }
   function actions(source, viewport) {
     return source.map(action => {
+      if (action.type === 'URL') return { connectionType: 'URL', connectionURL: action.url, openUrlInNewTab: true };
+      if (action.type === 'BACK') return { connectionType: 'BACK' };
       if (action.type === 'NODE') return { connectionType: 'INTERNAL_NODE', navigationType: 'NAVIGATE',
         transitionNodeID: exported(screens[viewport][action.destination]).guid,
         transitionType: 'INSTANT_TRANSITION', transitionDuration: 0, transitionResetScrollPosition: action.destination !== 'builder' };
@@ -241,7 +243,7 @@ export async function finishFigmaExport(bytes, { graph, lib, fontDirectory, conn
     canvas.prototypeStartNodeID = target.guid;
     canvas.prototypeDevice = { type: 'CUSTOM', size: { x: node.width, y: node.width < 500 ? 844 : 1000 } };
   }
-  for (const viewport of Object.values(screens)) for (const screen of [viewport.builder, viewport.done]) exported(screen).scrollDirection = 'VERTICAL';
+  for (const viewport of Object.values(screens)) for (const screen of [viewport.builder, viewport.done, viewport.guide].filter(Boolean)) exported(screen).scrollDirection = 'VERTICAL';
   // Export native component sets; the codec otherwise only writes its plugin tag.
   for (const node of graph.getAllNodes()) {
     if (node.type === 'COMPONENT_SET') exported(node).isStateGroup = true;

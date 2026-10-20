@@ -128,13 +128,16 @@
       <g transform="translate(24, 674)">
         <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">seconds</text>
       </g>
-      <g transform="translate(24, 704)">
-        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">45-second rest after each set.</text>
-      </g>
       <g transform="translate(24, 760)">
         <rect width="342" height="52" rx="8" ry="8" fill="#C5F467"/>
         <g transform="translate(20, 15)">
           <text x="151" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Complete set   ✓</text>
+        </g>
+      </g>
+      <g transform="translate(24, 704)">
+        <rect width="342" height="52" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="2"/>
+        <g transform="translate(20, 15)">
+          <text x="151" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2" text-anchor="middle">Exercise guide &amp; video</text>
         </g>
       </g>
     </g>

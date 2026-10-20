@@ -5,12 +5,15 @@
  */
 
 import { FULL_BODY, getPartLabel, isFullBody, togglePart } from '../data/body-parts.js';
-import { EQUIPMENT_SUMMARY, EXERCISES_PER_WORKOUT } from '../data/settings.js';
+import { EQUIPMENT_SUMMARY } from '../data/settings.js';
+import { EXERCISE_SOURCES } from '../data/exercise-sources.js';
 import { getPlanTitle, normalizeChoices, sortParts } from '../lib/choices.js';
 import { buildPlan } from '../lib/planner.js';
 import { loadChoices, saveChoices, loadLastWorkout, saveCurrentWorkout } from '../lib/storage.js';
 import { createBodyMap } from '../components/body-map.js';
 import { createExerciseCard } from '../components/exercise-card.js';
+import { createExerciseGuide } from '../components/exercise-guide.js';
+import { exerciseApi } from '../lib/exercise-api.js';
 
 // ---------- Page elements ----------
 
@@ -30,8 +33,11 @@ const historyLink = document.getElementById('history-link');
 const clearButton = document.getElementById('clear-parts');
 const targetedCount = document.getElementById('targeted-count');
 const focusLabel = document.getElementById('focus-label');
-const durationMinutes = document.getElementById('duration-minutes');
-const exerciseEstimate = document.getElementById('exercise-estimate');
+const equipmentNote = document.getElementById('equipment-note');
+const guideStatus = document.getElementById('guide-status');
+const guide = createExerciseGuide();
+let guideTimer;
+let guideRequest;
 
 const dockMinutes = document.getElementById('dock-minutes');
 const dockCount = document.getElementById('dock-count');
@@ -91,6 +97,28 @@ function update() {
   drawPicker();
   drawPlan();
   drawDock();
+  loadGuides();
+}
+
+// Batch the visible plan's guides; debounce changes to avoid unnecessary API calls.
+function loadGuides() {
+  clearTimeout(guideTimer);
+  guideRequest?.abort();
+  if (!plan.length) { guideStatus.textContent = ''; return; }
+  guideStatus.textContent = 'Loading exercise guides…';
+  const controller = new AbortController();
+  guideRequest = controller;
+  guideTimer = setTimeout(async () => {
+    try {
+      const results = await exerciseApi.load(plan.map(item => item.exercise.id), { signal: controller.signal });
+      if (controller.signal.aborted) return;
+      const available = results.filter(result => result.guide).length;
+      guideStatus.textContent = results.some(result => result.stale)
+        ? 'Previously downloaded guides available.'
+        : available === plan.length ? 'Exercise guides by wger · Videos on YouTube'
+        : 'Some guides are unavailable. Open a movement to retry.';
+    } catch { /* A newer plan owns the status after cancellation. */ }
+  }, 300);
 }
 
 // ---------- Drawing ----------
@@ -113,8 +141,9 @@ function drawPicker() {
   const count = choices.parts.length;
   targetedCount.textContent = `${count} ${count === 1 ? 'area' : 'areas'} targeted`;
   focusLabel.textContent = count ? getPlanTitle(choices.parts) : 'none yet';
-  durationMinutes.textContent = String(choices.minutes);
-  exerciseEstimate.textContent = String(EXERCISES_PER_WORKOUT[choices.minutes]);
+  equipmentNote.textContent = plan.some(item => EXERCISE_SOURCES[item.exercise.id].setup)
+    ? 'Have a stable chair or bench ready for seated presses or dips in this plan.'
+    : 'A mat is optional. Leave enough space to move freely.';
 }
 
 /** Shows the plan, or the empty selection prompt. */
@@ -125,7 +154,7 @@ function drawPlan() {
   planSummary.textContent = hasPlan
     ? `${choices.minutes} min · ${plan.length} exercises · ${EQUIPMENT_SUMMARY[choices.equipment]}`
     : '';
-  planList.replaceChildren(...plan.map((item) => createExerciseCard(planItemTemplate, item)));
+  planList.replaceChildren(...plan.map((item) => createExerciseCard(planItemTemplate, item, guide.open)));
 
   planEmpty.hidden = hasPlan;
   startLink.hidden = !hasPlan;

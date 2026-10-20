@@ -1,7 +1,7 @@
 {
   "file": "Forma.fig",
   "format": "Native Figma / OpenPencil",
-  "bytes": 393335,
+  "bytes": 442336,
   "pages": [
     "00 / Start here",
     "01 / Foundations",
@@ -12,17 +12,17 @@
     "06 / Flow & handoff"
   ],
   "counts": {
-    "TEXT": 507,
-    "VECTOR": 1917,
-    "COMPONENT": 60,
-    "COMPONENT_SET": 5,
-    "INSTANCE": 168,
-    "FRAME": 98
+    "TEXT": 534,
+    "VECTOR": 2411,
+    "COMPONENT": 62,
+    "COMPONENT_SET": 6,
+    "INSTANCE": 204,
+    "FRAME": 104
   },
-  "variables": 204,
+  "variables": 224,
   "variableCollections": 3,
-  "autoLayoutNodes": 103,
-  "boundNodes": 1023,
+  "autoLayoutNodes": 117,
+  "boundNodes": 1118,
   "previews": [
     {
       "id": "0:38",
@@ -129,7 +129,7 @@
       "height": 1390
     },
     {
-      "id": "0:3093",
+      "id": "0:3680",
       "pageId": "0:222",
       "name": "Desktop / Builder content",
       "slug": "desktop-builder-content",
@@ -137,12 +137,28 @@
       "height": 1260
     },
     {
-      "id": "0:3094",
+      "id": "0:2527",
+      "pageId": "0:34",
+      "name": "Desktop / Exercise guide",
+      "slug": "desktop-exercise-guide",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "id": "0:3681",
       "pageId": "0:624",
       "name": "Mobile / Builder content",
       "slug": "mobile-builder-content",
       "width": 390,
       "height": 2120
+    },
+    {
+      "id": "0:3399",
+      "pageId": "0:35",
+      "name": "Mobile / Exercise guide",
+      "slug": "mobile-exercise-guide",
+      "width": 390,
+      "height": 844
     }
   ],
   "plan": [
@@ -154,35 +170,35 @@
     "push-up"
   ],
   "roundTrip": "Exported and read back with the OpenPencil native .fig codec; every instance text override, nonempty glyph payload, and prototype destination verified",
-  "textNodesWithGlyphs": 307,
-  "textOverridesWithGlyphs": 117,
-  "prototypeConnections": 104,
-  "prototypeActions": 101166,
-  "dynamicTextBindings": 79,
+  "textNodesWithGlyphs": 322,
+  "textOverridesWithGlyphs": 129,
+  "prototypeConnections": 128,
+  "prototypeActions": 105954,
+  "dynamicTextBindings": 89,
   "prototypeStartingPoints": [
     "Desktop workout",
     "Mobile workout"
   ],
-  "componentSets": 5,
+  "componentSets": 6,
   "textStyles": 14,
   "semanticTokens": {
-    "base": "0:3099",
-    "surface": "0:3100",
-    "raised": "0:3101",
-    "line": "0:3102",
-    "accent": "0:3103",
-    "hover": "0:3104",
-    "soft": "0:3105",
-    "text": "0:3106",
-    "secondary": "0:3107",
-    "muted": "0:3108",
-    "success": "0:3109",
-    "warning": "0:3110",
-    "error": "0:3111"
+    "base": "0:3686",
+    "surface": "0:3687",
+    "raised": "0:3688",
+    "line": "0:3689",
+    "accent": "0:3690",
+    "hover": "0:3691",
+    "soft": "0:3692",
+    "text": "0:3693",
+    "secondary": "0:3694",
+    "muted": "0:3695",
+    "success": "0:3696",
+    "warning": "0:3697",
+    "error": "0:3698"
   },
   "sharedTextStyles": 14,
   "illustrationMasters": 45,
-  "prototypeScope": "All 762 nonempty area/time/equipment combinations. 12–24 sets. Live rest countdown, repeatable +15 seconds, skip, end, finish, save and history. Save is session-only; planned minutes are shown in the prototype summary.",
+  "prototypeScope": "All 762 nonempty area/time/equipment combinations. 12–24 sets. Movement guides with attributed snapshots and native video/source links. Live rest countdown, repeatable +15 seconds, skip, end, finish, save and history. Save is session-only; planned minutes are shown in the prototype summary. Live APIs and embedded videos run in the website.",
   "limitations": [
     "Native Figma import and Present mode not available in this session; binary text and prototype payloads validated after round trip."
   ]

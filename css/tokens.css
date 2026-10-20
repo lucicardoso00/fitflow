@@ -30,7 +30,7 @@
 
   --color-text: #F5F6F2;
   --color-text-secondary: #AEB5AF;
-  --color-text-muted: #727B74;
+  --color-text-muted: #A1ABA3;
 
   --color-success: #4DAD72;
   --color-success-soft: rgba(77, 173, 114, 0.5);  /* border of a completed card */
@@ -94,7 +94,7 @@
   --control-height: 40px;        /* buttons, size M */
   --control-height-large: 48px;  /* buttons, size L */
   --control-height-small: 32px;  /* shortcut buttons */
-  --chip-height: 34px;
+  --chip-height: 40px;
 
   /* ---------- Effects ---------- */
 

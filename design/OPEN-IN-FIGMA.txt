@@ -15,10 +15,16 @@ Inter and Space Grotesk fonts and SIL licenses are included in fonts/.
 5. Rest counts down every second. Add 15 seconds repeatedly, skip, or wait.
 6. Finish the last set, save, build again, or return through History. End workout
    returns to the builder. History has an empty state before the first finish.
+7. Click a movement row, or Exercise guide & video during a set. The guide
+   follows that exact exercise. Close returns to the previous screen. Native
+   links open the matching YouTube demo and wger source in a browser tab.
 
 The summary shows planned minutes, not elapsed Present time. Saving changes
 prototype state for this presentation session; it does not write browser data.
 The website measures elapsed time and implements persistent browser storage.
+Guide descriptions are attributed wger snapshots retrieved on 20 October
+2026. Live API calls and embedded video playback run in the website, not in
+the native Figma prototype. The site uses the same reviewed source/video IDs.
 
 DESIGN SYSTEM
 
@@ -37,6 +43,8 @@ Native components:
 - Illustration: Exercise and Size variants; native vector art and instances.
 - Metric: Desktop/Mobile sizes; Value and Label properties; Auto layout.
 - Brand: shared Forma mark instances.
+- Movement guide / Details: Desktop/Mobile variants, Description and
+  Attribution text properties, Auto layout and bound prototype variables.
 
 Native variable collections:
 - Forma / Primitives: palette, spacing, radii, font families, sizes and leading.
@@ -56,7 +64,7 @@ VERIFICATION
 
 validation.json records the native inventory and rendering checks.
 prototype-validation.json records simulation of the decoded exported actions:
-1,524 combinations (762 per viewport), full workouts, countdown/extension,
+1,524 combinations (762 per viewport), 26 guide/video/source checks, full workouts, countdown/extension,
 skip, completion and save. Native glyph data, instance text, variable aliases,
 component properties, token bindings and navigation destinations are checked.
 Previews are rendered from the reopened .fig file.
@@ -79,6 +87,7 @@ Sources:
 - lib/prototype.mjs: native component variants and properties.
 - lib/prototype-model.mjs: variable state and conditional actions.
 - lib/functional-prototype.mjs: controls, state bindings and viewport layouts.
+- source/exercise-guides.js: attributed guide snapshots for native prototyping.
 - lib/figma-export.mjs: native glyphs, variables and reaction serialization.
 - validate-prototype.mjs: tests against the exported native action payload.
 

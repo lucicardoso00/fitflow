@@ -3,6 +3,8 @@ import { BODY_PARTS } from '../../js/data/body-parts.js';
 import { EXERCISES } from '../../js/data/exercises.js';
 import { buildPlan } from '../../js/lib/planner.js';
 import { getPlanTitle } from '../../js/lib/choices.js';
+import { EXERCISE_SOURCES, WGER_LICENSES } from '../../js/data/exercise-sources.js';
+import { GUIDE_SNAPSHOTS } from '../source/exercise-guides.js';
 
 export const literal = value => ({ type: typeof value === 'boolean' ? 'BOOLEAN' : typeof value === 'number' ? 'FLOAT' : typeof value === 'object' ? 'COLOR' : 'STRING', value });
 export const ref = name => ({ type: 'VARIABLE_ALIAS', name });
@@ -23,7 +25,7 @@ variable('plan/count', 6);
 variable('plan/sets', 18);
 variable('plan/summary', '6 exercises · 3 sets each · 45 sec rest');
 variable('plan/duration', '30 min');
-variable('plan/equipment', 'No equipment');
+variable('plan/equipment', 'Bodyweight');
 variable('plan/focus-count', '2 body areas selected');
 variable('plan/ready', true);
 variable('plan/empty', false);
@@ -33,6 +35,7 @@ variable('session/set', 1);
 variable('session/set-label', 'SET 1 OF 3');
 variable('session/position', 'Exercise 1 of 6');
 variable('session/name', 'Plank');
+variable('session/id', 'plank');
 variable('session/target', '40');
 variable('session/unit', 'seconds');
 variable('session/next', 'Plank · set 2');
@@ -59,6 +62,31 @@ for (let i = 0; i < 8; i++) {
   for (const field of ['name', 'detail', 'target', 'unit', 'id']) variable(`row/${i}/${field}`, '');
 }
 for (const ex of EXERCISES) variable(`art/${ex.id}`, ex.id === 'plank');
+for (const name of ['id', 'name', 'target', 'setup', 'description', 'credit']) variable(`guide/${name}`, '');
+for (const ex of EXERCISES) variable(`guide/art/${ex.id}`, ex.id === 'plank');
+
+export function guideValues(id) {
+  const exercise = EXERCISES.find(ex => ex.id === id);
+  const source = EXERCISE_SOURCES[id];
+  const snapshot = GUIDE_SNAPSHOTS[id];
+  return {
+    'guide/id': id, 'guide/name': exercise.name,
+    'guide/target': `3 × ${exercise.seconds || exercise.reps} ${exercise.seconds ? 'sec' : exercise.unit} · Workout target`,
+    'guide/setup': source.setup || (exercise.equipment === 'dumbbells' ? 'Equipment: dumbbells.' : 'Bodyweight. A mat is optional.'),
+    'guide/description': snapshot.description,
+    'guide/credit': `${snapshot.name} · ${snapshot.author}\n${WGER_LICENSES[snapshot.licenseId].name} · wger · 20 Oct 2026 snapshot`,
+    ...Object.fromEntries(EXERCISES.map(ex => [`guide/art/${ex.id}`, ex.id === id])),
+  };
+}
+Object.assign(variables, guideValues('plank'));
+export const openGuideActions = idRef => [{ type: 'CONDITIONAL', blocks: EXERCISES.map(ex => ({
+  condition: eq(idRef, ex.id), actions: [...Object.entries(guideValues(ex.id)).map(([name, value]) => set(name, value)), navigate('guide')],
+})) }];
+export const guideLinkActions = provider => [{ type: 'CONDITIONAL', blocks: EXERCISES.map(ex => ({
+  condition: eq(ref('guide/id'), ex.id), actions: [{ type: 'URL', url: provider === 'youtube'
+    ? `https://www.youtube.com/watch?v=${EXERCISE_SOURCES[ex.id].video}`
+    : `https://wger.de/en/exercise/${EXERCISE_SOURCES[ex.id].wger}/view/` }],
+})) }];
 
 function choiceState(name, selected) {
   return [set(`choice/${name}`, selected), set(`choice/${name}/off`, expression('NOT', selected))];
@@ -91,7 +119,7 @@ export function planActions(mask, minutes, equipment) {
     'plan/title': getPlanTitle(parts), 'plan/count': plan.length, 'plan/sets': plan.length * 3,
     'plan/ready': !!plan.length, 'plan/empty': !plan.length,
     'plan/summary': `${plan.length} exercises · 3 sets each · 45 sec rest`,
-    'plan/duration': `${minutes} min`, 'plan/equipment': equipment === 'none' ? 'No equipment' : 'Dumbbells',
+    'plan/duration': `${minutes} min`, 'plan/equipment': equipment === 'none' ? 'Bodyweight' : 'Dumbbells',
     'plan/focus-count': `${parts.length} body areas selected`,
   };
   for (const part of BODY_PARTS) values[`choice/${part.id}/color`] = parts.includes(part.id)
@@ -118,7 +146,7 @@ export function refreshActions() {
 
 function loadCurrent() {
   const rows = Array.from({ length: 8 }, (_, i) => ({ condition: eq(ref('session/exercise'), i), actions: [
-    ...['name', 'target', 'unit'].map(field => set(`session/${field}`, ref(`row/${i}/${field}`))),
+    ...['id', 'name', 'target', 'unit'].map(field => set(`session/${field}`, ref(`row/${i}/${field}`))),
     ...EXERCISES.map(ex => set(`art/${ex.id}`, eq(ref(`row/${i}/id`), ex.id))),
     set('session/next', add(add(ref(`row/${i}/name`), ' · set '), ref('session/set'))),
   ] }));
@@ -166,7 +194,9 @@ export function evaluate(value, state) {
 export function run(actions, state) {
   for (const action of actions) {
     if (action.type === 'SET_VARIABLE') state[action.name] = evaluate(action.value, state);
-    else if (action.type === 'NODE') state.screen = action.destination;
+    else if (action.type === 'NODE') { (state.screenHistory ??= []).push(state.screen); state.screen = action.destination; }
+    else if (action.type === 'BACK') state.screen = state.screenHistory?.pop();
+    else if (action.type === 'URL') state.openedUrl = action.url;
     else if (action.type === 'CONDITIONAL') {
       const block = action.blocks.find(b => !b.condition || evaluate(b.condition, state));
       if (block) run(block.actions, state);

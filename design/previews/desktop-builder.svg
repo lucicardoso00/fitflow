@@ -288,7 +288,7 @@
                 <text x="8" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">✓</text>
               </g>
               <g transform="translate(28, 14)">
-                <text x="121" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">None</text>
+                <text x="121" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#C5F467" text-anchor="middle">Bodyweight</text>
               </g>
             </g>
             <g transform="translate(322, 584)">
@@ -320,7 +320,7 @@
           <rect width="148" height="32" rx="16" ry="16" fill="#292E2B"/>
           <g clip-path="url(#clip5)">
             <g transform="translate(12, 7)">
-              <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">No equipment</text>
+              <text x="0" y="12" font-family="Inter" font-size="12" fill="#AEB5AF">Bodyweight</text>
             </g>
           </g>
         </g>

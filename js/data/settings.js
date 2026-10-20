@@ -18,7 +18,7 @@ export const EXTRA_REST_SECONDS = 15;
 
 /** How each equipment choice is written in the plan summary. */
 export const EQUIPMENT_SUMMARY = {
-  none: 'no equipment',
+  none: 'bodyweight',
   dumbbells: 'dumbbells',
 };
 

@@ -5,6 +5,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
 import { buildPlan } from '../js/lib/planner.js';
 import { BODY_PARTS } from '../js/data/body-parts.js';
+import { EXERCISES } from '../js/data/exercises.js';
+import { EXERCISE_SOURCES } from '../js/data/exercise-sources.js';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const modules = process.env.OPENPENCIL_MODULES ?? '/home/jplr/.local/lib/node_modules/@open-pencil/cli/node_modules';
 const { parseFigBuffer } = await import(pathToFileURL(path.join(modules, '@open-pencil/fig/dist/index.js')));
@@ -34,7 +36,9 @@ function evalValue(data, state) {
 function run(actions, state) {
   for (const action of actions) {
     if (action.connectionType === 'SET_VARIABLE') state[id(action.targetVariable.id.guid)] = evalValue(action.targetVariableData, state);
-    else if (action.connectionType === 'INTERNAL_NODE') state.screen = nodes.get(id(action.transitionNodeID));
+    else if (action.connectionType === 'INTERNAL_NODE') { (state.history ??= []).push(state.screen); state.screen = nodes.get(id(action.transitionNodeID)); }
+    else if (action.connectionType === 'BACK') state.screen = state.history.pop();
+    else if (action.connectionType === 'URL') state.openedUrl = action.connectionURL;
     else if (action.connectionType === 'CONDITIONAL') {
       const block = action.conditionalActions.find(b => !b.condition || evalValue(b.condition, state));
       if (block) run(block.actions, state);
@@ -60,6 +64,7 @@ const click = (node, state) => {
   run(node.prototypeInteractions[0].actions, state);
 };
 let combinations = 0;
+let guideChecks = 0;
 for (const pageName of ['03 / Desktop', '04 / Mobile']) {
   const page = [...nodes.values()].find(n => n.name === pageName && n.type === 'CANVAS');
   const dispatcher = child(page, 'Update plan / conditional logic');
@@ -75,12 +80,32 @@ for (const pageName of ['03 / Desktop', '04 / Mobile']) {
   const state = initial();
   click(dispatcher, state);
   const builder = state.screen;
+  const firstRow = child(builder, 'Exercise / 1 / Plank');
+  for (const exercise of EXERCISES) {
+    put(state, 'row/0/id', exercise.id);
+    click(firstRow, state);
+    assert.equal(get(state, 'guide/name'), exercise.name);
+    assert.ok(get(state, 'guide/description').length > 20);
+    click(child(state.screen, 'Button / Open video on YouTube   ↗'), state);
+    assert.equal(state.openedUrl, `https://www.youtube.com/watch?v=${EXERCISE_SOURCES[exercise.id].video}`);
+    click(child(state.screen, 'Button / Read original guide on wger   ↗'), state);
+    assert.equal(state.openedUrl, `https://wger.de/en/exercise/${EXERCISE_SOURCES[exercise.id].wger}/view/`);
+    click(child(state.screen, 'Button / Close guide'), state);
+    assert.equal(state.screen, builder);
+    guideChecks++;
+  }
+  click(dispatcher, state);
   const area = child(builder, 'Area / Core / selected / on');
   click(area, state); click(state.screen, state);
   assert.equal(get(state, 'choices/mask'), 64);
   click(child(builder, 'Area / Core / selected / off'), state); click(state.screen, state);
   assert.equal(get(state, 'choices/mask'), 72);
   click(child(builder, 'Button / Start workout   →'), state);
+  const active = state.screen;
+  click(child(active, 'Button / Exercise guide & video'), state);
+  assert.equal(get(state, 'guide/id'), get(state, 'session/id'));
+  click(child(state.screen, 'Button / Close guide'), state);
+  assert.equal(state.screen, active);
   for (let index = 0; index < 18; index++) {
     assert.equal(get(state, 'session/set'), index % 3 + 1);
     assert.equal(get(state, 'session/name'), get(state, `row/${Math.floor(index / 3)}/name`));
@@ -104,7 +129,7 @@ for (const binding of bindings) {
 }
 const fields = [...new Set(bindings.map(b => b.variableField))];
 for (const field of ['TEXT_DATA', 'VISIBLE', 'CORNER_RADIUS', 'STACK_SPACING', 'STACK_PADDING_LEFT', 'FONT_SIZE']) assert.ok(fields.includes(field));
-const report = { exportedCombinationChecks: combinations, completeWorkouts: 2,
+const report = { exportedCombinationChecks: combinations, completeWorkouts: 2, guideChecks,
   nativeVariableBindings: bindings.length, boundFields: fields,
   verification: 'Decoded native actions simulated in Node; not a Figma Present-mode verification.' };
 await fs.writeFile(path.join(here, 'prototype-validation.json'), JSON.stringify(report, null, 2) + '\n');

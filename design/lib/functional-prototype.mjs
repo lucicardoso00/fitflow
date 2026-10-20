@@ -4,7 +4,7 @@ import * as model from './prototype-model.mjs';
 
 /** Bind the screens to native variables and native conditional prototype actions. */
 export async function functionalPrototype(ctx) {
-  const { graph, frame, text, button, illustration, exerciseRow, masters, pDesktop, pMobile,
+  const { graph, node, frame, text, button, illustration, exerciseRow, masters, componentsBoard, pDesktop, pMobile,
     builder, workout, rest, done, mobileBuild, mobilePlan, mobileWorkout, mobileRest, mobileDone, plan } = ctx;
   const descendants = root => graph.getChildren(root.id).flatMap(child => [child, ...descendants(child)]);
   const named = (root, name) => descendants(root).find(n => n.name === name);
@@ -38,6 +38,11 @@ export async function functionalPrototype(ctx) {
   }
   const action = (root, caption) => named(root, `Button / ${caption}`);
   const caption = root => graph.getChildren(root.id).find(n => n.type === 'TEXT');
+  const guideSet = node('COMPONENT_SET', graph.getNode(componentsBoard.parentId), 'Movement guide / Details', 0, 2400, 1200, 800, null,
+    { clipsContent: false, isPublishable: true });
+  const guideSize = { id: '85:1', name: 'Size', type: 'VARIANT', defaultValue: 'Desktop', variantOptions: ['Desktop', 'Mobile'] };
+  const guideProperties = ['Description', 'Attribution'].map((name, i) => ({ id: `85:${i + 2}`, name, type: 'TEXT', defaultValue: name }));
+  guideSet.componentPropertyDefinitions = [guideSize, ...guideProperties];
   async function gallery(parent, variablePrefix, width, height) {
     const originals = graph.getChildren(parent.id).filter(n => n.name.startsWith('Illustration /'));
     originals.forEach(n => graph.deleteNode(n.id));
@@ -52,7 +57,8 @@ export async function functionalPrototype(ctx) {
       { name: `${control.name} / on`, x: control.x, y: control.y, width: control.width });
     const off = graph.createInstance(masters.chipOff.id, parent.id,
       { name: `${control.name} / off`, x: control.x, y: control.y, width: control.width });
-    const value = graph.getChildren(control.id).find(n => n.name === 'Label').text;
+    const originalValue = graph.getChildren(control.id).find(n => n.name === 'Label').text;
+    const value = originalValue === 'None' ? 'Bodyweight' : originalValue;
     for (const [instance, name] of [[on, `choice/${key}`], [off, `choice/${key}/off`]]) {
       const label = graph.getChildren(instance.id).find(n => n.name === 'Label');
       graph.updateNode(label.id, { text: value, width: control.width - 40 });
@@ -118,6 +124,7 @@ export async function functionalPrototype(ctx) {
       text(row, String(i + 1).padStart(2, '0'), 12, 24, 80, 24, 'accent', 600, { textAlignHorizontal: 'CENTER' });
       // Decorative thumbnails are neutral; the current movement has the complete native artwork gallery.
       for (const art of graph.getChildren(row.id).filter(n => n.name.startsWith('Illustration /'))) graph.deleteNode(art.id);
+      react(row, model.openGuideActions(model.ref(`row/${i}/id`)), viewport);
     }
     const empty = text(b, 'Choose at least one body area to build a workout.', mobile ? 24 : 734, mobile ? 1250 : 420,
       rowWidth, 16, 'secondary');
@@ -164,11 +171,14 @@ export async function functionalPrototype(ctx) {
     bind(wording(active, mobile ? 'CORE & LEGS' : 'CORE & LEGS / 30 MIN'), 'text', 'plan/title');
     const upNext = wording(active, mobile ? 'Up next: Squat · set 2' : 'Squat · set 2');
     graph.updateNode(upNext.id, { text: '45-second rest after each set.' });
+    if (mobile) graph.deleteNode(upNext.id);
     if (!mobile) graph.updateNode(wording(active, 'Legs · Glutes').id, { text: 'Follow the movement at your own pace.' });
     const finish = action(active, 'Complete set   ✓');
     bind(caption(finish), 'text', 'session/complete-label');
     react(finish, model.completeActions(), viewport);
     react(named(active, 'End workout'), model.resetActions(), viewport);
+    react(button(active, 'Exercise guide & video', mobile ? 24 : 902, mobile ? 704 : 850, mobile ? 342 : 474, 'Secondary'),
+      model.openGuideActions(model.ref('session/id')), viewport);
     const visual = named(active, 'Movement demonstration');
     await gallery(visual, 'art', visual.width, visual.height);
     // A numeric progress label tracks every exercise; remove the fixed six-segment decoration.
@@ -239,6 +249,46 @@ export async function functionalPrototype(ctx) {
     text(refresh, 'Updating your workout…', mobile ? 24 : 64, 180, width - (mobile ? 48 : 128), 24, 'text', 600);
     screens[viewport].refresh = refresh;
     react(refresh, model.refreshActions(), viewport, 'AFTER_TIMEOUT', 0.01);
+
+    // Native guide content uses variables; live requests and embedded playback belong to the website.
+    const guide = frame(page, `${viewport} / Exercise guide`, mobile ? 4230 : 12160, 0, width, mobile ? 844 : 1000, 'base');
+    screens[viewport].guide = guide;
+    const contentWidth = mobile ? 342 : 620;
+    const x = mobile ? 24 : (width - contentWidth) / 2;
+    const stack = frame(guide, `${viewport} / Guide scroll content`, x, 24, contentWidth, 1200, null,
+      { layoutMode: 'VERTICAL', primaryAxisSizing: 'AUTO', counterAxisSizing: 'FIXED', itemSpacing: 20, paddingBottom: 40, clipsContent: false });
+    react(button(stack, 'Close guide', 0, 0, contentWidth, 'Secondary'), [{ type: 'BACK' }], viewport);
+    text(stack, 'MOVEMENT GUIDE', 0, 0, contentWidth, 11, 'accent', 600);
+    bind(text(stack, 'Plank', 0, 0, contentWidth, 32, 'text', 600), 'text', 'guide/name');
+    bind(text(stack, 'Workout target', 0, 0, contentWidth, 20, 'text', 600), 'text', 'guide/target');
+    bind(text(stack, 'Equipment', 0, 0, contentWidth, 14, 'secondary'), 'text', 'guide/setup');
+    const media = frame(stack, 'Guide / Demonstration', 0, 0, contentWidth, mobile ? 256 : 360, 'surface', { cornerRadius: 8 });
+    for (const ex of EXERCISES) {
+      // Reuse existing illustration sizes so each Exercise/Size variant stays unique.
+      const art = await illustration(media, ex.id, (contentWidth - 342) / 2, 0, 342, 256);
+      bind(art, 'visible', `guide/art/${ex.id}`);
+    }
+    react(button(stack, 'Open video on YouTube   ↗', 0, 0, contentWidth), model.guideLinkActions('youtube'), viewport);
+    text(stack, 'About the movement', 0, 0, contentWidth, 20, 'text', 600);
+    const master = node('COMPONENT', guideSet, `Size=${viewport}`, mobile ? 700 : 0, 0, contentWidth, 500, null,
+      { layoutMode: 'VERTICAL', primaryAxisSizing: 'AUTO', counterAxisSizing: 'FIXED', itemSpacing: 16, clipsContent: false,
+        isSymbolPublishable: true, variantPropSpecs: [{ propDefId: guideSize.id, value: viewport }] });
+    for (const [i, field] of ['description', 'credit'].entries()) {
+      const label = text(master, model.variables[`guide/${field}`], 0, 0, contentWidth, i ? 12 : 16, i ? 'secondary' : 'text');
+      // The headless layout engine does not measure soft-wrapped text for Auto layout.
+      // Reserve its wrapped height; Figma's native HEIGHT text resizing remains enabled.
+      const columns = Math.floor(contentWidth / (i ? 6.5 : 8.5));
+      const lines = label.text.split('\n').reduce((count, line) => count + Math.max(1, Math.ceil(line.length / columns)), 0);
+      graph.updateNode(label.id, { height: lines * (i ? 18 : 24) + 12 });
+      label.componentPropertyReferences = [{ propertyId: guideProperties[i].id, field: 'TEXT' }];
+    }
+    const instance = graph.createInstance(master.id, stack.id, { name: `Movement guide details / ${viewport}`, x: 0, y: 0 });
+    graph.getChildren(instance.id).forEach((label, i) => {
+      instance.componentPropertyAssignments[guideProperties[i].id] = label.text;
+      bind(label, 'text', `guide/${i ? 'credit' : 'description'}`);
+    });
+    react(button(stack, 'Read original guide on wger   ↗', 0, 0, contentWidth, 'Secondary'), model.guideLinkActions('wger'), viewport);
+    text(stack, 'Prototype: guide snapshots and external video links.\nThe website loads live guides and plays videos in the sheet.', 0, 0, contentWidth, 12, 'secondary');
   }
   // Native viewport frames scroll their content; mobile controls stay legible in Present.
   for (const [viewport, nodes] of Object.entries(screens)) {
@@ -260,7 +310,7 @@ export async function functionalPrototype(ctx) {
     if (viewport === 'Mobile') Object.values(nodes).forEach((n, index) => graph.updateNode(n.id, { x: index * 470 }));
   }
   const starts = Object.entries(screens).map(([viewport, nodes]) => ({ node: nodes.builder, name: `${viewport} workout`,
-    description: 'Choose areas, time and equipment. Train, extend or skip rest, finish, save and build again.' }));
+    description: 'Choose areas, time and equipment. Open movement guides and video links. Train, extend or skip rest, finish, save and build again.' }));
   return { variables, bindings, reactions, screens, starts,
-    note: 'All 762 nonempty area/time/equipment combinations. 12–24 sets. Live rest countdown, repeatable +15 seconds, skip, end, finish, save and history. Save is session-only; planned minutes are shown in the prototype summary.' };
+    note: 'All 762 nonempty area/time/equipment combinations. 12–24 sets. Movement guides with attributed snapshots and native video/source links. Live rest countdown, repeatable +15 seconds, skip, end, finish, save and history. Save is session-only; planned minutes are shown in the prototype summary. Live APIs and embedded videos run in the website.' };
 }

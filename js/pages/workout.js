@@ -7,6 +7,7 @@ import { SETS_PER_EXERCISE, REST_SECONDS, EXTRA_REST_SECONDS } from '../data/set
 import { formatSetTarget } from '../lib/format.js';
 import { loadCurrentWorkout, saveCurrentWorkout, clearCurrentWorkout, saveLastWorkout } from '../lib/storage.js';
 import { createRestTimer } from '../components/rest-timer.js';
+import { createExerciseGuide } from '../components/exercise-guide.js';
 
 // ---------- Page elements ----------
 
@@ -25,6 +26,11 @@ const upNextName = document.getElementById('up-next-name');
 const doneSetButton = document.getElementById('done-set');
 const finishLink = document.getElementById('finish-workout');
 const workoutStatus = document.getElementById('workout-status');
+const player = document.getElementById('workout-player');
+const phase = document.getElementById('workout-phase');
+const workoutCount = document.getElementById('workout-count');
+const guide = createExerciseGuide();
+document.getElementById('exercise-guide-button').addEventListener('click', () => guide.open(getExercise(workout.exerciseIndex)));
 
 const restView = document.getElementById('rest-view');
 const restNext = document.getElementById('rest-next');
@@ -151,6 +157,9 @@ function draw() {
 
   setView.hidden = isResting;
   restView.hidden = !isResting;
+  player.classList.toggle('is-resting', isResting);
+  phase.textContent = isResting ? 'Rest · next movement below' : 'Now performing';
+  workoutCount.textContent = `${index + 1} / ${workout.plan.length} movements`;
 
   // Set view
   const target = formatSetTarget(exercise);

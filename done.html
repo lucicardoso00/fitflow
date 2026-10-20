@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forma — Workout complete</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/pages/done.css">
@@ -78,20 +79,16 @@
   <template id="plan-item-template">
     <li class="plan-item">
       <div class="plan-item__thumb">
-        <img class="plan-item__image" alt="" width="160" height="90">
-        <span class="plan-item__play" aria-hidden="true">
-          <span class="plan-item__play-icon">
-            <svg class="line-icon line-icon--small line-icon--filled" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
-          </span>
-        </span>
+        <img class="plan-item__image" alt="" width="80" height="60">
       </div>
       <div class="plan-item__body">
-        <h3 class="plan-item__name"></h3>
-        <span class="plan-item__area tag"></span>
+        <h3><button class="plan-item__name" type="button" aria-haspopup="dialog"></button></h3>
+        <span class="plan-item__area"></span>
       </div>
       <div class="plan-item__footer">
         <span class="plan-item__amount tabular"></span>
       </div>
+      <span class="plan-item__check" aria-label="Completed">✓</span>
     </li>
   </template>
 </body>
