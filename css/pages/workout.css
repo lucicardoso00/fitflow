@@ -1,6 +1,5 @@
 /*
- * Workout screen (workout.html) — a cinematic player: the exercise on a dark
- * canvas with its details on top, and the controls strip underneath.
+ * Workout screen: exercise details, inline media and persistent set controls.
  */
 
 .workout__title {
@@ -20,42 +19,19 @@
   background: var(--color-surface-1);
 }
 
-/* ---------- Canvas: the exercise illustration with overlays ---------- */
-
-.player__canvas {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  background: var(--color-player);
-}
-
-.player__image {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0.8;
-}
-
-/* Darkens the top so the overlay text stays readable */
-.player__canvas::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, var(--color-overlay) 0%, transparent 40%);
-  pointer-events: none;
-}
-
+/* ---------- Exercise details and inline picture/video ---------- */
+.player__canvas { background: var(--color-player); }
 .player__top {
-  position: absolute;
-  top: 28px;
-  right: 28px;
-  left: 28px;
-  z-index: 1;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-20) var(--space-24);
 }
+.player .exercise-video__media { max-height: 45vh; border-radius: 0; }
+.player .exercise-video__footer { padding: var(--space-12) var(--space-24); }
+.player .exercise-video__status { margin: 0; padding: 0 var(--space-24) var(--space-12); }
+.workout__guide { width: 100%; max-width: 1140px; margin-inline: auto; }
 
 .player__meta {
   display: flex;
@@ -98,9 +74,7 @@
   font-weight: 500;
   color: var(--color-text-secondary);
 }
-.player__guide { margin-top: var(--space-16); width: fit-content; }
 .player.is-resting .badge-live { color: var(--color-text); background: var(--color-surface-2); border-color: var(--color-border); }
-.player.is-resting .player__image { opacity: 0.35; }
 .player.is-resting .rest-view { padding-block: var(--space-16); }
 .player.is-resting .rest-widget__title { color: var(--color-accent); font-family: var(--font-heading); font-size: var(--heading-md); }
 
@@ -137,15 +111,12 @@
 #workout-status:empty { display: none; }
 
 @media (max-width: 48rem) {
-  .player__canvas { aspect-ratio: auto; display: flex; flex-direction: column; }
-  .player__image { position: static; aspect-ratio: 16 / 9; }
-  .player__canvas::after { display: none; }
-  .player__top { position: static; flex-direction: column; gap: var(--space-16); padding: var(--space-16); }
-  .player__top { order: -1; }
+  .player__top { flex-direction: column; align-items: stretch; padding: var(--space-16); }
+  .player .exercise-video__footer { padding-inline: var(--space-16); }
+  .player .exercise-video__status { padding-inline: var(--space-16); }
   .player__meta { width: 100%; }
   .player__exercise { font-size: var(--heading-lg); }
-  .player__guide { width: 100%; }
-  .player.is-resting .player__image, .player.is-resting .up-next { display: none; }
+  .player.is-resting .up-next { display: none; }
   .up-next { width: 100%; }
   .player__controls { padding: var(--space-16); }
   .set-view, .rest-view { flex-direction: column; align-items: stretch; }

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forma — Workout complete</title>
+  <title>FitFlow — Workout complete</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/main.css">
@@ -17,7 +17,7 @@
     <noscript><p class="notice">Enable JavaScript to build and follow your workout.</p></noscript>
 
     <header class="site-header">
-      <a class="logo" href="index.html">Forma</a>
+      <a class="logo" href="index.html">FitFlow</a>
       <nav aria-label="Steps">
         <ol class="stepper">
           <li class="stepper__step is-done"><span class="stepper__badge">✓</span>Choose</li>
@@ -78,17 +78,19 @@
   <!-- One exercise card of the routine, copied by js/pages/done.js -->
   <template id="plan-item-template">
     <li class="plan-item">
-      <div class="plan-item__thumb">
-        <img class="plan-item__image" alt="" width="80" height="60">
+      <div class="plan-item__row">
+        <div class="plan-item__thumb">
+          <img class="plan-item__image" alt="" width="80" height="60">
+        </div>
+        <div class="plan-item__body">
+          <h3><button class="plan-item__name" type="button" aria-expanded="false"></button></h3>
+          <span class="plan-item__area"></span>
+        </div>
+        <div class="plan-item__footer">
+          <span class="plan-item__amount tabular"></span>
+        </div>
+        <span class="plan-item__check" aria-label="Completed">✓</span>
       </div>
-      <div class="plan-item__body">
-        <h3><button class="plan-item__name" type="button" aria-haspopup="dialog"></button></h3>
-        <span class="plan-item__area"></span>
-      </div>
-      <div class="plan-item__footer">
-        <span class="plan-item__amount tabular"></span>
-      </div>
-      <span class="plan-item__check" aria-label="Completed">✓</span>
     </li>
   </template>
 </body>

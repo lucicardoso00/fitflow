@@ -8,9 +8,9 @@ import { getWeekday } from '../lib/format.js';
 import { loadLastWorkout, saveLastWorkout, savePlan } from '../lib/storage.js';
 import { createBodyMap } from '../components/body-map.js';
 import { createExerciseCard } from '../components/exercise-card.js';
-import { createExerciseGuide } from '../components/exercise-guide.js';
+import { createExercisePreview } from '../components/exercise-preview.js';
 
-const guide = createExerciseGuide();
+const preview = createExercisePreview();
 
 // ---------- Page elements ----------
 
@@ -66,7 +66,8 @@ function drawSummary() {
 }
 
 function drawPlan() {
-  planList.replaceChildren(...workout.plan.map((item) => createExerciseCard(planItemTemplate, item, guide.open)));
+  preview.close();
+  planList.replaceChildren(...workout.plan.map((item) => createExerciseCard(planItemTemplate, item, preview.toggle)));
 }
 
 function drawSaveButton() {

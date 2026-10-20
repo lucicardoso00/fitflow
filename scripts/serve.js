@@ -63,5 +63,5 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
     console.error(`Could not start preview: ${error.message}`);
     process.exitCode = 1;
   });
-  server.listen(port, host, () => console.log(`Forma: http://${host}:${server.address().port}${basePath}`));
+  server.listen(port, host, () => console.log(`FitFlow: http://${host}:${server.address().port}${basePath}`));
 }

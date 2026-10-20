@@ -9,6 +9,7 @@
 
 import { getPartLabel } from '../data/body-parts.js';
 import { formatAmount } from '../lib/format.js';
+import { element } from '../lib/dom.js';
 
 export function createExerciseCard(template, { partId, exercise }, onOpen) {
   const card = template.content.firstElementChild.cloneNode(true);
@@ -18,7 +19,13 @@ export function createExerciseCard(template, { partId, exercise }, onOpen) {
   image.alt = '';
 
   card.querySelector('.plan-item__name').textContent = exercise.name;
-  if (onOpen) card.querySelector('.plan-item__name').addEventListener('click', () => onOpen(exercise));
+  const trigger = card.querySelector('.plan-item__name');
+  const preview = element('div', 'plan-item__preview');
+  preview.id = `preview-${exercise.id}`;
+  preview.hidden = true;
+  card.append(preview);
+  trigger.setAttribute('aria-controls', preview.id);
+  if (onOpen) trigger.addEventListener('click', () => onOpen(exercise, card, trigger));
   card.querySelector('.plan-item__amount').textContent = formatAmount(exercise);
   card.querySelector('.plan-item__area').textContent = getPartLabel(partId);
 

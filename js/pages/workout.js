@@ -8,13 +8,13 @@ import { formatSetTarget } from '../lib/format.js';
 import { loadCurrentWorkout, saveCurrentWorkout, clearCurrentWorkout, saveLastWorkout } from '../lib/storage.js';
 import { createRestTimer } from '../components/rest-timer.js';
 import { createExerciseGuide } from '../components/exercise-guide.js';
+import { createExerciseVideo } from '../components/exercise-video.js';
 
 // ---------- Page elements ----------
 
 const workoutTitle = document.getElementById('workout-title');
 const progressBar = document.getElementById('progress-bar');
 const endLink = document.getElementById('end-workout');
-const exerciseImage = document.getElementById('exercise-image');
 
 const setView = document.getElementById('set-view');
 const setCounter = document.getElementById('set-counter');
@@ -30,7 +30,10 @@ const player = document.getElementById('workout-player');
 const phase = document.getElementById('workout-phase');
 const workoutCount = document.getElementById('workout-count');
 const guide = createExerciseGuide();
-document.getElementById('exercise-guide-button').addEventListener('click', () => guide.open(getExercise(workout.exerciseIndex)));
+const video = createExerciseVideo();
+document.getElementById('exercise-media').append(video.element);
+document.getElementById('exercise-guide').append(guide.element);
+window.addEventListener('pagehide', () => { video.stop(); guide.dispose(); });
 
 const restView = document.getElementById('rest-view');
 const restNext = document.getElementById('rest-next');
@@ -75,6 +78,7 @@ function getUpNext() {
 
 function completeSet() {
   if (isResting || isLastSet()) return;
+  video.stop();
   if (workout.setNumber < SETS_PER_EXERCISE) {
     workout.setNumber += 1;
   } else {
@@ -115,6 +119,7 @@ function finishWorkout(event) {
   }
   restTimer.stop();
   clearCurrentWorkout();
+  video.stop();
 }
 
 function extendRest() {
@@ -125,6 +130,7 @@ function extendRest() {
 
 function endWorkout() {
   restTimer.stop();
+  video.stop();
   clearCurrentWorkout();
 }
 
@@ -144,7 +150,7 @@ function draw() {
   const index = workout.exerciseIndex;
   const exercise = getExercise(index);
 
-  // Progress: blue = done, orange = now, grey = to do
+  // Mark completed movements and the current one.
   progressBar.querySelectorAll('.progress-bar__segment').forEach((segment, segmentIndex) => {
     segment.classList.toggle('is-done', segmentIndex < index);
     segment.classList.toggle('is-current', segmentIndex === index);
@@ -152,8 +158,8 @@ function draw() {
   progressBar.setAttribute('aria-valuenow', String(index + 1));
   progressBar.setAttribute('aria-valuetext', `Exercise ${index + 1} of ${workout.plan.length}`);
 
-  exerciseImage.src = exercise.image;
-  exerciseImage.alt = exercise.name;
+  video.setExercise(exercise);
+  guide.setExercise(exercise);
 
   setView.hidden = isResting;
   restView.hidden = !isResting;

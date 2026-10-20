@@ -1,16 +1,18 @@
-/* Ordered movement rows: the whole row opens its guide; no decorative play buttons. */
+/* Ordered movement rows with a single, expandable inline preview. */
 .plan-list { display: flex; flex-direction: column; counter-reset: exercise; }
 .plan-item {
+  border-bottom: 1px solid var(--color-border);
+  counter-increment: exercise;
+}
+.plan-item__row {
   position: relative;
   display: grid;
   grid-template-columns: 24px 72px minmax(0, 1fr) auto 16px;
   align-items: center;
   gap: var(--space-12);
   padding: var(--space-16) 0;
-  border-bottom: 1px solid var(--color-border);
-  counter-increment: exercise;
 }
-.plan-item::before {
+.plan-item__row::before {
   content: counter(exercise, decimal-leading-zero);
   color: var(--color-text-secondary);
   font-family: var(--font-heading);
@@ -35,15 +37,18 @@
 .plan-item__amount { font-family: var(--font-heading); font-size: var(--text-md); white-space: nowrap; }
 .plan-item__arrow { width: 16px; color: var(--color-text-secondary); }
 .plan-item__check { color: var(--color-accent); font-size: var(--text-lg); }
+.plan-item__preview { padding-bottom: var(--space-16); }
+.plan-item__preview .exercise-guide { margin-top: var(--space-16); }
+.plan-item__name[aria-expanded="true"] { color: var(--color-accent); }
 @media (hover: hover) {
-  .plan-item:hover { background: var(--color-surface-hover); }
-  .plan-item:hover .plan-item__name, .plan-item:hover .plan-item__arrow { color: var(--color-accent); }
+  .plan-item__row:hover { background: var(--color-surface-hover); }
+  .plan-item__row:hover .plan-item__name, .plan-item__row:hover .plan-item__arrow { color: var(--color-accent); }
 }
 @media (max-width: 38rem) {
-  .plan-item { grid-template-columns: 20px 60px minmax(0, 1fr) 16px; gap: var(--space-8); }
+  .plan-item__row { grid-template-columns: 20px 60px minmax(0, 1fr) 16px; gap: var(--space-8); }
   .plan-item__thumb { grid-row: span 2; }
   .plan-item__image { width: 60px; height: 60px; }
-  .plan-item::before { grid-row: span 2; }
+  .plan-item__row::before { grid-row: span 2; }
   .plan-item__body { grid-column: 3; }
   .plan-item__footer { grid-column: 3; grid-row: 2; }
   .plan-item__arrow, .plan-item__check { grid-column: 4; grid-row: 1 / 3; }

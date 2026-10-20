@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Forma — Workout</title>
+  <title>FitFlow — Workout</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/main.css">
@@ -17,7 +17,7 @@
     <noscript><p class="notice">Enable JavaScript to build and follow your workout.</p></noscript>
 
     <header class="site-header">
-      <a class="logo" href="index.html">Forma</a>
+      <a class="logo" href="index.html">FitFlow</a>
       <nav aria-label="Steps">
         <ol class="stepper">
           <li class="stepper__step is-done"><span class="stepper__badge">✓</span>Choose</li>
@@ -38,10 +38,8 @@
 
       <section class="player" id="workout-player" aria-label="Current exercise">
 
-        <!-- The exercise, with its details on top -->
+        <!-- Details stay outside the picture/video area so controls remain usable. -->
         <div class="player__canvas">
-          <img class="player__image" id="exercise-image" alt="">
-
           <div class="player__top">
             <div class="player__meta">
               <span class="badge-live" id="workout-phase" role="status">Now performing</span>
@@ -49,7 +47,6 @@
               <p class="player__counter tabular">
                 <span id="set-counter"></span> · Target: <strong><span id="set-amount"></span> <span id="set-unit"></span></strong>
               </p>
-              <button class="button button--secondary player__guide" id="exercise-guide-button" type="button" aria-haspopup="dialog">Exercise guide &amp; video</button>
             </div>
 
             <div class="up-next">
@@ -60,6 +57,7 @@
               </span>
             </div>
           </div>
+          <div id="exercise-media"></div>
         </div>
 
         <!-- Controls strip -->
@@ -97,6 +95,7 @@
         </div>
 
       </section>
+      <div class="workout__guide" id="exercise-guide"></div>
     </main>
   </div>
 </body>

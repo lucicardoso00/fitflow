@@ -1,4 +1,4 @@
-# Forma / FitFlow
+# FitFlow
 
 A workout planner made with plain HTML, CSS and JavaScript. The browser builds
 plans, tracks sets and rests, and remembers progress on this device. There is
@@ -48,7 +48,7 @@ preview server's bind address and port.
 | `index.html`, `workout.html`, `done.html` | Page structure and native controls |
 | `css/` | Tokens, local fonts, shared components and responsive page layouts |
 | `js/pages/` | Page events, state and rendering |
-| `js/components/` | Body map, movement rows, guide sheet and rest timer |
+| `js/components/` | Body map, movement rows, inline videos, guide disclosures and rest timer |
 | `js/lib/planner.js` | Pure exercise-selection rules |
 | `js/lib/choices.js` | Choice validation and labels |
 | `js/lib/storage.js` | Browser persistence and snapshot validation |
@@ -73,18 +73,22 @@ time and totals.
 Choices and results use localStorage; the active workout uses sessionStorage.
 Data stays in this browser and origin, with no account or cloud sync. Storage
 must be available to carry an active workout between pages. Failed saves are
-reported, and invalid saved snapshots return to the builder.
+reported, and invalid saved snapshots return to the builder. The internal
+`forma:` storage keys are retained so the FitFlow rename preserves existing data.
 
 ## Public APIs
 
 | Service | Integration | When it is contacted |
 | --- | --- | --- |
 | [wger REST API](https://wger.readthedocs.io/en/latest/api/api.html) | English movement descriptions, muscle names, authors and licences from `/api/v2/exerciseinfo/?id__in=…` | One batch for the visible plan, debounced after changes; retry from a guide |
-| [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference) | Actual embedded demonstration players, readiness/error events and destruction on close | Only after **Load video demo**; playback starts with the player's controls |
+| [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference) | Actual embedded demonstration players, readiness/error events and cleanup on movement/set changes | Only after **Watch video**; playback starts with the player's controls |
 
-Open any movement on the planner or summary, or **Exercise guide & video**
-during a workout. Videos also have a direct YouTube link if embedding is
-unavailable. Exact movement-to-provider IDs live in
+Select a movement on the planner or summary to expand its preview inline.
+During a workout, **Watch video** replaces the main exercise illustration with
+the player; **Show illustration** switches it back. Written instructions are
+under **Movement guide**. No popup is needed. Completing a set, switching
+movements or collapsing a preview stops its video. Videos also have a direct
+YouTube link if embedding is unavailable. Exact movement-to-provider IDs live in
 `js/data/exercise-sources.js`; the app does not guess from search results.
 The bodyweight option can include chair/bench dips; the planner and guide
 explain when a stable support is needed.
@@ -108,7 +112,7 @@ YouTube Data API subscription or paid exercise service is required.
 The Mobbin audit informed specific interactions: [Tempo's workout plan](https://mobbin.com/screens/33fed058-0e7e-4a95-91aa-fc9a1ce659d1)
 for ordered movement rows, [Gymshark's plan editor](https://mobbin.com/screens/8a121f5a-20a3-4d27-96fc-31c77927a29a)
 for visible prescriptions and a persistent action, and [Google Health's workout flow](https://mobbin.com/flows/69f9b525-c45b-40f5-adc4-51eb2f2922e9)
-for distinct active/rest/completion states. Forma retains its own typography,
+for distinct active/rest/completion states. FitFlow retains its own typography,
 colours and local artwork; no reference screenshots are shipped in the app.
 
 ## Check changes
@@ -133,6 +137,9 @@ To add an exercise, edit `js/data/exercises.js`, add reviewed guide/video IDs in
 `full-body` marks fallback movements. Refresh the browser after editing.
 
 ## Figma design and prototype
+
+The Figma artifacts capture the preceding Forma design; the website now uses
+FitFlow branding and inline playback.
 
 Import [`design/Forma.fig`](design/Forma.fig), then select **Desktop workout**
 or **Mobile workout** in Present. The ZIP contains that same file, fonts and

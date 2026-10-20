@@ -36,7 +36,7 @@
   .duration { grid-template-columns: 1fr; }
 }
 @media (max-width: 55rem) {
-  .builder__columns { grid-template-columns: 1fr; gap: var(--space-24); }
+  .builder__columns { grid-template-columns: minmax(0, 1fr); gap: var(--space-24); }
   .muscle-selector { grid-template-columns: minmax(130px, 0.85fr) minmax(0, 1.15fr); }
   .duration { grid-template-columns: 1fr 1fr; }
 }

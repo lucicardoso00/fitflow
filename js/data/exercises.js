@@ -1,5 +1,5 @@
 /**
- * Every exercise Forma can put in a plan. Order matters: within one body
+ * Every exercise FitFlow can put in a plan. Order matters: within one body
  * area, the exercise listed first is picked first.
  *
  *   equipment  'none' or 'dumbbells'. Bodyweight exercises are always available.

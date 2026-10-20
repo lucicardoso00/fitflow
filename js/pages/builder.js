@@ -12,7 +12,7 @@ import { buildPlan } from '../lib/planner.js';
 import { loadChoices, saveChoices, loadLastWorkout, saveCurrentWorkout } from '../lib/storage.js';
 import { createBodyMap } from '../components/body-map.js';
 import { createExerciseCard } from '../components/exercise-card.js';
-import { createExerciseGuide } from '../components/exercise-guide.js';
+import { createExercisePreview } from '../components/exercise-preview.js';
 import { exerciseApi } from '../lib/exercise-api.js';
 
 // ---------- Page elements ----------
@@ -35,7 +35,7 @@ const targetedCount = document.getElementById('targeted-count');
 const focusLabel = document.getElementById('focus-label');
 const equipmentNote = document.getElementById('equipment-note');
 const guideStatus = document.getElementById('guide-status');
-const guide = createExerciseGuide();
+const preview = createExercisePreview();
 let guideTimer;
 let guideRequest;
 
@@ -154,7 +154,8 @@ function drawPlan() {
   planSummary.textContent = hasPlan
     ? `${choices.minutes} min · ${plan.length} exercises · ${EQUIPMENT_SUMMARY[choices.equipment]}`
     : '';
-  planList.replaceChildren(...plan.map((item) => createExerciseCard(planItemTemplate, item, guide.open)));
+  preview.close();
+  planList.replaceChildren(...plan.map((item) => createExerciseCard(planItemTemplate, item, preview.toggle)));
 
   planEmpty.hidden = hasPlan;
   startLink.hidden = !hasPlan;
