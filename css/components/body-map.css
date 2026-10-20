@@ -1,0 +1,90 @@
+/*
+ * Body map — front and back silhouettes (markup in js/components/body-map.js).
+ * Each selectable area has `data-part`; the class `is-selected` paints it lime.
+ */
+
+.body-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* Head, hands and feet: part of the figure, never selectable */
+.body-map__skin {
+  fill: var(--color-surface-1);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.body-map__area {
+  fill: var(--color-muscle);
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.body-map__area.is-selected {
+  fill: var(--color-muscle-selected);
+  stroke: var(--color-accent-edge);
+  filter: var(--glow-muscle);
+}
+
+/* Muscle lines drawn on top of the core and back */
+.body-map__lines {
+  fill: none;
+  stroke: var(--color-base);
+  stroke-width: 1.5;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* FRONT / BACK, in SVG units (about 11px on screen) */
+.body-map__label {
+  font-family: var(--font-body);
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  fill: var(--color-text-muted);
+}
+
+/* Only on the builder: areas can be clicked */
+.body-map--clickable .body-map__area {
+  cursor: pointer;
+}
+
+.body-map--clickable .body-map__area.is-hovered:not(.is-selected) {
+  fill: var(--color-muscle-hover);
+  stroke: var(--color-border-hover);
+}
+
+/* ---------- Legend under the map ---------- */
+
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-16);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+.map-legend__dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: var(--space-4);
+  border-radius: 50%;
+}
+
+.map-legend__dot--default {
+  background: var(--color-muscle);
+  border: 1px solid var(--color-border);
+}
+
+.map-legend__dot--hover {
+  background: var(--color-muscle-hover);
+}
+
+.map-legend__dot--selected {
+  background: var(--color-muscle-selected);
+}

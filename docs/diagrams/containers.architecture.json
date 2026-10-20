@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Forma / C4 level 2 / Containers",
+    "locale": "en",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "workout-user", "type": "external", "label": "Exerciser", "sublabel": "Chooses and follows a workout", "tag": "Person", "pos": [30, 140], "size": [220, 104] },
+    { "id": "web-frontend", "type": "frontend", "label": "Web frontend", "sublabel": "Builder, workout and summary pages", "tag": "Application / HTML, CSS, JavaScript", "pos": [420, 140], "size": [280, 104] },
+    { "id": "forma-server", "type": "backend", "label": "Forma server", "sublabel": "Serves pages and builds workout plans", "tag": "Application / Node.js HTTP", "pos": [870, 140], "size": [280, 104] },
+    { "id": "browser-storage", "type": "database", "label": "Browser storage", "sublabel": "Choices, active workout and last summary", "tag": "Data store / Web Storage", "pos": [420, 420], "size": [280, 104] },
+    { "id": "exercise-catalogue", "type": "database", "label": "Exercise catalogue", "sublabel": "Exercises, body areas and local image paths", "tag": "Data store / JavaScript module", "pos": [870, 420], "size": [280, 104] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Forma / software system", "wraps": ["web-frontend", "forma-server", "browser-storage", "exercise-catalogue"], "pad": 32 }
+  ],
+  "connections": [
+    { "id": "open-frontend", "from": "workout-user", "to": "web-frontend", "label": "Uses browser UI", "variant": "emphasis" },
+    { "id": "request-api", "from": "web-frontend", "to": "forma-server", "label": "Requests plans / HTTP JSON", "variant": "emphasis" },
+    { "id": "read-catalogue", "from": "forma-server", "to": "exercise-catalogue", "label": "Imports at startup / ES module", "labelDy": 24 },
+    { "id": "save-progress", "from": "web-frontend", "to": "browser-storage", "label": "Reads and writes / Web Storage", "labelDy": 24 }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Workout path", "items": ["Frontend requests GET /v1/plan with areas, minutes and equipment.", "The server answers from the in-repo catalogue; no external calls."] },
+    { "dot": "emerald", "title": "Content update", "items": ["Edit js/data/exercises.js and add the matching SVG under assets/.", "Restart the server; the same server serves the images."] }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Forma / C4 level 1 / System context",
+    "locale": "en",
+    "quality_profile": "showcase"
+  },
+  "components": [
+    { "id": "exerciser", "type": "external", "label": "Exerciser", "sublabel": "Builds and follows a workout", "tag": "Person", "pos": [40, 220], "size": [240, 104] },
+    { "id": "forma-system", "type": "backend", "label": "Forma", "sublabel": "Plans workouts and tracks progress", "tag": "Software system", "pos": [510, 220], "size": [270, 104] }
+  ],
+  "connections": [
+    { "id": "use-forma", "from": "exerciser", "to": "forma-system", "label": "Uses in a web browser / HTTP", "variant": "emphasis" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Scope", "items": ["One responsive web application for phone and laptop.", "The user chooses body areas, time and equipment."] },
+    { "dot": "emerald", "title": "Content boundary", "items": ["Exercises and images live in the repository.", "Forma makes no calls to outside systems."] }
+  ]
+}

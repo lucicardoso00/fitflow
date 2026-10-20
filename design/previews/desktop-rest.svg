@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1000" viewBox="0 0 1440 1000">
+  <defs>
+    <clipPath id="clip0">
+      <rect width="1440" height="1000"/>
+    </clipPath>
+    <clipPath id="clip1">
+      <rect width="30" height="30"/>
+    </clipPath>
+    <clipPath id="clip2">
+      <rect width="376" height="282"/>
+    </clipPath>
+    <clipPath id="clip3">
+      <rect width="376" height="282"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect width="1440" height="1000" fill="#171A19"/>
+    <g clip-path="url(#clip0)">
+      <g transform="translate(64, 28)">
+        <rect width="30" height="30" rx="6" ry="6" fill="#C5F467"/>
+        <g clip-path="url(#clip1)">
+          <g transform="translate(8, 7)">
+            <rect width="4" height="17" fill="#171A19"/>
+          </g>
+          <g transform="translate(8, 7)">
+            <rect width="15" height="4" fill="#171A19"/>
+          </g>
+          <g transform="translate(8, 14)">
+            <rect width="11" height="4" fill="#171A19"/>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(104, 22)">
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="700" fill="#F5F6F2" letter-spacing="-1">forma</text>
+      </g>
+      <g transform="translate(260, 36)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">MAKE ROOM FOR MOVEMENT.</text>
+      </g>
+      <g transform="translate(1180, 37)">
+        <text x="196" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="end">End workout</text>
+      </g>
+      <g transform="translate(64, 88)">
+        <rect width="1312" height="1" fill="#444A45"/>
+      </g>
+      <g transform="translate(64, 120)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">CORE &amp; LEGS / 30 MIN</text>
+      </g>
+      <g transform="translate(64, 148)">
+        <text x="0" y="44" font-family="Space Grotesk" font-size="44" font-weight="600" fill="#F5F6F2" letter-spacing="-1.6">A moment to reset.</text>
+      </g>
+      <g transform="translate(64, 220)">
+        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Exercise 2 of 6</text>
+      </g>
+      <g transform="translate(64, 256)">
+        <rect width="212" height="5" rx="2" ry="2" fill="#C5F467"/>
+      </g>
+      <g transform="translate(284, 256)">
+        <rect width="212" height="5" rx="2" ry="2" fill="#F5F6F2"/>
+      </g>
+      <g transform="translate(504, 256)">
+        <rect width="212" height="5" rx="2" ry="2" fill="#444A45"/>
+      </g>
+      <g transform="translate(724, 256)">
+        <rect width="212" height="5" rx="2" ry="2" fill="#444A45"/>
+      </g>
+      <g transform="translate(944, 256)">
+        <rect width="212" height="5" rx="2" ry="2" fill="#444A45"/>
+      </g>
+      <g transform="translate(1164, 256)">
+        <rect width="212" height="5" rx="2" ry="2" fill="#444A45"/>
+      </g>
+      <g transform="translate(64, 310)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">REST BETWEEN SETS</text>
+      </g>
+      <g transform="translate(64, 350)">
+        <text x="0" y="32" font-family="Space Grotesk" font-size="32" font-weight="500" fill="#F5F6F2">Breathe. You’re doing well.</text>
+      </g>
+      <g transform="translate(64, 424)">
+        <text x="0" y="160" font-family="Space Grotesk" font-size="160" font-weight="600" fill="#C5F467" letter-spacing="-8">00:45</text>
+      </g>
+      <g transform="translate(72, 658)">
+        <text x="0" y="12" font-family="Inter" font-size="12" font-weight="600" fill="#AEB5AF" letter-spacing="1.5">NEXT UP</text>
+      </g>
+      <g transform="translate(72, 694)">
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="600" fill="#F5F6F2">Squat · set 2</text>
+      </g>
+      <g transform="translate(1000, 366)">
+        <rect width="376" height="282" rx="12" ry="12" fill="#292E2B"/>
+        <g clip-path="url(#clip2)">
+          <g clip-path="url(#clip3)">
+            <g transform="translate(0, -18.8)">
+              <path d="M0 18.8L376 18.8L376 300.8L0 300.8L0 18.8Z" fill="#292E2B"/>
+              <path d="M225.6 84.6C225.6 114.82 241.72 142.75 267.9 157.87C294.08 172.98 326.32 172.98 352.5 157.87C378.68 142.75 394.8 114.82 394.8 84.6C394.8 54.38 378.68 26.45 352.5 11.33C326.32 -3.78 294.08 -3.78 267.9 11.33C241.72 26.45 225.6 54.38 225.6 84.6Z" fill="#444A45"/>
+              <path d="M0 261.32L376 261.32L376 300.8L0 300.8L0 261.32Z" fill="#444A45"/>
+              <path d="M65.8 261.32C65.8 264.95 120.51 267.9 188 267.9C255.49 267.9 310.2 264.95 310.2 261.32C310.2 257.69 255.49 254.74 188 254.74C120.51 254.74 65.8 257.69 65.8 261.32Z" fill="#171A19"/>
+            </g>
+            <g transform="translate(159.8, 165.44)">
+              <path d="M0 0L29.99 6.2" fill="#000000" stroke="#171A19" stroke-width="19.74" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(189.79, 171.64)">
+              <path d="M0 0L24.53 5.08" fill="#000000" stroke="#CF9670" stroke-width="17.86" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(186.12, 176.72)">
+              <path d="M28.2 0L0 54.52" fill="#000000" stroke="#CF9670" stroke-width="15.98" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(186.12, 231.24)">
+              <path d="M0 0L24.44 3.76" fill="#000000" stroke="#C5F467" stroke-width="11.28" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(206.8, 101.52)">
+              <path d="M0 0L30.08 22.56" fill="#000000" stroke="#91AE53" stroke-width="14.1" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(236.88, 122.2)">
+              <path d="M0 1.88L35.72 0" fill="#000000" stroke="#CF9670" stroke-width="12.22" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(265.55, 115.15)">
+              <path d="M0 7.05C0 9.57 1.34 11.9 3.52 13.16C5.71 14.41 8.39 14.41 10.58 13.16C12.76 11.9 14.1 9.57 14.1 7.05C14.1 4.53 12.76 2.2 10.58 0.94C8.39 -0.31 5.71 -0.31 3.52 0.94C1.34 2.2 0 4.53 0 7.05" fill="#CF9670"/>
+            </g>
+            <g transform="translate(159.8, 101.52)">
+              <path d="M47 0L0 63.92" fill="#000000" stroke="#C5F467" stroke-width="30.08" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(143.82, 149.46)">
+              <path d="M0 15.98C0 24.81 7.15 31.96 15.98 31.96C24.81 31.96 31.96 24.81 31.96 15.98C31.96 7.15 24.81 0 15.98 0C7.15 0 0 7.15 0 15.98" fill="#353F34"/>
+            </g>
+            <g transform="translate(159.8, 165.44)">
+              <path d="M0 0L34.12 4.14" fill="#000000" stroke="#353F34" stroke-width="19.74" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(193.92, 169.58)">
+              <path d="M0 0L27.92 3.38" fill="#000000" stroke="#E9B58F" stroke-width="17.86" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(193.64, 172.96)">
+              <path d="M28.2 0L0 58.28" fill="#000000" stroke="#E9B58F" stroke-width="15.98" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(193.64, 231.24)">
+              <path d="M0 0L24.44 3.76" fill="#000000" stroke="#C5F467" stroke-width="11.28" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(206.8, 78.96)">
+              <path d="M0 22.56L15.04 0" fill="#000000" stroke="#E9B58F" stroke-width="11.28" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(201.16, 58.28)">
+              <path d="M2.82 20.68C2.82 30.54 10.82 38.54 20.68 38.54C30.54 38.54 38.54 30.54 38.54 20.68C38.54 10.82 30.54 2.82 20.68 2.82C10.82 2.82 2.82 10.82 2.82 20.68Z" fill="#E9B58F"/>
+              <path d="M0 15.98C0 21.69 3.05 26.96 7.99 29.82C12.93 32.67 19.03 32.67 23.97 29.82C28.91 26.96 31.96 21.69 31.96 15.98C31.96 10.27 28.91 5 23.97 2.14C19.03 -0.71 12.93 -0.71 7.99 2.14C3.05 5 0 10.27 0 15.98Z" fill="#2B2118"/>
+              <path d="M9.4 23.5C9.4 28.54 12.09 33.19 16.45 35.71C20.81 38.23 26.19 38.23 30.55 35.71C34.91 33.19 37.6 28.54 37.6 23.5C37.6 18.46 34.91 13.81 30.55 11.29C26.19 8.77 20.81 8.77 16.45 11.29C12.09 13.81 9.4 18.46 9.4 23.5Z" fill="#E9B58F"/>
+            </g>
+            <g transform="translate(206.8, 101.52)">
+              <path d="M0 0L35.72 18.8" fill="#000000" stroke="#C5F467" stroke-width="14.1" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(242.52, 118.44)">
+              <path d="M0 1.88L35.72 0" fill="#000000" stroke="#E9B58F" stroke-width="12.22" stroke-linecap="round"/>
+            </g>
+            <g transform="translate(271.19, 111.39)">
+              <path d="M0 7.05C0 9.57 1.34 11.9 3.52 13.16C5.71 14.41 8.39 14.41 10.58 13.16C12.76 11.9 14.1 9.57 14.1 7.05C14.1 4.53 12.76 2.2 10.58 0.94C8.39 -0.31 5.71 -0.31 3.52 0.94C1.34 2.2 0 4.53 0 7.05" fill="#E9B58F"/>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(64, 830)">
+        <rect width="240" height="52" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="2"/>
+        <g transform="translate(20, 15.5)">
+          <text x="100" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2" text-anchor="middle">+ 15 sec</text>
+        </g>
+      </g>
+      <g transform="translate(328, 830)">
+        <rect width="320" height="52" rx="8" ry="8" fill="#C5F467"/>
+        <g transform="translate(20, 15.5)">
+          <text x="140" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Skip rest   →</text>
+        </g>
+      </g>
+      <g transform="translate(64, 916)">
+        <text x="0" y="15" font-family="Inter" font-size="15" fill="#AEB5AF">The next set starts when the timer ends.</text>
+      </g>
+    </g>
+  </g>
+</svg>

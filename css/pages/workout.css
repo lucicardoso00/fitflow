@@ -1,0 +1,128 @@
+/*
+ * Workout screen (workout.html) — a cinematic player: the exercise on a dark
+ * canvas with its details on top, and the controls strip underneath.
+ */
+
+.workout__title {
+  font-size: var(--heading-md);
+}
+
+.player {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-1);
+  box-shadow: var(--shadow-player);
+}
+
+/* ---------- Canvas: the exercise illustration with overlays ---------- */
+
+.player__canvas {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: radial-gradient(circle at 50% 40%, #202623 0%, var(--color-player) 80%);
+}
+
+.player__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+/* Darkens the top so the overlay text stays readable */
+.player__canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--color-overlay) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.player__top {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  left: 28px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.player__meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  margin-bottom: var(--space-4);
+  padding: 4px 10px;
+  border: 1px solid rgba(197, 244, 103, 0.3);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-muted);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.badge-live__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+}
+
+.player__exercise {
+  font-size: var(--heading-lg);
+}
+
+.player__counter {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Controls strip ---------- */
+
+.player__controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-16) var(--space-24);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-overlay);
+}
+
+.set-view,
+.rest-view {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.player__hint {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.player__buttons {
+  display: flex;
+  gap: 10px;
+}

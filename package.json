@@ -1,0 +1,13 @@
+{
+  "name": "forma",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A small workout planner built with HTML, CSS, JavaScript and Node.js.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node server/dev.js",
+    "test": "node --test --test-isolation=none"
+  }
+}

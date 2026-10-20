@@ -1,0 +1,38 @@
+/*
+ * Labels for body areas.
+ *
+ *   .tag    tiny uppercase label on an exercise card ("LEGS")
+ *   .pill   lime outline pill in the summary dock ("Legs")
+ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-1);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.pill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}

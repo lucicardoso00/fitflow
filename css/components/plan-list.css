@@ -1,0 +1,158 @@
+/*
+ * Plan list — the routine deck: one exercise card per plan item.
+ * js/pages/builder.js copies the <template> in index.html and fills
+ * .plan-item__image, __name, __amount and __area. The order badge is a CSS counter.
+ */
+
+.plan-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-12);
+  counter-reset: exercise;
+}
+
+.plan-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface-2);
+  counter-increment: exercise;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.plan-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-card);
+}
+
+/* ---------- Thumbnail with order badge and play icon ---------- */
+
+.plan-item__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--color-base);
+}
+
+.plan-item__thumb::before {
+  content: counter(exercise, decimal-leading-zero);
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-overlay);
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.plan-item__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.plan-item__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-scrim);
+}
+
+.plan-item__play-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  background: var(--color-overlay);
+  color: #FFFFFF;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.plan-item:hover .plan-item__play-icon {
+  transform: scale(1.1);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ---------- Text ---------- */
+
+.plan-item__body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-16) 0;
+}
+
+.plan-item__name {
+  font-family: var(--font-heading);
+  font-size: var(--heading-xs);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.plan-item__footer {
+  margin-top: var(--space-12);
+  padding: 10px var(--space-16) var(--space-12);
+  border-top: 1px solid var(--color-border);
+}
+
+.plan-item__amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Completed routine (done screen) ---------- */
+
+.plan-list--completed .plan-item,
+.plan-list--completed .plan-item:hover {
+  transform: none;
+  border-color: var(--color-success-soft);
+  background: var(--color-surface-completed);
+  box-shadow: none;
+}
+
+.plan-list--completed .plan-item__thumb::before {
+  border-color: var(--color-success);
+  background: var(--color-success);
+  color: var(--color-on-accent);
+}
+
+.plan-list--completed .plan-item__play {
+  display: none;
+}
+
+.plan-list--completed .plan-item__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plan-list--completed .plan-item__footer::after {
+  content: "Completed";
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-success);
+}

@@ -1,0 +1,25 @@
+/*
+ * Progress bar — one segment per exercise in the workout.
+ * Segments are added by js/pages/workout.js.
+ */
+
+.progress-bar {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr); /* equal widths, whatever the count */
+  gap: 6px;
+}
+
+.progress-bar__segment {
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-surface-2);
+}
+
+.progress-bar__segment.is-done {
+  background: var(--color-success);
+}
+
+.progress-bar__segment.is-current {
+  background: var(--color-accent);
+}

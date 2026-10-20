@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forma — Workout complete</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/done.css">
+
+  <script type="module" src="js/pages/done.js"></script>
+</head>
+<body class="page">
+  <div class="frame">
+
+    <header class="site-header">
+      <a class="logo" href="index.html">Forma</a>
+      <nav aria-label="Steps">
+        <ol class="stepper">
+          <li class="stepper__step is-done"><span class="stepper__badge">✓</span>Choose</li>
+          <li class="stepper__step is-done"><span class="stepper__badge">✓</span>Train</li>
+          <li class="stepper__step is-current" aria-current="step"><span class="stepper__badge">3</span>Done</li>
+        </ol>
+      </nav>
+    </header>
+
+    <main class="site-main done">
+
+      <!-- Left: the numbers, the actions and the completed routine -->
+      <section class="done__hero" aria-label="Summary">
+        <span class="caption done__date" id="done-date"></span>
+        <h1 class="heading done__title">Workout complete</h1>
+
+        <div class="stat-grid">
+          <div class="stat">
+            <span class="stat__value tabular" id="stat-minutes"></span>
+            <span class="caption" id="stat-minutes-label">minutes</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value tabular" id="stat-exercises"></span>
+            <span class="caption">exercises</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value tabular" id="stat-sets"></span>
+            <span class="caption">sets</span>
+          </div>
+        </div>
+
+        <div class="done__actions">
+          <button class="button button--secondary button--large" id="save-plan" type="button">Save plan</button>
+          <a class="button button--primary button--large" href="index.html">Done</a>
+        </div>
+
+        <p class="toast" id="save-toast" role="status" hidden>
+          <svg class="line-icon line-icon--small toast__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Plan saved to history
+        </p>
+
+        <section class="done__deck" aria-label="Exercises done">
+          <span class="caption">Your routine</span>
+          <!-- Filled by js/pages/done.js with the cards below -->
+          <ol class="plan-list plan-list--completed" id="done-list"></ol>
+        </section>
+      </section>
+
+      <!-- Right: which areas were trained -->
+      <section class="panel done__map" aria-label="Areas trained">
+        <span class="caption">You trained</span>
+        <div class="panel--inset">
+          <!-- Drawn by js/components/body-map.js -->
+          <div id="trained-map"></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- One exercise card of the routine, copied by js/pages/done.js -->
+  <template id="plan-item-template">
+    <li class="plan-item">
+      <div class="plan-item__thumb">
+        <img class="plan-item__image" alt="" width="160" height="90">
+        <span class="plan-item__play" aria-hidden="true">
+          <span class="plan-item__play-icon">
+            <svg class="line-icon line-icon--small line-icon--filled" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          </span>
+        </span>
+      </div>
+      <div class="plan-item__body">
+        <h3 class="plan-item__name"></h3>
+        <span class="plan-item__area tag"></span>
+      </div>
+      <div class="plan-item__footer">
+        <span class="plan-item__amount tabular"></span>
+      </div>
+    </li>
+  </template>
+</body>
+</html>

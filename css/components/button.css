@@ -1,0 +1,100 @@
+/*
+ * Buttons — work on both <button> and <a> elements.
+ *
+ *   .button              size M: 40px tall, 8px corners
+ *   .button--large       size L: 48px tall
+ *   .button--small       32px tall, for shortcuts
+ *   .button--icon        square, holds only an icon
+ *
+ *   .button--primary     lime, the main action on a screen
+ *   .button--secondary   dark surface with a hairline border
+ *   .button--ghost       no background until hovered
+ *   .button--danger      red text, for ending or clearing things
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  height: var(--control-height);
+  padding: 0 var(--space-16);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control);
+  font-size: var(--text-md);
+  font-weight: 600;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.button--large {
+  height: var(--control-height-large);
+  padding: 0 var(--space-24);
+  font-size: var(--text-base);
+}
+
+.button--small {
+  height: var(--control-height-small);
+  padding: 0 var(--space-12);
+  font-size: var(--text-xs);
+}
+
+.button--icon {
+  width: var(--control-height);
+  padding: 0;
+}
+
+/* ---------- Variants ---------- */
+
+.button--primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 700;
+}
+
+.button--primary:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-accent);
+}
+
+.button--secondary {
+  background: var(--color-surface-2);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.button--secondary:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
+}
+
+/* A toggle such as "Full body" shows when it is on */
+.button--secondary[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.button--ghost:hover {
+  background: var(--color-surface-1);
+  color: var(--color-text);
+}
+
+.button--danger,
+.button--danger:hover {
+  color: var(--color-error);
+}
+
+.button:disabled {
+  opacity: 0.35;
+  box-shadow: none;
+  cursor: not-allowed;
+}

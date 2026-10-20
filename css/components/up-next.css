@@ -1,0 +1,37 @@
+/*
+ * Up next — floating card in the player that previews the next set or exercise.
+ */
+
+.up-next {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  width: 260px;
+  padding: var(--space-12) var(--space-16);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-control);
+  background: var(--color-overlay);
+  backdrop-filter: blur(8px);
+}
+
+.up-next__image {
+  width: 48px;
+  height: 36px;
+  border-radius: var(--radius-xs);
+  background: var(--color-surface-2);
+  object-fit: cover;
+}
+
+.up-next__text {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.up-next__name {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

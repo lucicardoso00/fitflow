@@ -1,0 +1,70 @@
+/*
+ * Stepper — Choose → Train → Done, shown in every header.
+ * Each page marks its own step `is-current` and the earlier ones `is-done`.
+ * The connecting line is drawn before every step but the first.
+ */
+
+.stepper {
+  display: flex;
+  align-items: center;
+  width: 360px;
+}
+
+.stepper__step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--color-text-muted);
+}
+
+.stepper__step + .stepper__step {
+  flex-grow: 1;
+}
+
+.stepper__step + .stepper__step::before {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  margin: 0 var(--space-8);
+  background: var(--color-border);
+}
+
+.stepper__badge {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface-2);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+/* ---------- States ---------- */
+
+.stepper__step.is-done,
+.stepper__step.is-current {
+  color: var(--color-text);
+}
+
+.stepper__step.is-done::before,
+.stepper__step.is-current::before {
+  background: var(--color-success);
+}
+
+.stepper__step.is-done .stepper__badge {
+  border-color: var(--color-success);
+  background: var(--color-success);
+  color: var(--color-on-accent);
+}
+
+.stepper__step.is-current .stepper__badge {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}

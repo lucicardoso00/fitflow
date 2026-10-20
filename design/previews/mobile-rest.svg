@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="844" viewBox="0 0 390 844">
+  <defs>
+    <clipPath id="clip0">
+      <rect width="390" height="844"/>
+    </clipPath>
+    <clipPath id="clip1">
+      <rect width="30" height="30"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect width="390" height="844" fill="#171A19"/>
+    <g clip-path="url(#clip0)">
+      <g transform="translate(24, 28)">
+        <rect width="30" height="30" rx="6" ry="6" fill="#C5F467"/>
+        <g clip-path="url(#clip1)">
+          <g transform="translate(8, 7)">
+            <rect width="4" height="17" fill="#171A19"/>
+          </g>
+          <g transform="translate(8, 7)">
+            <rect width="15" height="4" fill="#171A19"/>
+          </g>
+          <g transform="translate(8, 14)">
+            <rect width="11" height="4" fill="#171A19"/>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(64, 22)">
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="700" fill="#F5F6F2" letter-spacing="-1">forma</text>
+      </g>
+      <g transform="translate(258, 37)">
+        <text x="108" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="end">End workout</text>
+      </g>
+      <g transform="translate(24, 88)">
+        <rect width="342" height="1" fill="#444A45"/>
+      </g>
+      <g transform="translate(24, 116)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">REST BETWEEN SETS</text>
+      </g>
+      <g transform="translate(24, 156)">
+        <text x="0" y="44" font-family="Space Grotesk" font-size="44" font-weight="600" fill="#F5F6F2" letter-spacing="-1.5">A moment
+to reset.</text>
+      </g>
+      <g transform="translate(24, 316)">
+        <text x="0" y="96" font-family="Space Grotesk" font-size="96" font-weight="600" fill="#C5F467" letter-spacing="-5">00:45</text>
+      </g>
+      <g transform="translate(24, 498)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">NEXT UP</text>
+      </g>
+      <g transform="translate(24, 530)">
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="500" fill="#F5F6F2">Squat · set 2</text>
+      </g>
+      <g transform="translate(24, 594)">
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">The next set starts when
+the timer ends.</text>
+      </g>
+      <g transform="translate(24, 686)">
+        <rect width="342" height="52" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="2"/>
+        <g transform="translate(20, 15.5)">
+          <text x="151" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2" text-anchor="middle">+ 15 sec</text>
+        </g>
+      </g>
+      <g transform="translate(24, 760)">
+        <rect width="342" height="52" rx="8" ry="8" fill="#C5F467"/>
+        <g transform="translate(20, 15.5)">
+          <text x="151" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Skip rest   →</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

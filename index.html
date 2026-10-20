@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forma — Build your workout</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/pages/builder.css">
+
+  <script type="module" src="js/pages/builder.js"></script>
+</head>
+<body class="page">
+  <div class="frame">
+
+    <header class="site-header">
+      <span class="logo">Forma</span>
+      <nav aria-label="Steps">
+        <ol class="stepper">
+          <li class="stepper__step is-current" aria-current="step"><span class="stepper__badge">1</span>Choose</li>
+          <li class="stepper__step"><span class="stepper__badge">2</span>Train</li>
+          <li class="stepper__step"><span class="stepper__badge">3</span>Done</li>
+        </ol>
+      </nav>
+      <a class="button button--secondary site-header__end" id="history-link" href="done.html" hidden>
+        <svg class="line-icon line-icon--small" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/>
+          <path d="M3 3v5h5M12 7v5l3 2"/>
+        </svg>
+        History
+      </a>
+    </header>
+
+    <main class="site-main builder">
+
+      <div class="builder__intro">
+        <h1 class="heading builder__title">What do you want to train?</h1>
+        <p class="builder__subtitle">Pick your body areas and your time. The routine on the right builds itself.</p>
+      </div>
+
+      <div class="builder__columns">
+
+        <!-- Left: body areas, then time and equipment -->
+        <div class="builder__choices">
+
+          <section class="panel muscle-selector" aria-label="Body areas">
+            <div class="panel--inset muscle-selector__map">
+              <!-- Drawn by js/components/body-map.js -->
+              <div id="body-map"></div>
+              <ul class="map-legend" aria-hidden="true">
+                <li><span class="map-legend__dot map-legend__dot--default"></span>Default</li>
+                <li><span class="map-legend__dot map-legend__dot--hover"></span>Hover</li>
+                <li><span class="map-legend__dot map-legend__dot--selected"></span>Selected</li>
+              </ul>
+            </div>
+
+            <div class="muscle-selector__chips">
+              <div class="shortcuts">
+                <span class="shortcuts__count" id="targeted-count"></span>
+                <div class="shortcuts__actions">
+                  <button class="button button--secondary button--small" type="button" data-part-toggle="full-body" aria-pressed="false">Full body</button>
+                  <button class="button button--ghost button--small button--danger" type="button" id="clear-parts">Clear all</button>
+                </div>
+              </div>
+
+              <div class="chip-group" role="group" aria-labelledby="group-upper">
+                <h2 class="caption" id="group-upper">Upper body</h2>
+                <div class="chip-row">
+                  <button class="chip" type="button" data-part-toggle="shoulders" aria-pressed="false">Shoulders</button>
+                  <button class="chip" type="button" data-part-toggle="chest" aria-pressed="false">Chest</button>
+                  <button class="chip" type="button" data-part-toggle="arms" aria-pressed="false">Arms</button>
+                  <button class="chip" type="button" data-part-toggle="back" aria-pressed="false">Back</button>
+                </div>
+              </div>
+
+              <div class="chip-group" role="group" aria-labelledby="group-core">
+                <h2 class="caption" id="group-core">Core &amp; trunk</h2>
+                <div class="chip-row">
+                  <button class="chip" type="button" data-part-toggle="core" aria-pressed="false">Core</button>
+                </div>
+              </div>
+
+              <div class="chip-group" role="group" aria-labelledby="group-lower">
+                <h2 class="caption" id="group-lower">Lower body</h2>
+                <div class="chip-row">
+                  <button class="chip" type="button" data-part-toggle="glutes" aria-pressed="false">Glutes</button>
+                  <button class="chip" type="button" data-part-toggle="legs" aria-pressed="false">Legs</button>
+                </div>
+              </div>
+
+              <p class="muscle-selector__focus">Focus: <strong id="focus-label"></strong></p>
+            </div>
+          </section>
+
+          <section class="panel duration" aria-label="Time and equipment">
+            <fieldset>
+              <legend class="caption duration__legend">Quick duration presets</legend>
+              <div class="segmented">
+                <button class="segmented__tab" type="button" data-minutes="15" aria-pressed="false">15 min</button>
+                <button class="segmented__tab" type="button" data-minutes="30" aria-pressed="false">30 min</button>
+                <button class="segmented__tab" type="button" data-minutes="45" aria-pressed="false">45 min</button>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend class="caption duration__legend">Equipment</legend>
+              <div class="segmented">
+                <button class="segmented__tab" type="button" data-equipment="none" aria-pressed="false">None</button>
+                <button class="segmented__tab" type="button" data-equipment="dumbbells" aria-pressed="false">Dumbbells</button>
+              </div>
+            </fieldset>
+
+            <div class="duration__readout">
+              <span class="caption">Selected time</span>
+              <p class="duration__value tabular"><span id="duration-minutes"></span> <span class="duration__unit">minutes</span></p>
+              <p class="duration__estimate">
+                <svg class="line-icon line-icon--small" viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 8v4l3 2"/>
+                </svg>
+                ≈ <span id="exercise-estimate"></span> targeted exercises
+              </p>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Right: the routine, rebuilt after every change -->
+        <section class="panel routine" aria-labelledby="plan-title">
+          <div class="routine__header" aria-live="polite">
+            <span class="caption">Your routine</span>
+            <h2 class="heading routine__title" id="plan-title">Pick an area</h2>
+            <span class="routine__summary" id="plan-summary"></span>
+          </div>
+
+          <p class="plan-status" id="plan-status" role="status"></p>
+          <button class="button button--secondary" id="retry-plan" type="button" hidden>Try again</button>
+
+          <div class="empty-state" id="plan-empty" hidden>
+            <span class="empty-state__icon" aria-hidden="true">
+              <svg class="line-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+            </span>
+            <span class="empty-state__title">Pick at least one area to start</span>
+            <span class="empty-state__hint">Click the body map, a chip, or the Full body shortcut.</span>
+          </div>
+
+          <ol class="plan-list" id="plan-list"></ol>
+        </section>
+
+      </div>
+
+      <!-- Summary dock: always in view, holds the primary action -->
+      <div class="summary-dock">
+        <div class="summary-dock__metrics">
+          <div class="summary-stat">
+            <span class="caption">Total duration</span>
+            <span class="summary-stat__value tabular"><span id="dock-minutes"></span> <small>min</small></span>
+          </div>
+          <span class="summary-dock__divider"></span>
+          <div class="summary-stat">
+            <span class="caption">Exercises</span>
+            <span class="summary-stat__value tabular"><span id="dock-count"></span> <small>blocks</small></span>
+          </div>
+          <span class="summary-dock__divider"></span>
+          <div class="summary-stat">
+            <span class="caption">Targeted areas</span>
+            <div class="pill-list" id="dock-parts"></div>
+          </div>
+        </div>
+
+        <a class="button button--primary button--large" id="start-workout" href="workout.html" hidden>
+          <svg class="line-icon line-icon--small line-icon--filled" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="6 4 20 12 6 20 6 4"/>
+          </svg>
+          Start workout
+        </a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- One exercise card of the routine, copied by js/pages/builder.js -->
+  <template id="plan-item-template">
+    <li class="plan-item">
+      <div class="plan-item__thumb">
+        <img class="plan-item__image" alt="" width="160" height="90">
+        <span class="plan-item__play" aria-hidden="true">
+          <span class="plan-item__play-icon">
+            <svg class="line-icon line-icon--small line-icon--filled" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+          </span>
+        </span>
+      </div>
+      <div class="plan-item__body">
+        <h3 class="plan-item__name"></h3>
+        <span class="plan-item__area tag"></span>
+      </div>
+      <div class="plan-item__footer">
+        <span class="plan-item__amount tabular"></span>
+      </div>
+    </li>
+  </template>
+</body>
+</html>

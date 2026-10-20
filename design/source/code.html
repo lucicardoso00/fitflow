@@ -1,0 +1,2376 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<title>KINETIX — Design System &amp; Component Library</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+    /* Reset & Base Setup */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      /* Colors */
+      --bg-base: #171A19;
+      --surface-1: #212523;
+      --surface-2: #292E2B;
+      --border-hairline: #444A45;
+      --border-focus: #C5F467;
+      --accent: #C5F467;
+      --accent-hover: #B0DE50;
+      --accent-muted: rgba(197, 244, 103, 0.15);
+      --accent-subtle: rgba(197, 244, 103, 0.08);
+
+      --text-primary: #F5F6F2;
+      --text-secondary: #AEB5AF;
+      --text-muted: #727B74;
+
+      --semantic-success: #4DAD72;
+      --semantic-warning: #E5B842;
+      --semantic-error: #FF5A5F;
+
+      /* Radii */
+      --radius-card: 12px;
+      --radius-control: 8px;
+      --radius-pill: 9999px;
+
+      /* Typography */
+      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+
+      /* Spacing Scale */
+      --space-4: 4px;
+      --space-8: 8px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --space-40: 40px;
+      --space-48: 48px;
+      --space-64: 64px;
+    }
+
+    body {
+      background-color: #0F1211;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      justify-content: center;
+      padding: 40px 0;
+    }
+
+    /* Fixed Frame Requirement: 1440px wide, desktop-only */
+    .app-viewport {
+      width: 1440px;
+      background-color: var(--bg-base);
+      border: 1px solid var(--border-hairline);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85);
+      position: relative;
+    }
+
+    /* 12-Column Grid Guide (80px side margins, 24px gutters) */
+    .content-container {
+      padding: 0 80px;
+      margin: 0 auto;
+    }
+
+    /* Tabular numbers across timer/metrics */
+    .tabular {
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.02em;
+    }
+
+    /* Header & Brand Identity */
+    header.styleguide-header {
+      padding: 48px 80px 32px 80px;
+      border-bottom: 1px solid var(--border-hairline);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      background: linear-gradient(180deg, rgba(33, 37, 35, 0.7) 0%, rgba(23, 26, 25, 0) 100%);
+    }
+
+    .brand-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .brand-badge {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      background: var(--accent-muted);
+      color: var(--accent);
+      border: 1px solid rgba(197, 244, 103, 0.4);
+      border-radius: var(--radius-pill);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--text-primary);
+    }
+
+    .brand-subtitle {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin-top: 6px;
+    }
+
+    .spec-indicators {
+      display: flex;
+      gap: 20px;
+      text-align: right;
+    }
+
+    .spec-item .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .spec-item .val {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* Section Styling */
+    section.guide-section {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-number {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 700;
+      color: #171A19;
+      background: var(--accent);
+      border: 1px solid var(--accent);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .section-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Section 1: Foundations */
+    .foundations-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .swatches-panel {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .swatch-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-control);
+      padding: 10px;
+    }
+
+    .swatch-color {
+      height: 48px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .swatch-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .swatch-hex {
+      font-family: var(--font-heading);
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .type-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .type-scale-table th {
+      text-align: left;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .type-scale-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(68, 74, 69, 0.4);
+      vertical-align: baseline;
+    }
+
+    .token-chip {
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--accent);
+      background: rgba(197, 244, 103, 0.1);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .spacing-visual {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      padding: 20px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      margin-top: 20px;
+    }
+
+    .spacing-bar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spacing-bar {
+      background: var(--accent);
+      width: 16px;
+      border-radius: 3px;
+    }
+
+    .spacing-val {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    /* Section 2: Buttons Matrix */
+    .btn-matrix {
+      display: grid;
+      grid-template-columns: 100px repeat(5, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .matrix-header {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .matrix-row-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* Base Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: var(--font-body);
+      font-weight: 600;
+      border-radius: var(--radius-control);
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      text-decoration: none;
+      outline: none;
+    }
+
+    .btn-size-m {
+      height: 40px;
+      padding: 0 16px;
+      font-size: 14px;
+    }
+
+    .btn-size-l {
+      height: 48px;
+      padding: 0 24px;
+      font-size: 16px;
+    }
+
+    .btn-icon-m {
+      width: 40px;
+      height: 40px;
+      padding: 0;
+    }
+
+    .btn-icon-l {
+      width: 48px;
+      height: 48px;
+      padding: 0;
+    }
+
+    /* Variants */
+    .btn-primary {
+      background: var(--accent);
+      color: #171A19;
+      border: 1px solid var(--accent);
+      font-weight: 700;
+    }
+
+    .btn-primary:hover, .btn-primary.is-hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      box-shadow: 0 4px 12px rgba(197, 244, 103, 0.35);
+    }
+
+    .btn-primary.is-focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text-primary);
+      border: 1px solid var(--border-hairline);
+    }
+
+    .btn-secondary:hover, .btn-secondary.is-hover {
+      background: #343B37;
+      border-color: #555D57;
+    }
+
+    .btn-secondary.is-focus {
+      border-color: var(--accent);
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+    }
+
+    .btn-ghost:hover, .btn-ghost.is-hover {
+      background: var(--surface-1);
+      color: var(--text-primary);
+    }
+
+    .btn-ghost.is-focus {
+      border-color: var(--border-hairline);
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .btn.is-disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+      box-shadow: none !important;
+    }
+
+    .btn-spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(23, 26, 25, 0.3);
+      border-top-color: currentColor;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .btn-secondary .btn-spinner, .btn-ghost .btn-spinner {
+      border-color: rgba(245, 246, 242, 0.25);
+      border-top-color: currentColor;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Section 3: Muscle Selector */
+    .muscle-selector-layout {
+      display: grid;
+      grid-template-columns: 500px 1fr;
+      gap: 32px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 32px;
+    }
+
+    .anatomical-silhouettes-container {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      background: var(--bg-base);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 24px 16px;
+      position: relative;
+    }
+
+    .silhouette-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .silhouette-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .silhouette-svg {
+      width: 200px;
+      height: 380px;
+    }
+
+    .muscle-region {
+      fill: #292E2B;
+      stroke: #444A45;
+      stroke-width: 1.5;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .muscle-region:hover, .muscle-region.is-hover {
+      fill: #373E3A;
+      stroke: #5A625B;
+    }
+
+    .muscle-region.is-selected {
+      fill: var(--accent);
+      stroke: #D6F88E;
+      filter: drop-shadow(0 0 6px rgba(197, 244, 103, 0.45));
+    }
+
+    .silhouette-legend {
+      position: absolute;
+      bottom: 12px;
+      display: flex;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .legend-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 4px;
+    }
+
+    .chip-groups-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .shortcuts-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-hairline);
+    }
+
+    .chip-group-header {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .toggle-chip {
+      height: 34px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-2);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
+    }
+
+    .toggle-chip:hover {
+      border-color: #5C655E;
+      color: var(--text-primary);
+    }
+
+    .toggle-chip.active {
+      background: var(--surface-2);
+      border-color: var(--accent);
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .toggle-chip.active::before {
+      content: "✓";
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* Section 4: Duration Selector */
+    .duration-selector-wrap {
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .segmented-control {
+      display: flex;
+      background: var(--bg-base);
+      padding: 4px;
+      border-radius: var(--radius-control);
+      border: 1px solid var(--border-hairline);
+      gap: 4px;
+    }
+
+    .segment-tab {
+      flex: 1;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .segment-tab:hover {
+      color: var(--text-primary);
+    }
+
+    .segment-tab.is-active {
+      background: var(--surface-2);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .slider-interactive-group {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .slider-readout-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .live-duration-readout {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .live-duration-readout span {
+      font-size: 18px;
+      color: var(--accent);
+      margin-left: 4px;
+    }
+
+    .exercise-estimate-helper {
+      font-size: 14px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+    }
+
+    .custom-range-slider {
+      position: relative;
+      height: 8px;
+      background: var(--border-hairline);
+      border-radius: var(--radius-pill);
+      border: none;
+    }
+
+    .slider-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 45%;
+      background: var(--accent);
+      border-radius: var(--radius-pill);
+    }
+
+    .slider-thumb {
+      position: absolute;
+      left: 45%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 22px;
+      height: 22px;
+      background: #FFFFFF;
+      border: 3px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(197, 244, 103, 0.7);
+      cursor: grab;
+    }
+
+    .slider-scale-ticks {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    /* Section 5: Exercise Cards (Default, Hover, Active, Completed) */
+    .exercise-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .exercise-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.2s ease;
+    }
+
+    .exercise-card.card-hover:hover, .exercise-card.state-hover {
+      transform: translateY(-4px);
+      border-color: #5A625B;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+    }
+
+    .exercise-card.state-active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), 0 12px 30px rgba(197, 244, 103, 0.2);
+    }
+
+    .exercise-card.state-completed {
+      border-color: rgba(77, 173, 114, 0.5);
+      background: #232825;
+    }
+
+    .card-thumb-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #171A19;
+      overflow: hidden;
+    }
+
+    .card-thumb-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+    }
+
+    .card-duration-badge {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background: rgba(23, 26, 25, 0.88);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      color: var(--text-primary);
+    }
+
+    .card-order-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      width: 24px;
+      height: 24px;
+      background: rgba(23, 26, 25, 0.88);
+      border: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      font-family: var(--font-heading);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+
+    .state-active .card-order-badge {
+      background: var(--accent);
+      color: #171A19;
+      border-color: var(--accent);
+    }
+
+    .state-completed .card-order-badge {
+      background: var(--semantic-success);
+      color: #171A19;
+      border-color: var(--semantic-success);
+    }
+
+    .card-play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .play-circle-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(23, 26, 25, 0.88);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFF;
+      transition: transform 0.2s ease;
+    }
+
+    .exercise-card:hover .play-circle-icon {
+      transform: scale(1.1);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .card-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .exercise-name {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .swap-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 2px;
+      border-radius: 4px;
+      transition: color 0.15s;
+    }
+
+    .swap-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      margin: 8px 0 12px 0;
+      flex-wrap: wrap;
+    }
+
+    .muscle-tag-mini {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 6px;
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: 4px;
+      color: var(--text-secondary);
+    }
+
+    .card-footer-metrics {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid rgba(68, 74, 69, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .scheme-val {
+      font-family: var(--font-heading);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .state-label-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Section 6: Workout Summary Bar */
+    .summary-bar-wrapper {
+      background: var(--surface-2);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .summary-metrics-cluster {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .summary-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .summary-stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .summary-stat-value {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .summary-stat-value small {
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .muscle-pill-list {
+      display: flex;
+      gap: 6px;
+    }
+
+    .covered-pill {
+      background: var(--surface-1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* Section 7: Video Player */
+    .video-player-component {
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+    }
+
+    .player-canvas {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #111413;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px;
+      background: radial-gradient(circle at 50% 40%, #202623 0%, #111413 80%);
+    }
+
+    .player-top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      z-index: 10;
+    }
+
+    .now-training-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .badge-training {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-muted);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(197, 244, 103, 0.3);
+      width: fit-content;
+      margin-bottom: 4px;
+    }
+
+    .pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+    }
+
+    .player-exercise-title {
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .player-set-counter {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* Circular Rest Timer Overlay */
+    .rest-timer-widget {
+      background: rgba(23, 26, 25, 0.9);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .circular-timer-ring {
+      position: relative;
+      width: 64px;
+      height: 64px;
+    }
+
+    .circular-timer-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .ring-bg {
+      fill: none;
+      stroke: var(--surface-2);
+      stroke-width: 5;
+    }
+
+    .ring-progress {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 175;
+      stroke-dashoffset: 45; /* 45s left out of 60 */
+    }
+
+    .ring-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .rest-timer-info .title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .rest-timer-info .desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    /* Up Next Mini Card */
+    .up-next-floating-card {
+      position: absolute;
+      top: 28px;
+      right: 28px;
+      background: rgba(23, 26, 25, 0.92);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-control);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 260px;
+      z-index: 10;
+    }
+
+    .up-next-thumb {
+      width: 48px;
+      height: 36px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      object-fit: cover;
+    }
+
+    .up-next-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .up-next-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .up-next-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Custom Player Controls Bar */
+    .player-controls-strip {
+      background: rgba(23, 26, 25, 0.96);
+      border-top: 1px solid var(--border-hairline);
+      padding: 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .scrub-bar-container {
+      position: relative;
+      width: 100%;
+      height: 6px;
+      background: var(--surface-2);
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .scrub-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 62%;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .scrub-handle {
+      position: absolute;
+      left: 62%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: #FFFFFF;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(0,0,0,0.8);
+    }
+
+    .controls-actions-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .playback-buttons {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .play-btn-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: none;
+      color: #171A19;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(197, 244, 103, 0.4);
+      transition: transform 0.15s ease;
+    }
+
+    .play-btn-circle:hover {
+      transform: scale(1.05);
+      background: var(--accent-hover);
+    }
+
+    .skip-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 6px;
+    }
+
+    .skip-btn:hover {
+      color: var(--text-primary);
+      background: var(--surface-2);
+    }
+
+    .time-readout {
+      font-family: var(--font-heading);
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .time-readout strong {
+      color: var(--text-primary);
+    }
+
+    /* Section 8: Utilities & Feedback */
+    .utilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .utility-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .utility-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* Stepper */
+    .stepper-nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .step-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      border: 1px solid var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .step-item.is-done .step-badge {
+      background: var(--semantic-success);
+      color: #171A19;
+      border-color: var(--semantic-success);
+    }
+
+    .step-item.is-done {
+      color: var(--text-primary);
+    }
+
+    .step-item.is-current .step-badge {
+      background: var(--accent);
+      color: #171A19;
+      border-color: var(--accent);
+    }
+
+    .step-item.is-current {
+      color: var(--text-primary);
+    }
+
+    .step-divider {
+      flex: 1;
+      height: 1px;
+      background: var(--border-hairline);
+    }
+
+    /* Toast */
+    .toast-box {
+      background: var(--surface-2);
+      border-left: 4px solid var(--semantic-success);
+      border-top: 1px solid var(--border-hairline);
+      border-right: 1px solid var(--border-hairline);
+      border-bottom: 1px solid var(--border-hairline);
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.5);
+    }
+
+    .toast-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-primary);
+    }
+
+    /* Empty state */
+    .empty-state-box {
+      border: 1.5px dashed var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .empty-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    /* Loading skeleton */
+    .skeleton-box {
+      border: 1px solid var(--border-hairline);
+      border-radius: var(--radius-card);
+      padding: 14px;
+      background: var(--surface-1);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .skeleton-shimmer {
+      background: linear-gradient(90deg, #212523 25%, #292E2B 50%, #212523 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+      border-radius: 4px;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .skeleton-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 6px;
+    }
+
+    .skeleton-line {
+      height: 12px;
+    }
+
+    /* Tooltip */
+    .tooltip-demo-wrap {
+      position: relative;
+      display: inline-block;
+      width: fit-content;
+      margin-top: 10px;
+    }
+
+    .tooltip-bubble {
+      background: #111413;
+      border: 1px solid var(--border-hairline);
+      color: var(--text-primary);
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+    }
+
+    .tooltip-arrow {
+      position: absolute;
+      top: -5px;
+      left: 20px;
+      width: 8px;
+      height: 8px;
+      background: #111413;
+      border-top: 1px solid var(--border-hairline);
+      border-left: 1px solid var(--border-hairline);
+      transform: rotate(45deg);
+    }
+
+    /* Line icons standard 1.5px stroke */
+    .line-icon {
+      width: 20px;
+      height: 20px;
+      stroke-width: 1.5;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .line-icon-sm {
+      width: 16px;
+      height: 16px;
+      stroke-width: 1.5;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Section footer info */
+    footer.styleguide-footer {
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 12px;
+      border-top: 1px solid var(--border-hairline);
+    }
+  </style>
+</head>
+<body>
+<!-- Main 1440x1080 Fixed Spec Canvas Viewport -->
+<main class="app-viewport">
+<!-- Header / Brand Identifier -->
+<div style="background: rgb(17, 20, 19); border-bottom: 1px solid rgb(68, 74, 69); padding: 10px 80px; display: flex; justify-content: space-between; align-items: center; font-size: 12px;">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(197, 244, 103, 0.15); border: 1px solid rgba(197, 244, 103, 0.4); color: var(--accent); padding: 3px 8px; border-radius: 4px; font-weight: 700; font-family: monospace; font-size: 11px;" class="">❖ FIGMA MASTER FILE SPEC</span>
+    <span style="color: var(--text-muted); font-size: 11px; font-family: monospace;" class="">kinetix-ui-system.fig • v2.4 (Component Architecture &amp; Tokens)</span>
+  </div>
+  <nav style="display: flex; gap: 8px; align-items: center;">
+    <span style="padding: 4px 10px; border-radius: 4px; background: rgba(197, 244, 103, 0.2); color: var(--accent); border: 1px solid var(--accent); font-weight: 600; font-size: 11px; cursor: pointer;" class="">❖ 01. Cover &amp; Overview</span>
+    <span style="padding: 4px 10px; border-radius: 4px; background: var(--surface-1); color: var(--text-secondary); border: 1px solid var(--border-hairline); font-size: 11px; cursor: pointer;" class="">🎨 02. Design Tokens &amp; Foundations</span>
+    <span style="padding: 4px 10px; border-radius: 4px; background: var(--surface-1); color: var(--text-secondary); border: 1px solid var(--border-hairline); font-size: 11px; cursor: pointer;" class="">❖ 03. Core Component Library (Variants)</span>
+    <span style="padding: 4px 10px; border-radius: 4px; background: var(--surface-1); color: var(--text-secondary); border: 1px solid var(--border-hairline); font-size: 11px; cursor: pointer;" class="">📱 04. App Screens (1440x1080 Frames)</span>
+    <span style="padding: 4px 10px; border-radius: 4px; background: var(--surface-1); color: var(--text-secondary); border: 1px solid var(--border-hairline); font-size: 11px; cursor: pointer;" class="">🔀 05. Prototype Flows &amp; User Journey</span>
+    <span style="padding: 4px 10px; border-radius: 4px; background: var(--surface-1); color: var(--text-secondary); border: 1px solid var(--border-hairline); font-size: 11px; cursor: pointer;" class="">📐 06. Dev Handoff &amp; Auto-Layout Specs</span>
+  </nav>
+</div><header class="styleguide-header">
+<div>
+<div class="brand-meta">
+<span class="brand-badge">ATHLETIC OS 2.0</span>
+<span style="font-size: 13px; color: var(--text-secondary);" class="">Desktop Fixed 1440 Frame</span>
+<span class="token-chip" style="font-size: 10px;">❖ Frame: 1440 × 1080 [Desktop Fixed]</span><span class="token-chip" style="font-size: 10px;">Auto Layout: Vertical / Hug / Gap 0px</span></div>
+<h1 class="brand-title">KINETIX UI SYSTEM</h1>
+<p class="brand-subtitle">High-performance athletic training design system &amp; component specifications</p>
+</div>
+<div class="spec-indicators">
+<div class="spec-item">
+<div class="label">BASE FRAME</div>
+<div class="val tabular">1440 × 1080</div>
+</div>
+<div class="spec-item">
+<div class="label">SPACING BASE</div>
+<div class="val tabular">8px Grid</div>
+</div>
+<div class="spec-item">
+<div class="label">PRIMARY ACCENT</div>
+<div class="val" style="color: var(--accent);">#C5F467</div>
+</div>
+</div>
+</header>
+<!-- SECTION 1: FOUNDATIONS -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">01</div>
+<h2 class="section-title">Foundations</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Page 02: Design Tokens &amp; Styles</span></div>
+<span class="section-desc">Design tokens: Colors, typography scale, 8px spacing system, radii, and elevations</span>
+</div>
+<div class="foundations-grid">
+<!-- Color Tokens -->
+<div>
+<h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px;" class="">Color Palette &amp; Contrast Swatches</h3>
+<div class="swatches-panel">
+<div class="swatch-card">
+<div class="swatch-color" style="background: #171A19; border: 1px solid var(--border-hairline);"></div>
+<div class="swatch-name">Dark Charcoal Base</div>
+<div class="swatch-hex">#171A19</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #212523;"></div>
+<div class="swatch-name">Surface 1</div>
+<div class="swatch-hex">#212523</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #292E2B;"></div>
+<div class="swatch-name">Card &amp; Surface</div>
+<div class="swatch-hex">#292E2B</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #444A45;"></div>
+<div class="swatch-name">Subtle Border</div>
+<div class="swatch-hex">#444A45</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #C5F467; box-shadow: 0 0 12px rgba(197, 244, 103, 0.4);"></div>
+<div class="swatch-name" style="color: #C5F467;">Lime Green</div>
+<div class="swatch-hex">#C5F467</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #F5F6F2;"></div>
+<div class="swatch-name" style="color: #171A19;">Off-White</div>
+<div class="swatch-hex">#F5F6F2</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #AEB5AF;"></div>
+<div class="swatch-name">Muted Grey-Green</div>
+<div class="swatch-hex">#AEB5AF</div>
+</div>
+<div class="swatch-card">
+<div class="swatch-color" style="background: #4DAD72;"></div>
+<div class="swatch-name" style="color: #4DAD72;">Success</div>
+<div class="swatch-hex">#4DAD72</div>
+</div>
+</div>
+<!-- Spacing & Radii sample -->
+<div style="margin-top: 24px;">
+<h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;" class="">Spacing Scale (4–64px) &amp; Corner Radii</h3>
+<div class="spacing-visual">
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 12px; width: 4px;"></div><span class="spacing-val tabular">4</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 18px; width: 8px;"></div><span class="spacing-val tabular">8</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 24px; width: 12px;"></div><span class="spacing-val tabular">12</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 32px; width: 16px;"></div><span class="spacing-val tabular">16</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 40px; width: 20px;"></div><span class="spacing-val tabular">20</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 48px; width: 24px;"></div><span class="spacing-val tabular">24</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 64px; width: 32px;"></div><span class="spacing-val tabular">32</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 80px; width: 40px;"></div><span class="spacing-val tabular">40</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 96px; width: 48px;"></div><span class="spacing-val tabular">48</span></div>
+<div class="spacing-bar-wrap"><div class="spacing-bar" style="height: 120px; width: 64px;"></div><span class="spacing-val tabular">64</span></div>
+<div style="margin-left: auto; display: flex; gap: 12px; align-items: center;">
+<div style="background: var(--surface-2); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: 8px 12px; font-size: 11px;" class="">
+                  Card Radius <strong>12px</strong>
+</div>
+<div style="background: var(--surface-2); border: 1px solid var(--border-hairline); border-radius: var(--radius-control); padding: 8px 12px; font-size: 11px;" class="">
+                  Control <strong>8px</strong>
+</div>
+<div style="background: var(--surface-2); border: 1px solid var(--border-hairline); border-radius: var(--radius-pill); padding: 8px 12px; font-size: 11px;" class="">
+                  Pill / Chip <strong>Full</strong>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Typography Scale -->
+<div>
+<h3 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px;" class="">Type Scale (Space Grotesk &amp; Inter)</h3>
+<table class="type-scale-table">
+<thead>
+<tr>
+<th class="">Level</th>
+<th class="">Size / Leading</th>
+<th class="">Font Family</th>
+<th class="">Preview</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class=""><span class="token-chip">Timer 72</span></td>
+<td class="tabular">72px / 1.0</td>
+<td class="">Space Grotesk Tabular</td>
+<td class=""><span class="tabular" style="font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--accent);">00:45</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">Display 56</span></td>
+<td class="tabular">56px / 1.1</td>
+<td class="">Space Grotesk</td>
+<td class=""><span style="font-family: var(--font-heading); font-size: 26px; font-weight: 700;" class="">Athletic Power</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">H1 40</span></td>
+<td class="tabular">40px / 1.15</td>
+<td class="">Space Grotesk</td>
+<td class=""><span style="font-family: var(--font-heading); font-size: 22px; font-weight: 700;" class="">Workout Session</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">H2 32</span></td>
+<td class="tabular">32px / 1.2</td>
+<td class="">Space Grotesk</td>
+<td class=""><span style="font-family: var(--font-heading); font-size: 18px; font-weight: 600;" class="">Upper Body Focus</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">H3 24</span></td>
+<td class="tabular">24px / 1.25</td>
+<td class="">Space Grotesk</td>
+<td class=""><span style="font-family: var(--font-heading); font-size: 16px; font-weight: 600;" class="">Selected Muscles</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">Body L 18</span></td>
+<td class="tabular">18px / 1.5</td>
+<td class="">Inter Regular</td>
+<td class=""><span style="font-size: 16px; color: var(--text-secondary);" class="">High-tempo conditioning</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">Body 16</span></td>
+<td class="tabular">16px / 1.5</td>
+<td class="">Inter Regular</td>
+<td class=""><span style="font-size: 14px; color: var(--text-secondary);" class="">40s work / 20s rest interval</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">Small 14</span></td>
+<td class="tabular">14px / 1.4</td>
+<td class="">Inter Medium</td>
+<td class=""><span style="font-size: 13px; font-weight: 500;" class="">Set 2 of 3 Completed</span></td>
+</tr>
+<tr>
+<td class=""><span class="token-chip">Caption 12</span></td>
+<td class="tabular">12px / 1.4</td>
+<td class="">Inter Bold Uppercase</td>
+<td class=""><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted);" class="">TABULAR NUMS</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- SECTION 2: BUTTONS MATRIX -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">02</div>
+<h2 class="section-title">Buttons &amp; Interactive Controls</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Component Set: Button / Type=[Primary, Secondary, Ghost, Icon] / Size=[L, M] / State=[Default, Hover, Focus, Disabled, Loading]</span></div>
+<span class="section-desc">Primary, Secondary, Ghost, and Icon-only in Sizes M and L across 5 interactive states</span>
+</div>
+<div class="btn-matrix">
+<!-- Headers -->
+<div class="matrix-header">Type / Size</div>
+<div class="matrix-header">Default</div>
+<div class="matrix-header">Hover</div>
+<div class="matrix-header">Focus Ring</div>
+<div class="matrix-header">Disabled</div>
+<div class="matrix-header">Loading</div>
+<!-- Primary L -->
+<div class="matrix-row-label">Primary L</div>
+<div><button class="btn btn-primary btn-size-l">Start Training</button></div>
+<div><button class="btn btn-primary btn-size-l is-hover">Start Training</button></div>
+<div><button class="btn btn-primary btn-size-l is-focus">Start Training</button></div>
+<div><button class="btn btn-primary btn-size-l is-disabled">Start Training</button></div>
+<div><button class="btn btn-primary btn-size-l"><span class="btn-spinner"></span> Building...</button></div>
+<!-- Primary M -->
+<div class="matrix-row-label">Primary M</div>
+<div><button class="btn btn-primary btn-size-m">Save Workout</button></div>
+<div><button class="btn btn-primary btn-size-m is-hover">Save Workout</button></div>
+<div><button class="btn btn-primary btn-size-m is-focus">Save Workout</button></div>
+<div><button class="btn btn-primary btn-size-m is-disabled">Save Workout</button></div>
+<div><button class="btn btn-primary btn-size-m"><span class="btn-spinner"></span> Saving</button></div>
+<!-- Secondary L -->
+<div class="matrix-row-label">Secondary L</div>
+<div><button class="btn btn-secondary btn-size-l">Filter Exercises</button></div>
+<div><button class="btn btn-secondary btn-size-l is-hover">Filter Exercises</button></div>
+<div><button class="btn btn-secondary btn-size-l is-focus">Filter Exercises</button></div>
+<div><button class="btn btn-secondary btn-size-l is-disabled">Filter Exercises</button></div>
+<div><button class="btn btn-secondary btn-size-l"><span class="btn-spinner"></span> Loading</button></div>
+<!-- Ghost M -->
+<div class="matrix-row-label">Ghost M</div>
+<div><button class="btn btn-ghost btn-size-m">Clear Selection</button></div>
+<div><button class="btn btn-ghost btn-size-m is-hover">Clear Selection</button></div>
+<div><button class="btn btn-ghost btn-size-m is-focus">Clear Selection</button></div>
+<div><button class="btn btn-ghost btn-size-m is-disabled">Clear Selection</button></div>
+<div><button class="btn btn-ghost btn-size-m"><span class="btn-spinner"></span> Resetting</button></div>
+<!-- Icon Only L & M -->
+<div class="matrix-row-label">Icon-Only L/M</div>
+<div>
+<button class="btn btn-secondary btn-icon-l" title="Swap">
+<svg class="line-icon" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div>
+<button class="btn btn-secondary btn-icon-l is-hover" title="Swap">
+<svg class="line-icon" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div>
+<button class="btn btn-secondary btn-icon-l is-focus" title="Swap">
+<svg class="line-icon" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div>
+<button class="btn btn-secondary btn-icon-l is-disabled" title="Swap">
+<svg class="line-icon" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div>
+<button class="btn btn-secondary btn-icon-l" title="Loading">
+<span class="btn-spinner"></span>
+</button>
+</div>
+</div>
+</section>
+<!-- SECTION 3: MUSCLE SELECTOR -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">03</div>
+<h2 class="section-title">Muscle Selector — Anatomical &amp; Categorical</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Component: MuscleSelector / Auto Layout: Horizontal / Fixed 500px + Fill</span></div>
+<span class="section-desc">Interactive front &amp; back anatomical maps paired with categorized muscle chips &amp; quick shortcuts</span>
+</div>
+<div class="muscle-selector-layout">
+<!-- Anatomical Body Map Silhouettes (Front & Back) -->
+<div class="anatomical-silhouettes-container">
+<!-- Anterior (Front) -->
+<div class="silhouette-column">
+<span class="silhouette-label">Anterior (Front)</span>
+<svg class="silhouette-svg" viewBox="0 0 160 320" xmlns="http://www.w3.org/2000/svg">
+<!-- Head & Neck Reference -->
+<ellipse cx="80" cy="22" fill="#212523" rx="14" ry="17" stroke="#444A45" stroke-width="1.5"></ellipse>
+<!-- Traps / Neck Base -->
+<path class="muscle-region" d="M66 38 L80 44 L94 38 L104 50 L56 50 Z" id="m-traps-front"></path>
+<!-- Shoulders (Deltoids) - SELECTED DEMO -->
+<path class="muscle-region is-selected" d="M42 54 C38 64 36 78 40 88 L52 82 C54 70 52 58 56 52 Z" id="m-shoulders-front-l"></path>
+<path class="muscle-region is-selected" d="M118 54 C122 64 124 78 120 88 L108 82 C106 70 108 58 104 52 Z" id="m-shoulders-front-r"></path>
+<!-- Chest (Pectorals) - SELECTED DEMO -->
+<path class="muscle-region is-selected" d="M57 53 C70 53 78 57 80 62 C82 57 90 53 103 53 C108 72 98 84 81 84 C64 84 52 72 57 53 Z" id="m-chest"></path>
+<!-- Biceps - HOVER DEMO -->
+<path class="muscle-region is-hover" d="M38 90 C34 104 36 120 42 128 L50 120 C46 110 46 98 48 90 Z" id="m-biceps-l"></path>
+<path class="muscle-region is-hover" d="M122 90 C126 104 124 120 118 128 L110 120 C114 110 114 98 112 90 Z" id="m-biceps-r"></path>
+<!-- Forearms -->
+<path class="muscle-region" d="M42 130 C36 146 36 166 42 180 L50 176 C46 160 48 144 50 130 Z" id="m-forearms-l"></path>
+<path class="muscle-region" d="M118 130 C124 146 124 166 118 180 L110 176 C114 160 112 144 110 130 Z" id="m-forearms-r"></path>
+<!-- Core / Abs (Rectus Abdominis) - SELECTED DEMO -->
+<path class="muscle-region is-selected" d="M68 88 L92 88 L90 144 L70 144 Z" id="m-abs"></path>
+<!-- Obliques -->
+<path class="muscle-region" d="M56 88 L66 88 L68 140 L58 134 Z" id="m-obliques-l"></path>
+<path class="muscle-region" d="M104 88 L94 88 L92 140 L102 134 Z" id="m-obliques-r"></path>
+<!-- Quads (Quadriceps) -->
+<path class="muscle-region" d="M56 150 C54 180 56 215 62 235 L76 235 C78 205 78 175 76 150 Z" id="m-quads-l"></path>
+<path class="muscle-region" d="M104 150 C106 180 104 215 98 235 L84 235 C82 205 82 175 84 150 Z" id="m-quads-r"></path>
+<!-- Calves Front (Tibialis) -->
+<path class="muscle-region" d="M62 245 C58 268 60 295 64 305 L72 305 C74 290 74 265 74 245 Z" id="m-calves-front-l"></path>
+<path class="muscle-region" d="M98 245 C102 268 100 295 96 305 L88 305 C86 290 86 265 86 245 Z" id="m-calves-front-r"></path>
+</svg>
+</div>
+<!-- Posterior (Back) -->
+<div class="silhouette-column">
+<span class="silhouette-label">Posterior (Back)</span>
+<svg class="silhouette-svg" viewBox="0 0 160 320" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="80" cy="22" fill="#212523" rx="14" ry="17" stroke="#444A45" stroke-width="1.5"></ellipse>
+<!-- Traps Back -->
+<path class="muscle-region" d="M64 38 L80 44 L96 38 L104 56 L80 84 L56 56 Z" id="m-traps-back"></path>
+<!-- Rear Delts -->
+<path class="muscle-region is-selected" d="M42 54 C38 64 36 78 40 88 L52 82 C50 70 52 58 56 54 Z" id="m-rear-delts-l"></path>
+<path class="muscle-region is-selected" d="M118 54 C122 64 124 78 120 88 L108 82 C110 70 108 58 104 54 Z" id="m-rear-delts-r"></path>
+<!-- Lats (Latissimus Dorsi) -->
+<path class="muscle-region" d="M54 84 L80 88 L106 84 C100 110 94 130 80 134 C66 130 60 110 54 84 Z" id="m-lats"></path>
+<!-- Triceps -->
+<path class="muscle-region" d="M38 90 C34 105 34 120 40 128 L48 122 C46 110 46 98 48 90 Z" id="m-triceps-l"></path>
+<path class="muscle-region" d="M122 90 C126 105 126 120 120 128 L112 122 C114 110 114 98 112 90 Z" id="m-triceps-r"></path>
+<!-- Lower Back -->
+<path class="muscle-region" d="M68 128 L92 128 L94 148 L66 148 Z" id="m-lower-back"></path>
+<!-- Glutes (Gluteus Maximus) -->
+<path class="muscle-region" d="M56 150 C60 148 76 148 80 155 C84 148 100 148 104 150 C108 172 96 186 80 186 C64 186 52 172 56 150 Z" id="m-glutes"></path>
+<!-- Hamstrings -->
+<path class="muscle-region" d="M56 190 C54 212 56 235 62 245 L76 245 C78 225 78 205 76 190 Z" id="m-hamstrings-l"></path>
+<path class="muscle-region" d="M104 190 C106 212 104 235 98 245 L84 245 C82 225 82 205 84 190 Z" id="m-hamstrings-r"></path>
+<!-- Calves Back (Gastrocnemius) -->
+<path class="muscle-region" d="M58 252 C54 275 58 298 64 305 L72 305 C76 295 76 270 74 252 Z" id="m-calves-back-l"></path>
+<path class="muscle-region" d="M102 252 C106 275 102 298 96 305 L88 305 C84 295 84 270 86 252 Z" id="m-calves-back-r"></path>
+</svg>
+</div>
+<!-- Legend Bar -->
+<div class="silhouette-legend">
+<div class=""><span class="legend-dot" style="background: #292E2B; border: 1px solid #444A45;"></span>Default</div>
+<div class=""><span class="legend-dot" style="background: #373E3A;"></span>Hover</div>
+<div class=""><span class="legend-dot" style="background: var(--accent);"></span>Selected</div>
+</div>
+</div>
+<!-- Muscle Toggle Chips Panel -->
+<div class="chip-groups-panel">
+<div class="shortcuts-bar">
+<span style="font-size: 13px; font-weight: 600; color: var(--text-secondary);" class="">3 Muscles Targeted</span>
+<div style="display: flex; gap: 8px;">
+<button class="btn btn-secondary btn-size-m" style="height: 32px; font-size: 12px;">Full Body</button>
+<button class="btn btn-ghost btn-size-m" style="height: 32px; font-size: 12px; color: var(--semantic-error);">Clear All</button>
+</div>
+</div>
+<!-- Upper Group -->
+<div>
+<div class="chip-group-header">Upper Body (Push / Pull)</div>
+<div class="chip-row">
+<span class="toggle-chip active">Chest</span>
+<span class="toggle-chip active">Shoulders</span>
+<span class="toggle-chip">Traps</span>
+<span class="toggle-chip">Biceps</span>
+<span class="toggle-chip">Triceps</span>
+<span class="toggle-chip">Forearms</span>
+<span class="toggle-chip">Lats</span>
+</div>
+</div>
+<!-- Core Group -->
+<div>
+<div class="chip-group-header">Core &amp; Trunk</div>
+<div class="chip-row">
+<span class="toggle-chip active">Abs</span>
+<span class="toggle-chip">Obliques</span>
+<span class="toggle-chip">Lower Back</span>
+</div>
+</div>
+<!-- Lower Group -->
+<div>
+<div class="chip-group-header">Lower Body</div>
+<div class="chip-row">
+<span class="toggle-chip">Glutes</span>
+<span class="toggle-chip">Quads</span>
+<span class="toggle-chip">Hamstrings</span>
+<span class="toggle-chip">Calves</span>
+</div>
+</div>
+<div style="margin-top: auto; padding: 16px; background: var(--bg-base); border: 1px solid var(--border-hairline); border-radius: var(--radius-control); display: flex; align-items: center; justify-content: space-between;">
+<span style="font-size: 13px; color: var(--text-secondary);" class="">Focus: <strong>Chest, Shoulders &amp; Core</strong></span>
+<span class="token-chip">Dynamic Synced</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: DURATION SELECTOR -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">04</div>
+<h2 class="section-title">Duration Selector</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Component: DurationControl / Auto Layout: Horizontal / Gap 48px</span></div>
+<span class="section-desc">Segmented preset switches (15–90 min) &amp; continuous slider (10–120 min) with live readout</span>
+</div>
+<div class="duration-selector-wrap">
+<!-- Segmented Control Presets -->
+<div>
+<span style="display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;" class="">Quick Duration Presets</span>
+<div class="segmented-control">
+<div class="segment-tab">15m</div>
+<div class="segment-tab">30m</div>
+<div class="segment-tab is-active">45m</div>
+<div class="segment-tab">60m</div>
+<div class="segment-tab">90m</div>
+</div>
+</div>
+<!-- Slider with Large Readout -->
+<div class="slider-interactive-group">
+<div class="slider-readout-wrap">
+<div>
+<span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted);" class="">Selected Time</span>
+<div class="live-duration-readout tabular">45 <span class="">MINUTES</span></div>
+</div>
+<div class="exercise-estimate-helper">
+<svg class="line-icon-sm" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+<span class="">≈ 6 targeted exercises</span>
+</div>
+</div>
+<div class="custom-range-slider">
+<div class="slider-fill"></div>
+<div class="slider-thumb"></div>
+</div>
+<div class="slider-scale-ticks tabular">
+<span class="">10m</span>
+<span class="">30m</span>
+<span class="">45m</span>
+<span class="">60m</span>
+<span class="">90m</span>
+<span class="">120m</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: EXERCISE CARD STATES -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">05</div>
+<h2 class="section-title">Exercise Cards — Lifecycle &amp; States</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Component Set: ExerciseCard / State=[Default, Hover, Active, Completed]</span></div>
+<span class="section-desc">16:9 video thumbnail, duration badge, muscle tags, rep/interval schemes, and swap actions</span>
+</div>
+<div class="exercise-cards-grid">
+<!-- Card 1: Default State -->
+<div class="exercise-card">
+<div class="card-thumb-wrap">
+<div class="card-order-badge tabular">01</div>
+<img alt="Incline Dumbbell Press" class="card-thumb-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNknZUd1-inXCxUsmkJu9oWwrPk9r-BrsCHnT2ZaQZgdswxLAP1AuhwAxHhRKm-k5C8jJoyFwjbXtOx_fuEDxz1P2_NHZ7E6eTIhJeUx9w9nYVr52vghxH80hS2ULKfaRK-NFGUQtl1UEzXyqHD1obK3qT1Kbxido_CiUcVzPg8AquExPeK4xoUZj2ziLHz_7umo6QRWPSO163beJNT5h35RMYV6VsjErle6tkatzCs9hMmZrdCS_t0A">
+<div class="card-play-overlay">
+<div class="play-circle-icon">
+<svg class="line-icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+</div>
+</div>
+<div class="card-duration-badge tabular">08:30</div>
+</div>
+<div class="card-content">
+<div class="card-header-row">
+<h4 class="exercise-name">Incline Dumbbell Bench Press</h4>
+<button class="swap-btn" title="Swap Exercise">
+<svg class="line-icon-sm" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div class="card-tags">
+<span class="muscle-tag-mini">Chest</span>
+<span class="muscle-tag-mini">Triceps</span>
+</div>
+<div class="card-footer-metrics">
+<span class="scheme-val tabular">3 × 12 reps</span>
+<span class="state-label-tag" style="color: var(--text-muted);">Default</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Hover State -->
+<div class="exercise-card state-hover">
+<div class="card-thumb-wrap">
+<div class="card-order-badge tabular">02</div>
+<img alt="Overhead Barbell Press" class="card-thumb-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXBMDu8kyr3-hWDIavChgTXRELw-sQI1Nv9aNM8KjrhbHRBKZfQQJ8xgm-9QJLPAxd3eVU9dYpZIL6Hh2aiFnKEBRdBIrFAbVea0nV1nrEOsHk9AAFOsNV-lgAHW5h0MdQWg71P-5B-9dbQTviHHMQe_-F_RxSN7xGHjqIGn3NFbZEHZcH3BzySb31KJrlry2CfsAAXmhz4bUl62wuwt-DN1MeVUOQNgbgyyK7Mra9QuTaLuDKZtgiBQ">
+<div class="card-play-overlay">
+<div class="play-circle-icon" style="border-color: var(--accent); color: var(--accent); transform: scale(1.08);">
+<svg class="line-icon-sm" fill="currentColor" viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4"></polygon></svg>
+</div>
+</div>
+<div class="card-duration-badge tabular">07:45</div>
+</div>
+<div class="card-content">
+<div class="card-header-row">
+<h4 class="exercise-name">Standing Overhead Press</h4>
+<button class="swap-btn" style="color: var(--accent);" title="Swap Exercise">
+<svg class="line-icon-sm" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div class="card-tags">
+<span class="muscle-tag-mini">Shoulders</span>
+<span class="muscle-tag-mini">Core</span>
+</div>
+<div class="card-footer-metrics">
+<span class="scheme-val tabular">4 × 8 reps</span>
+<span class="state-label-tag" style="color: var(--text-primary);">Hover (Elevated)</span>
+</div>
+</div>
+</div>
+<!-- Card 3: Active State (Now Playing) -->
+<div class="exercise-card state-active">
+<div class="card-thumb-wrap">
+<div class="card-order-badge tabular">03</div>
+<img alt="Hanging Leg Raises" class="card-thumb-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzWvaWmO2hcDEO94l-DP4X8jinIQSvoSNEuCvUq0aOiJOF_hdzTYjLee2Xl-_Et9zD_xmOmK0qaCSIsoMoCmeOhfvvfZis-egYPVWih13BDoSGd799jnu8LnLadYQoeciI9BQCtZOJXDYxvdcCViX5EPgZ6REbEDJZkm1-VQlpRYRkrco2XvAKKiOleMlFJhBa3dzBb5au6nGNmQ56rpVEOMKZl2YJrzOo5i-xKMaH6E_wVxPa5H0qRQ" style="opacity: 0.9;">
+<div class="card-play-overlay">
+<div class="play-circle-icon" style="background: var(--accent); border-color: var(--accent); color: #171A19;">
+<svg class="line-icon-sm" fill="currentColor" viewBox="0 0 24 24"><rect height="16" width="4" x="6" y="4"></rect><rect height="16" width="4" x="14" y="4"></rect></svg>
+</div>
+</div>
+<div class="card-duration-badge tabular" style="background: var(--accent); color: #171A19; font-weight: 700;">PLAYING</div>
+</div>
+<div class="card-content">
+<div class="card-header-row">
+<h4 class="exercise-name" style="color: #FFFFFF;">Hanging Knee Tuck to L-Sit</h4>
+<button class="swap-btn" title="Swap Exercise">
+<svg class="line-icon-sm" viewBox="0 0 24 24"><path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16"></path></svg>
+</button>
+</div>
+<div class="card-tags">
+<span class="muscle-tag-mini" style="background: var(--accent-muted); border-color: var(--accent); color: var(--accent);">Abs</span>
+<span class="muscle-tag-mini">Obliques</span>
+</div>
+<div class="card-footer-metrics">
+<span class="scheme-val tabular" style="color: var(--accent);">40s work / 20s rest</span>
+<span class="state-label-tag" style="color: var(--accent);">Active</span>
+</div>
+</div>
+</div>
+<!-- Card 4: Completed State -->
+<div class="exercise-card state-completed">
+<div class="card-thumb-wrap">
+<div class="card-order-badge tabular">✓</div>
+<img alt="Push-ups" class="card-thumb-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMXQ1gOYjysKE6gUsqVM-j87mR9siLmoeFtHCIulGalqn6MF2tptgrsvgtzDQ-PjVNsjFqd6u2liBTrPeYnV24KGCPJyI7i4MRQaFKyzQ957Ck32FesE6E9242V0eDZpw572BQxR37HwGWvD-r5wLIn6HbbxeBYqHpA0GydGB8vsEb7cVhF8ZtM285adAc0PaRxemAJnEpplUcx9u65hwB9LKjkJcdgdU21f6fQ6RHJP9hbYS7CeORiQ" style="opacity: 0.35; filter: grayscale(80%);">
+<div class="card-play-overlay">
+<div class="play-circle-icon" style="background: rgba(77, 173, 114, 0.2); border-color: var(--semantic-success); color: var(--semantic-success);">
+<svg class="line-icon-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+</div>
+<div class="card-duration-badge tabular" style="color: var(--semantic-success);">DONE</div>
+</div>
+<div class="card-content">
+<div class="card-header-row">
+<h4 class="exercise-name" style="color: var(--text-secondary); text-decoration: line-through;">Tempo Push-Up Intervals</h4>
+</div>
+<div class="card-tags">
+<span class="muscle-tag-mini">Chest</span>
+<span class="muscle-tag-mini">Core</span>
+</div>
+<div class="card-footer-metrics">
+<span class="scheme-val tabular" style="color: var(--semantic-success);">Completed (3 sets)</span>
+<span class="state-label-tag" style="color: var(--semantic-success);">Done</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: WORKOUT SUMMARY BAR -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">06</div>
+<h2 class="section-title">Workout Summary Bar</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Component: WorkoutSummaryDock / Constraints: Left &amp; Right / Bottom</span></div>
+<span class="section-desc">Persistent dock displaying total time, exercise count, muscle groups covered, and primary CTA</span>
+</div>
+<div class="summary-bar-wrapper">
+<div class="summary-metrics-cluster">
+<div class="summary-stat">
+<span class="summary-stat-label">Total Duration</span>
+<div class="summary-stat-value tabular">45 <small>MIN</small></div>
+</div>
+<div style="width: 1px; height: 32px; background: var(--border-hairline);"></div>
+<div class="summary-stat">
+<span class="summary-stat-label">Exercises</span>
+<div class="summary-stat-value tabular">6 <small>BLOCKS</small></div>
+</div>
+<div style="width: 1px; height: 32px; background: var(--border-hairline);"></div>
+<div class="summary-stat">
+<span class="summary-stat-label">Targeted Muscles (3)</span>
+<div class="muscle-pill-list" style="margin-top: 4px;">
+<span class="covered-pill">Chest</span>
+<span class="covered-pill">Shoulders</span>
+<span class="covered-pill">Abs</span>
+</div>
+</div>
+</div>
+<div style="display: flex; align-items: center; gap: 16px;">
+<button class="btn btn-secondary btn-size-l">Edit Routine</button>
+<button class="btn btn-primary btn-size-l" style="box-shadow: 0 4px 20px rgba(197, 244, 103, 0.4);">
+<svg class="line-icon" fill="currentColor" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Start Workout
+          </button>
+</div>
+</div>
+</section>
+<!-- SECTION 7: VIDEO PLAYER COMPONENT -->
+<section class="guide-section content-container">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">07</div>
+<h2 class="section-title">Full Training Video Player</h2>
+<span class="token-chip" style="font-size: 11px;">❖ Component: FullTrainingPlayer / 16:9 Aspect Ratio / Overlay Layers</span></div>
+<span class="section-desc">16:9 cinematic video player with scrub bar, custom controls, circular rest timer, and Up Next card</span>
+</div>
+<div class="video-player-component">
+<!-- 16:9 Canvas Viewport -->
+<div class="player-canvas">
+<!-- Top Info Bar -->
+<div class="player-top-bar">
+<div class="now-training-meta">
+<div class="badge-training">
+<span class="pulse-dot"></span> NOW PERFORMING
+              </div>
+<h3 class="player-exercise-title">Incline Dumbbell Bench Press</h3>
+<div class="player-set-counter tabular">Set <strong>2 of 3</strong> • Target: 12 Reps @ 32kg</div>
+</div>
+<!-- Up Next Mini Card -->
+<div class="up-next-floating-card">
+<img alt="Next exercise" class="up-next-thumb" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBiHy9-rO08YnrMritte6h2S7PKt8NzIj55bTDJotanCIBTsgTPwy6mQbDrWBOr6izbrHJPsavVun619LgMsU12QOsg40iTPJQbWng4DklHbsrvU96MtYe1uL2aGhyU6-wsWuyXMx5Dwi4AzesdmeOcDEh8FJEy3sqVu9vZqq8k0FU1jzB5xPRj3vz0Tqe87gvlEdv2EOZBSyI_tO2syz8_-JAreWhMQpTHADWNiypLnMHduK3bZIKqg">
+<div class="up-next-details">
+<span class="up-next-label">Up Next • Block 3</span>
+<span class="up-next-name">Standing Overhead Press</span>
+</div>
+</div>
+</div>
+<!-- Center Overlay: Circular Rest Timer (Preview of rest period between sets) -->
+<div style="display: flex; justify-content: center; z-index: 10;">
+<div class="rest-timer-widget">
+<div class="circular-timer-ring">
+<svg class="circular-timer-svg" viewBox="0 0 64 64">
+<circle class="ring-bg" cx="32" cy="32" r="28"></circle>
+<circle class="ring-progress" cx="32" cy="32" r="28"></circle>
+</svg>
+<div class="ring-text tabular">45s</div>
+</div>
+<div class="rest-timer-info">
+<div class="title">Rest Interval Active</div>
+<div class="desc">Breathe &amp; prepare for Set 3</div>
+</div>
+</div>
+</div>
+<!-- Bottom placeholder space -->
+<div></div>
+</div>
+<!-- Custom Controls Strip -->
+<div class="player-controls-strip">
+<!-- Interactive Scrub Bar -->
+<div class="scrub-bar-container">
+<div class="scrub-progress"></div>
+<div class="scrub-handle"></div>
+</div>
+<!-- Actions & Readouts -->
+<div class="controls-actions-row">
+<div class="playback-buttons">
+<!-- Play / Pause Button -->
+<button class="play-btn-circle" title="Pause / Play">
+<svg class="line-icon" fill="currentColor" viewBox="0 0 24 24"><rect height="16" width="4" x="6" y="4"></rect><rect height="16" width="4" x="14" y="4"></rect></svg>
+</button>
+<!-- 10s Back -->
+<button class="skip-btn" title="Back 10s">
+<svg class="line-icon-sm" viewBox="0 0 24 24"><path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"></path></svg>
+<span class="tabular">10s</span>
+</button>
+<!-- 10s Forward -->
+<button class="skip-btn" title="Forward 10s">
+<span class="tabular">10s</span>
+<svg class="line-icon-sm" viewBox="0 0 24 24"><path d="M13 17l5-5-5-5M6 17l5-5-5-5"></path></svg>
+</button>
+<!-- Time Counter -->
+<div class="time-readout tabular">
+<strong>03:42</strong> / 08:30
+              </div>
+</div>
+<!-- Right Controls: Audio & Fullscreen -->
+<div style="display: flex; align-items: center; gap: 12px;">
+<button class="btn btn-ghost btn-size-m" style="padding: 0 8px;" title="Mute/Unmute">
+<svg class="line-icon" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+</button>
+<button class="btn btn-ghost btn-size-m" style="padding: 0 8px;" title="Toggle Fullscreen">
+<svg class="line-icon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 8: UTILITIES, STEPPERS & FEEDBACK -->
+<section class="guide-section content-container" id="figma-prototype-section">
+  <div class="section-header">
+    <div class="section-title-wrap">
+      <div class="section-number">08</div>
+      <h2 class="section-title">Figma User Flow &amp; Prototype Connections Map</h2>
+      <span class="token-chip" style="font-size: 11px;">🔀 Prototype Mode: Smart Animate (Ease-Out 300ms)</span>
+    </div>
+    <span class="section-desc">Interactive node architecture mapping user journeys across 1440×1080 fixed desktop canvas frames</span>
+  </div>
+
+  <div style="background: var(--surface-1); border: 1px solid var(--border-hairline); border-radius: var(--radius-card); padding: 28px;">
+    <!-- Flow Steps Grid -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; position: relative;">
+      <!-- Step 1 Card -->
+      <div style="background: var(--surface-2); border: 1px solid var(--border-hairline); border-radius: var(--radius-control); padding: 18px; display: flex; flex-direction: column; gap: 12px; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: monospace; font-size: 11px; color: var(--accent); background: var(--accent-muted); padding: 2px 6px; border-radius: 4px; font-weight: 700;" class="">FRAME 01</span>
+          <span class="token-chip" style="font-size: 10px;">On Click (Toggle)</span>
+        </div>
+        <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-primary);" class="">1. Muscle &amp; Duration</div>
+        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;" class="">User toggles muscle groups on front/back SVG silhouettes or chips and drags duration slider between 15-90 min.</p>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(68, 74, 69, 0.4); font-size: 11px; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
+          <div class=""><strong>State Trigger:</strong> Selected = True</div>
+          <div class=""><strong>Destination:</strong> Frame 02 (Instant Sync)</div>
+        </div>
+        <!-- Connecting arrow badge -->
+        <div style="position: absolute; right: -12px; top: 50%; transform: translateY(-50%); z-index: 5; background: var(--accent); color: #171A19; font-weight: 700; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; box-shadow: 0 0 10px rgba(197, 244, 103, 0.6);" class="">→</div>
+      </div>
+
+      <!-- Step 2 Card -->
+      <div style="background: var(--surface-2); border: 1px solid var(--accent); border-radius: var(--radius-control); padding: 18px; display: flex; flex-direction: column; gap: 12px; position: relative; box-shadow: 0 0 20px rgba(197, 244, 103, 0.15);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: monospace; font-size: 11px; color: #171A19; background: var(--accent); padding: 2px 6px; border-radius: 4px; font-weight: 700;" class="">FRAME 02</span>
+          <span class="token-chip" style="font-size: 10px;">On Click (CTA)</span>
+        </div>
+        <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-primary);" class="">2. Review &amp; Routine Dock</div>
+        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;" class="">Dynamically displays generated 6 exercise blocks and persistent dock. User can swap exercises or click primary 'Start Workout'.</p>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(68, 74, 69, 0.4); font-size: 11px; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
+          <div class=""><strong>Smart Animate:</strong> Dock slide up 300ms</div>
+          <div class=""><strong>Destination:</strong> Frame 03 (Player View)</div>
+        </div>
+        <div style="position: absolute; right: -12px; top: 50%; transform: translateY(-50%); z-index: 5; background: var(--accent); color: #171A19; font-weight: 700; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; box-shadow: 0 0 10px rgba(197, 244, 103, 0.6);" class="">→</div>
+      </div>
+
+      <!-- Step 3 Card -->
+      <div style="background: var(--surface-2); border: 1px solid var(--border-hairline); border-radius: var(--radius-control); padding: 18px; display: flex; flex-direction: column; gap: 12px; position: relative;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: monospace; font-size: 11px; color: var(--accent); background: var(--accent-muted); padding: 2px 6px; border-radius: 4px; font-weight: 700;" class="">FRAME 03</span>
+          <span class="token-chip" style="font-size: 10px;">Timer Delay 45s</span>
+        </div>
+        <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-primary);" class="">3. Live Video &amp; Set Rest</div>
+        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;" class="">16:9 full training canvas active with circular rest timer, scrub bar, and Up Next card. Card state automatically shifts to 'Active'.</p>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(68, 74, 69, 0.4); font-size: 11px; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
+          <div class=""><strong>Interactive:</strong> Video Scrub &amp; Audio</div>
+          <div class=""><strong>Destination:</strong> Frame 04 (Completion)</div>
+        </div>
+        <div style="position: absolute; right: -12px; top: 50%; transform: translateY(-50%); z-index: 5; background: var(--accent); color: #171A19; font-weight: 700; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; box-shadow: 0 0 10px rgba(197, 244, 103, 0.6);" class="">→</div>
+      </div>
+
+      <!-- Step 4 Card -->
+      <div style="background: var(--surface-2); border: 1px solid var(--border-hairline); border-radius: var(--radius-control); padding: 18px; display: flex; flex-direction: column; gap: 12px;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-family: monospace; font-size: 11px; color: var(--semantic-success); background: rgba(77, 173, 114, 0.15); padding: 2px 6px; border-radius: 4px; font-weight: 700;" class="">FRAME 04</span>
+          <span class="token-chip" style="font-size: 10px;">Overlay Toast</span>
+        </div>
+        <div style="font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--text-primary);" class="">4. Complete &amp; Feedback</div>
+        <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;" class="">Workout logged. Card state toggles to 'Completed' with strikethrough styling and green checkmark. Toast confirms workout saved.</p>
+        <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(68, 74, 69, 0.4); font-size: 11px; color: var(--text-muted); display: flex; flex-direction: column; gap: 4px;">
+          <div class=""><strong>Feedback:</strong> Toast notification #4DAD72</div>
+          <div class=""><strong>Status:</strong> Flow End / Loop to Step 1</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page & Layer Architecture spec card -->
+    <div style="margin-top: 24px; padding: 20px; background: var(--bg-base); border: 1px solid var(--border-hairline); border-radius: var(--radius-control); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+      <div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px;" class="">❖ Figma Page Taxonomy</div>
+        <ul style="list-style: none; font-size: 12px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px; font-family: monospace;">
+          <li class="">📁 01_Cover &amp; Specs</li>
+          <li class="">📁 02_Tokens (Color, Type, Grid)</li>
+          <li class="">📁 03_Components / Atoms</li>
+          <li class="">📁 04_Components / Organisms</li>
+          <li class="">📁 05_App Flows (1440x1080)</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px;" class="">📐 Auto-Layout Standards</div>
+        <ul style="list-style: none; font-size: 12px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px;">
+          <li class="">• <strong>Container:</strong> 1440px Fixed, Padding 0 80px</li>
+          <li class="">• <strong>Grid Gutters:</strong> 24px, 8px Spacing Base</li>
+          <li class="">• <strong>Resizing:</strong> Fill Container for Responsive Docks</li>
+          <li class="">• <strong>Corner Radii:</strong> 12px Cards, 8px Controls, 9999px Pills</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px;" class="">🎨 Variable Tokens Mapping</div>
+        <ul style="list-style: none; font-size: 12px; color: var(--text-secondary); display: flex; flex-direction: column; gap: 4px; font-family: monospace;">
+          <li class="">color/bg-base → #171A19</li>
+          <li class="">color/surface-1 → #212523</li>
+          <li class="">color/accent → #C5F467 (Lime)</li>
+          <li class="">color/success → #4DAD72</li>
+          <li class="">type/heading → Space Grotesk</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section><section class="guide-section content-container" style="border-bottom: none;">
+<div class="section-header">
+<div class="section-title-wrap">
+<div class="section-number">09</div>
+<h2 class="section-title">Utilities &amp; System States</h2>
+</div>
+<span class="section-desc">Flow indicator (Choose → Review → Train), toasts, tooltips, empty states, and card skeletons</span>
+</div>
+<div class="utilities-grid">
+<!-- Step Flow Indicator -->
+<div class="utility-card">
+<span class="utility-title">Flow Step Indicator</span>
+<nav class="stepper-nav">
+<div class="step-item is-done">
+<div class="step-badge">✓</div>
+<span class="">Choose</span>
+</div>
+<div class="step-divider" style="background: var(--semantic-success);"></div>
+<div class="step-item is-current">
+<div class="step-badge">2</div>
+<span class="">Review</span>
+</div>
+<div class="step-divider"></div>
+<div class="step-item">
+<div class="step-badge">3</div>
+<span class="">Train</span>
+</div>
+</nav>
+<div style="margin-top: 10px;">
+<span class="utility-title" style="display: block; margin-bottom: 8px;">Muscle Tags</span>
+<div style="display: flex; gap: 6px; flex-wrap: wrap;">
+<span class="covered-pill" style="font-size: 11px;">Chest</span>
+<span class="covered-pill" style="font-size: 11px;">Shoulders</span>
+<span class="covered-pill" style="font-size: 11px;">Abs</span>
+<span class="muscle-tag-mini" style="font-size: 11px;">Quads</span>
+<span class="muscle-tag-mini" style="font-size: 11px;">Hamstrings</span>
+</div>
+</div>
+</div>
+<!-- Toast & Tooltip Feedback -->
+<div class="utility-card">
+<span class="utility-title">Feedback &amp; Notifications</span>
+<!-- System Toast -->
+<div class="toast-box">
+<div class="toast-content">
+<svg class="line-icon-sm" style="color: var(--semantic-success);" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+<span class="">Workout saved • <strong>45 min Upper Focus</strong></span>
+</div>
+<button class="btn btn-ghost" style="padding: 2px 6px; font-size: 11px; height: auto;">Undo</button>
+</div>
+<!-- Tooltip Sample -->
+<div>
+<span class="utility-title" style="display: block; margin-bottom: 6px;">Micro Tooltip</span>
+<div class="tooltip-demo-wrap">
+<div class="tooltip-bubble">
+<svg class="line-icon-sm" style="color: var(--accent);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="16" y2="12"></line><line x1="12" x2="12.01" y1="8" y2="8"></line></svg>
+<span class="">Click silhouette or chip to toggle muscle</span>
+</div>
+<div class="tooltip-arrow"></div>
+</div>
+</div>
+</div>
+<!-- Empty State & Loading Skeleton -->
+<div class="utility-card">
+<span class="utility-title">Empty State &amp; Skeleton</span>
+<!-- Empty State -->
+<div class="empty-state-box">
+<div class="empty-icon">
+<svg class="line-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="8" x2="16" y1="12" y2="12"></line></svg>
+</div>
+<div style="font-size: 13px; font-weight: 600; color: var(--text-primary);" class="">Pick at least one muscle to start</div>
+<div style="font-size: 11px; color: var(--text-muted);" class="">Select from the body map or choose "Full body" shortcut</div>
+</div>
+<!-- Card Skeleton Loader -->
+<div class="skeleton-box">
+<div class="skeleton-thumb skeleton-shimmer"></div>
+<div class="skeleton-line skeleton-shimmer" style="width: 70%;"></div>
+<div class="skeleton-line skeleton-shimmer" style="width: 40%;"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Meta -->
+<footer class="styleguide-footer content-container"><div class="">KINETIX ATHLETIC TRAINING SYSTEM • FIGMA MASTER FILE EXPORT SPEC v2.4</div><div class="">FIGMA AUTO-LAYOUT VERIFIED • 1440×1080 FIXED CANVAS • SMART ANIMATE READY • WCAG AA COMPLIANT</div></footer>
+</main>
+
+
+</body></html>

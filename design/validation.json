@@ -1,0 +1,152 @@
+{
+  "file": "Forma.fig",
+  "format": "Native Figma / OpenPencil",
+  "bytes": 143017,
+  "pages": [
+    "00 / Start here",
+    "01 / Foundations",
+    "02 / Components",
+    "03 / Desktop",
+    "04 / Mobile",
+    "05 / States",
+    "06 / Flow & handoff"
+  ],
+  "counts": {
+    "TEXT": 361,
+    "VECTOR": 462,
+    "COMPONENT": 12,
+    "INSTANCE": 66,
+    "FRAME": 99
+  },
+  "variables": 26,
+  "variableCollections": 1,
+  "autoLayoutNodes": 56,
+  "boundNodes": 602,
+  "previews": [
+    {
+      "id": "0:38",
+      "pageId": "0:33",
+      "slug": "components",
+      "name": "Forma / Component library",
+      "width": 1440,
+      "height": 1550
+    },
+    {
+      "id": "0:157",
+      "pageId": "0:32",
+      "slug": "foundations",
+      "name": "Forma / Foundations",
+      "width": 1440,
+      "height": 1230
+    },
+    {
+      "id": "0:217",
+      "pageId": "0:34",
+      "slug": "desktop-builder",
+      "name": "01 / Build your workout",
+      "width": 1440,
+      "height": 1080
+    },
+    {
+      "id": "0:437",
+      "pageId": "0:34",
+      "slug": "desktop-workout",
+      "name": "02 / Workout / active set",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "id": "0:490",
+      "pageId": "0:34",
+      "slug": "desktop-rest",
+      "name": "03 / Workout / rest",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "id": "0:539",
+      "pageId": "0:34",
+      "slug": "desktop-done",
+      "name": "04 / Workout complete",
+      "width": 1440,
+      "height": 1000
+    },
+    {
+      "id": "0:576",
+      "pageId": "0:35",
+      "slug": "mobile-builder",
+      "name": "01 / Build / scrollable content",
+      "width": 390,
+      "height": 1940
+    },
+    {
+      "id": "0:784",
+      "pageId": "0:35",
+      "slug": "mobile-plan",
+      "name": "02 / Build / plan continuation",
+      "width": 390,
+      "height": 900
+    },
+    {
+      "id": "0:953",
+      "pageId": "0:35",
+      "slug": "mobile-workout",
+      "name": "03 / Workout / active set",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "0:997",
+      "pageId": "0:35",
+      "slug": "mobile-rest",
+      "name": "04 / Workout / rest",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "id": "0:1015",
+      "pageId": "0:35",
+      "slug": "mobile-done",
+      "name": "05 / Workout complete",
+      "width": 390,
+      "height": 960
+    },
+    {
+      "id": "0:1045",
+      "pageId": "0:36",
+      "slug": "states",
+      "name": "Forma / Interaction states",
+      "width": 1440,
+      "height": 960
+    },
+    {
+      "id": "0:1071",
+      "pageId": "0:31",
+      "slug": "cover",
+      "name": "Forma / Design file",
+      "width": 1440,
+      "height": 960
+    },
+    {
+      "id": "0:1098",
+      "pageId": "0:37",
+      "slug": "flow-handoff",
+      "name": "Forma / Flow and implementation guide",
+      "width": 1440,
+      "height": 1390
+    }
+  ],
+  "plan": [
+    "plank",
+    "squat",
+    "crunch",
+    "lunge",
+    "mountain-climber",
+    "push-up"
+  ],
+  "roundTrip": "Exported and read back with the OpenPencil native .fig codec; every instance text override verified",
+  "limitations": [
+    "Not opened in Figma itself",
+    "Flow guide is static; no interactive prototype links"
+  ]
+}

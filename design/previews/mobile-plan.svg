@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="390" height="900" viewBox="0 0 390 900">
+  <defs>
+    <clipPath id="clip0">
+      <rect width="390" height="900"/>
+    </clipPath>
+    <clipPath id="clip1">
+      <rect width="30" height="30"/>
+    </clipPath>
+    <clipPath id="clip2">
+      <rect width="342" height="84"/>
+    </clipPath>
+    <clipPath id="clip3">
+      <rect width="80" height="60"/>
+    </clipPath>
+    <clipPath id="clip4">
+      <rect width="342" height="84"/>
+    </clipPath>
+    <clipPath id="clip5">
+      <rect width="80" height="60"/>
+    </clipPath>
+    <clipPath id="clip6">
+      <rect width="342" height="84"/>
+    </clipPath>
+    <clipPath id="clip7">
+      <rect width="80" height="60"/>
+    </clipPath>
+    <clipPath id="clip8">
+      <rect width="342" height="84"/>
+    </clipPath>
+    <clipPath id="clip9">
+      <rect width="80" height="60"/>
+    </clipPath>
+    <clipPath id="clip10">
+      <rect width="342" height="84"/>
+    </clipPath>
+    <clipPath id="clip11">
+      <rect width="80" height="60"/>
+    </clipPath>
+    <clipPath id="clip12">
+      <rect width="342" height="84"/>
+    </clipPath>
+    <clipPath id="clip13">
+      <rect width="80" height="60"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect width="390" height="900" fill="#171A19"/>
+    <g clip-path="url(#clip0)">
+      <g transform="translate(24, 28)">
+        <rect width="30" height="30" rx="6" ry="6" fill="#C5F467"/>
+        <g clip-path="url(#clip1)">
+          <g transform="translate(8, 7)">
+            <rect width="4" height="17" fill="#171A19"/>
+          </g>
+          <g transform="translate(8, 7)">
+            <rect width="15" height="4" fill="#171A19"/>
+          </g>
+          <g transform="translate(8, 14)">
+            <rect width="11" height="4" fill="#171A19"/>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(64, 22)">
+        <text x="0" y="28" font-family="Space Grotesk" font-size="28" font-weight="700" fill="#F5F6F2" letter-spacing="-1">forma</text>
+      </g>
+      <g transform="translate(258, 37)">
+        <text x="108" y="14" font-family="Inter" font-size="14" font-weight="500" fill="#AEB5AF" text-anchor="end">History</text>
+      </g>
+      <g transform="translate(24, 88)">
+        <rect width="342" height="1" fill="#444A45"/>
+      </g>
+      <g transform="translate(24, 116)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">YOUR PLAN</text>
+      </g>
+      <g transform="translate(24, 144)">
+        <text x="0" y="32" font-family="Space Grotesk" font-size="32" font-weight="600" fill="#F5F6F2" letter-spacing="-1.6">Core &amp; legs</text>
+      </g>
+      <g transform="translate(24, 188)">
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">30 min · No equipment</text>
+      </g>
+      <g transform="translate(24, 266)">
+        <g clip-path="url(#clip2)">
+          <g>
+            <rect width="342" height="84" rx="12" ry="12" fill="#212523"/>
+            <g transform="translate(12, 12)">
+              <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+            </g>
+            <g transform="translate(112, 18)">
+              <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Plank</text>
+            </g>
+            <g transform="translate(112, 47)">
+              <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Core · 3 × 40 sec</text>
+            </g>
+            <g transform="translate(294, 29)">
+              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">01</text>
+            </g>
+          </g>
+          <g transform="translate(12, 12)">
+            <g clip-path="url(#clip3)">
+              <g transform="translate(0, -4)">
+                <path d="M0 4L80 4L80 64L0 64L0 4Z" fill="#292E2B"/>
+                <path d="M48 18C48 27.94 56.06 36 66 36C75.94 36 84 27.94 84 18C84 8.06 75.94 0 66 0C56.06 0 48 8.06 48 18Z" fill="#444A45"/>
+                <path d="M0 55.6L80 55.6L80 64L0 64L0 55.6Z" fill="#444A45"/>
+                <path d="M11 54L69 54C69.55 54 70 54.45 70 55L70 55C70 55.55 69.55 56 69 56L11 56C10.45 56 10 55.55 10 55L10 55C10 54.45 10.45 54 11 54Z" fill="#9AA6C2"/>
+                <path d="M14 55.6C14 56.37 25.64 57 40 57C54.36 57 66 56.37 66 55.6C66 54.83 54.36 54.2 40 54.2C25.64 54.2 14 54.83 14 55.6Z" fill="#171A19"/>
+              </g>
+              <g transform="translate(31.7, 40.8)">
+                <path d="M5.5 0L0 2.2" fill="#000000" stroke="#171A19" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(27.2, 43)">
+                <path d="M4.5 0L0 1.8" fill="#000000" stroke="#CF9670" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(18, 44.8)">
+                <path d="M9.2 0L0 3.2" fill="#000000" stroke="#CF9670" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(16.4, 48)">
+                <path d="M1.6 0L0 2" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(54.4, 36.4)">
+                <path d="M0.8 0L0 11.2" fill="#000000" stroke="#91AE53" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(54.4, 47.6)">
+                <path d="M0 0L8 0.4" fill="#000000" stroke="#CF9670" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(60.9, 46.5)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#CF9670"/>
+              </g>
+              <g transform="translate(37.2, 36.4)">
+                <path d="M18 0L0 4.4" fill="#000000" stroke="#C5F467" stroke-width="6.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(33.8, 37.4)">
+                <path d="M0 3.4C0 4.61 0.65 5.74 1.7 6.34C2.75 6.95 4.05 6.95 5.1 6.34C6.15 5.74 6.8 4.61 6.8 3.4C6.8 2.19 6.15 1.06 5.1 0.46C4.05 -0.15 2.75 -0.15 1.7 0.46C0.65 1.06 0 2.19 0 3.4" fill="#353F34"/>
+              </g>
+              <g transform="translate(31.92, 40.8)">
+                <path d="M5.28 0L0 1.98" fill="#000000" stroke="#353F34" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(27.6, 42.78)">
+                <path d="M4.32 0L0 1.62" fill="#000000" stroke="#E9B58F" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(18.4, 44.4)">
+                <path d="M9.2 0L0 3.2" fill="#000000" stroke="#E9B58F" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(16.8, 47.6)">
+                <path d="M1.6 0L0 2.4" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(55.2, 33.6)">
+                <path d="M0 2.8L4.8 0" fill="#000000" stroke="#E9B58F" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(56.2, 29.2)">
+                <path d="M0 4.4C0 6.5 1.7 8.2 3.8 8.2C5.9 8.2 7.6 6.5 7.6 4.4C7.6 2.3 5.9 0.6 3.8 0.6C1.7 0.6 0 2.3 0 4.4Z" fill="#E9B58F"/>
+                <path d="M0.4 3.4C0.4 5.28 1.92 6.8 3.8 6.8C5.68 6.8 7.2 5.28 7.2 3.4C7.2 1.52 5.68 0 3.8 0C1.92 0 0.4 1.52 0.4 3.4Z" fill="#2B2118"/>
+                <path d="M0.8 5C0.8 6.66 2.14 8 3.8 8C5.46 8 6.8 6.66 6.8 5C6.8 3.34 5.46 2 3.8 2C2.14 2 0.8 3.34 0.8 5Z" fill="#E9B58F"/>
+              </g>
+              <g transform="translate(55.2, 36.4)">
+                <path d="M0 0L0.4 11.2" fill="#000000" stroke="#C5F467" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(55.6, 47.6)">
+                <path d="M0 0L8 0.4" fill="#000000" stroke="#E9B58F" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(62.1, 46.5)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5" fill="#E9B58F"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(24, 354)">
+        <g clip-path="url(#clip4)">
+          <g>
+            <rect width="342" height="84" rx="12" ry="12" fill="#212523"/>
+            <g transform="translate(12, 12)">
+              <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+            </g>
+            <g transform="translate(112, 18)">
+              <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Squat</text>
+            </g>
+            <g transform="translate(112, 47)">
+              <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Legs · 3 × 12 reps</text>
+            </g>
+            <g transform="translate(294, 29)">
+              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">02</text>
+            </g>
+          </g>
+          <g transform="translate(12, 12)">
+            <g clip-path="url(#clip5)">
+              <g transform="translate(0, -4)">
+                <path d="M0 4L80 4L80 64L0 64L0 4Z" fill="#292E2B"/>
+                <path d="M48 18C48 27.94 56.06 36 66 36C75.94 36 84 27.94 84 18C84 8.06 75.94 0 66 0C56.06 0 48 8.06 48 18Z" fill="#444A45"/>
+                <path d="M0 55.6L80 55.6L80 64L0 64L0 55.6Z" fill="#444A45"/>
+                <path d="M14 55.6C14 56.37 25.64 57 40 57C54.36 57 66 56.37 66 55.6C66 54.83 54.36 54.2 40 54.2C25.64 54.2 14 54.83 14 55.6Z" fill="#171A19"/>
+              </g>
+              <g transform="translate(34, 35.2)">
+                <path d="M0 0L6.38 1.32" fill="#000000" stroke="#171A19" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(40.38, 36.52)">
+                <path d="M0 0L5.22 1.08" fill="#000000" stroke="#CF9670" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(39.6, 37.6)">
+                <path d="M6 0L0 11.6" fill="#000000" stroke="#CF9670" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(39.6, 49.2)">
+                <path d="M0 0L5.2 0.8" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(44, 21.6)">
+                <path d="M0 0L6.4 4.8" fill="#000000" stroke="#91AE53" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(50.4, 26)">
+                <path d="M0 0.4L7.6 0" fill="#000000" stroke="#CF9670" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(56.5, 24.5)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#CF9670"/>
+              </g>
+              <g transform="translate(34, 21.6)">
+                <path d="M10 0L0 13.6" fill="#000000" stroke="#C5F467" stroke-width="6.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(30.6, 31.8)">
+                <path d="M0 3.4C0 4.61 0.65 5.74 1.7 6.34C2.75 6.95 4.05 6.95 5.1 6.34C6.15 5.74 6.8 4.61 6.8 3.4C6.8 2.19 6.15 1.06 5.1 0.46C4.05 -0.15 2.75 -0.15 1.7 0.46C0.65 1.06 0 2.19 0 3.4" fill="#353F34"/>
+              </g>
+              <g transform="translate(34, 35.2)">
+                <path d="M0 0L7.26 0.88" fill="#000000" stroke="#353F34" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(41.26, 36.08)">
+                <path d="M0 0L5.94 0.72" fill="#000000" stroke="#E9B58F" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(41.2, 36.8)">
+                <path d="M6 0L0 12.4" fill="#000000" stroke="#E9B58F" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(41.2, 49.2)">
+                <path d="M0 0L5.2 0.8" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(44, 16.8)">
+                <path d="M0 4.8L3.2 0" fill="#000000" stroke="#E9B58F" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(42.8, 12.4)">
+                <path d="M0.6 4.4C0.6 5.76 1.32 7.01 2.5 7.69C3.68 8.37 5.12 8.37 6.3 7.69C7.48 7.01 8.2 5.76 8.2 4.4C8.2 3.04 7.48 1.79 6.3 1.11C5.12 0.43 3.68 0.43 2.5 1.11C1.32 1.79 0.6 3.04 0.6 4.4Z" fill="#E9B58F"/>
+                <path d="M0 3.4C0 4.61 0.65 5.74 1.7 6.34C2.75 6.95 4.05 6.95 5.1 6.34C6.15 5.74 6.8 4.61 6.8 3.4C6.8 2.19 6.15 1.06 5.1 0.46C4.05 -0.15 2.75 -0.15 1.7 0.46C0.65 1.06 0 2.19 0 3.4Z" fill="#2B2118"/>
+                <path d="M2 5C2 6.66 3.34 8 5 8C6.66 8 8 6.66 8 5C8 3.34 6.66 2 5 2C3.34 2 2 3.34 2 5Z" fill="#E9B58F"/>
+              </g>
+              <g transform="translate(44, 21.6)">
+                <path d="M0 0L7.6 4" fill="#000000" stroke="#C5F467" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(51.6, 25.2)">
+                <path d="M0 0.4L7.6 0" fill="#000000" stroke="#E9B58F" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(57.7, 23.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#E9B58F"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(24, 442)">
+        <g clip-path="url(#clip6)">
+          <g>
+            <rect width="342" height="84" rx="12" ry="12" fill="#212523"/>
+            <g transform="translate(12, 12)">
+              <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+            </g>
+            <g transform="translate(112, 18)">
+              <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Crunch</text>
+            </g>
+            <g transform="translate(112, 47)">
+              <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Core · 3 × 15 reps</text>
+            </g>
+            <g transform="translate(294, 29)">
+              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">03</text>
+            </g>
+          </g>
+          <g transform="translate(12, 12)">
+            <g clip-path="url(#clip7)">
+              <g transform="translate(0, -4)">
+                <path d="M0 4L80 4L80 64L0 64L0 4Z" fill="#292E2B"/>
+                <path d="M48 18C48 27.94 56.06 36 66 36C75.94 36 84 27.94 84 18C84 8.06 75.94 0 66 0C56.06 0 48 8.06 48 18Z" fill="#444A45"/>
+                <path d="M0 55.6L80 55.6L80 64L0 64L0 55.6Z" fill="#444A45"/>
+                <path d="M11 54L69 54C69.55 54 70 54.45 70 55L70 55C70 55.55 69.55 56 69 56L11 56C10.45 56 10 55.55 10 55L10 55C10 54.45 10.45 54 11 54Z" fill="#9AA6C2"/>
+                <path d="M14 55.6C14 56.37 25.64 57 40 57C54.36 57 66 56.37 66 55.6C66 54.83 54.36 54.2 40 54.2C25.64 54.2 14 54.83 14 55.6Z" fill="#171A19"/>
+              </g>
+              <g transform="translate(41.2, 42.1)">
+                <path d="M0 5.5L5.28 0" fill="#000000" stroke="#171A19" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(46.48, 37.6)">
+                <path d="M0 4.5L4.32 0" fill="#000000" stroke="#CF9670" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(50.8, 37.6)">
+                <path d="M0 0L8 10.4" fill="#000000" stroke="#CF9670" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58.8, 48)">
+                <path d="M0 0L4.4 1.6" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(30.4, 36)">
+                <path d="M0 6L2.4 0" fill="#000000" stroke="#91AE53" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(26, 36)">
+                <path d="M6.8 0L0 0.8" fill="#000000" stroke="#CF9670" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(24.5, 35.3)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#CF9670"/>
+              </g>
+              <g transform="translate(30.4, 42)">
+                <path d="M0 0L10.8 5.6" fill="#000000" stroke="#C5F467" stroke-width="6.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(37.8, 44.2)">
+                <path d="M0 3.4C0 4.61 0.65 5.74 1.7 6.34C2.75 6.95 4.05 6.95 5.1 6.34C6.15 5.74 6.8 4.61 6.8 3.4C6.8 2.19 6.15 1.06 5.1 0.46C4.05 -0.15 2.75 -0.15 1.7 0.46C0.65 1.06 0 2.19 0 3.4" fill="#353F34"/>
+              </g>
+              <g transform="translate(41.2, 41.66)">
+                <path d="M0 5.94L5.72 0" fill="#000000" stroke="#353F34" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(46.92, 36.8)">
+                <path d="M0 4.86L4.68 0" fill="#000000" stroke="#E9B58F" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(51.6, 36.8)">
+                <path d="M0 0L8.4 10.8" fill="#000000" stroke="#E9B58F" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(60, 47.6)">
+                <path d="M0 0L4.4 1.6" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(26.4, 39.2)">
+                <path d="M4 2.8L0 0" fill="#000000" stroke="#E9B58F" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(22, 35.4)">
+                <path d="M0.6 3.8C0.6 5.9 2.3 7.6 4.4 7.6C6.5 7.6 8.2 5.9 8.2 3.8C8.2 1.7 6.5 0 4.4 0C2.3 0 0.6 1.7 0.6 3.8Z" fill="#E9B58F"/>
+                <path d="M0 3.8C0 5.68 1.52 7.2 3.4 7.2C5.28 7.2 6.8 5.68 6.8 3.8C6.8 1.92 5.28 0.4 3.4 0.4C1.52 0.4 0 1.92 0 3.8Z" fill="#2B2118"/>
+                <path d="M2 3.8C2 5.46 3.34 6.8 5 6.8C6.66 6.8 8 5.46 8 3.8C8 2.14 6.66 0.8 5 0.8C3.34 0.8 2 2.14 2 3.8Z" fill="#E9B58F"/>
+              </g>
+              <g transform="translate(30.4, 35.2)">
+                <path d="M0 6.8L3.6 0" fill="#000000" stroke="#C5F467" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(27.2, 35.2)">
+                <path d="M6.8 0L0 0.8" fill="#000000" stroke="#E9B58F" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(25.7, 34.5)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#E9B58F"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(24, 530)">
+        <g clip-path="url(#clip8)">
+          <g>
+            <rect width="342" height="84" rx="12" ry="12" fill="#212523"/>
+            <g transform="translate(12, 12)">
+              <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+            </g>
+            <g transform="translate(112, 18)">
+              <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Lunge</text>
+            </g>
+            <g transform="translate(112, 47)">
+              <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Legs · 3 × 10 each leg</text>
+            </g>
+            <g transform="translate(294, 29)">
+              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">04</text>
+            </g>
+          </g>
+          <g transform="translate(12, 12)">
+            <g clip-path="url(#clip9)">
+              <g transform="translate(0, -4)">
+                <path d="M0 4L80 4L80 64L0 64L0 4Z" fill="#292E2B"/>
+                <path d="M48 18C48 27.94 56.06 36 66 36C75.94 36 84 27.94 84 18C84 8.06 75.94 0 66 0C56.06 0 48 8.06 48 18Z" fill="#444A45"/>
+                <path d="M0 55.6L80 55.6L80 64L0 64L0 55.6Z" fill="#444A45"/>
+                <path d="M14 55.6C14 56.37 25.64 57 40 57C54.36 57 66 56.37 66 55.6C66 54.83 54.36 54.2 40 54.2C25.64 54.2 14 54.83 14 55.6Z" fill="#171A19"/>
+              </g>
+              <g transform="translate(35.2, 30.4)">
+                <path d="M4.4 0L0 8.8" fill="#000000" stroke="#171A19" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(31.6, 39.2)">
+                <path d="M3.6 0L0 7.2" fill="#000000" stroke="#CF9670" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(22.4, 45.2)">
+                <path d="M9.2 1.2L0 0" fill="#000000" stroke="#CF9670" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(20, 45.2)">
+                <path d="M2.4 0L0 4.4" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(36.4, 14)">
+                <path d="M4 0L0 8.4" fill="#000000" stroke="#91AE53" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(36.4, 22.4)">
+                <path d="M0 0L2.4 6.8" fill="#000000" stroke="#CF9670" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(37.3, 27.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#CF9670"/>
+              </g>
+              <g transform="translate(39.6, 14)">
+                <path d="M0.8 0L0 16.4" fill="#000000" stroke="#C5F467" stroke-width="6.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(36.2, 27)">
+                <path d="M0 3.4C0 4.61 0.65 5.74 1.7 6.34C2.75 6.95 4.05 6.95 5.1 6.34C6.15 5.74 6.8 4.61 6.8 3.4C6.8 2.19 6.15 1.06 5.1 0.46C4.05 -0.15 2.75 -0.15 1.7 0.46C0.65 1.06 0 2.19 0 3.4" fill="#353F34"/>
+              </g>
+              <g transform="translate(39.6, 30.4)">
+                <path d="M0 0L6.6 2.86" fill="#000000" stroke="#353F34" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(46.2, 33.26)">
+                <path d="M0 0L5.4 2.34" fill="#000000" stroke="#E9B58F" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(51.6, 35.6)">
+                <path d="M0 0L0 13.2" fill="#000000" stroke="#E9B58F" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(51.6, 48.8)">
+                <path d="M0 0L4.8 1.2" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(40.4, 8.8)">
+                <path d="M0 5.2L0.4 0" fill="#000000" stroke="#E9B58F" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(36.4, 4.4)">
+                <path d="M0.6 4.4C0.6 6.5 2.3 8.2 4.4 8.2C6.5 8.2 8.2 6.5 8.2 4.4C8.2 2.3 6.5 0.6 4.4 0.6C2.3 0.6 0.6 2.3 0.6 4.4Z" fill="#E9B58F"/>
+                <path d="M0 3.4C0 5.28 1.52 6.8 3.4 6.8C5.28 6.8 6.8 5.28 6.8 3.4C6.8 1.52 5.28 0 3.4 0C1.52 0 0 1.52 0 3.4Z" fill="#2B2118"/>
+                <path d="M2 5C2 6.66 3.34 8 5 8C6.66 8 8 6.66 8 5C8 3.34 6.66 2 5 2C3.34 2 2 3.34 2 5Z" fill="#E9B58F"/>
+              </g>
+              <g transform="translate(40.4, 14)">
+                <path d="M0 0L4 8.4" fill="#000000" stroke="#C5F467" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(41.2, 22.4)">
+                <path d="M3.2 0L0 6.8" fill="#000000" stroke="#E9B58F" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(39.7, 27.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#E9B58F"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(24, 618)">
+        <g clip-path="url(#clip10)">
+          <g>
+            <rect width="342" height="84" rx="12" ry="12" fill="#212523"/>
+            <g transform="translate(12, 12)">
+              <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+            </g>
+            <g transform="translate(112, 18)">
+              <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Mountain climber</text>
+            </g>
+            <g transform="translate(112, 47)">
+              <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Core · 3 × 30 sec</text>
+            </g>
+            <g transform="translate(294, 29)">
+              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">05</text>
+            </g>
+          </g>
+          <g transform="translate(12, 12)">
+            <g clip-path="url(#clip11)">
+              <g transform="translate(0, -4)">
+                <path d="M0 4L80 4L80 64L0 64L0 4Z" fill="#292E2B"/>
+                <path d="M48 18C48 27.94 56.06 36 66 36C75.94 36 84 27.94 84 18C84 8.06 75.94 0 66 0C56.06 0 48 8.06 48 18Z" fill="#444A45"/>
+                <path d="M0 55.6L80 55.6L80 64L0 64L0 55.6Z" fill="#444A45"/>
+                <path d="M14 55.6C14 56.37 25.64 57 40 57C54.36 57 66 56.37 66 55.6C66 54.83 54.36 54.2 40 54.2C25.64 54.2 14 54.83 14 55.6Z" fill="#171A19"/>
+              </g>
+              <g transform="translate(32.28, 37.2)">
+                <path d="M5.72 0L0 3.08" fill="#000000" stroke="#171A19" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(27.6, 40.28)">
+                <path d="M4.68 0L0 2.52" fill="#000000" stroke="#CF9670" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(18, 42.8)">
+                <path d="M9.6 0L0 4.8" fill="#000000" stroke="#CF9670" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(16, 47.6)">
+                <path d="M2 0L0 2.4" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58, 32.8)">
+                <path d="M0 0L0.4 8.4" fill="#000000" stroke="#91AE53" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58.4, 41.2)">
+                <path d="M0 0L1.2 8" fill="#000000" stroke="#CF9670" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58.1, 47.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#CF9670"/>
+              </g>
+              <g transform="translate(38, 32.8)">
+                <path d="M20 0L0 4.4" fill="#000000" stroke="#C5F467" stroke-width="6.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(34.6, 33.8)">
+                <path d="M0 3.4C0 5.28 1.52 6.8 3.4 6.8C5.28 6.8 6.8 5.28 6.8 3.4C6.8 1.52 5.28 0 3.4 0C1.52 0 0 1.52 0 3.4Z" fill="#353F34"/>
+              </g>
+              <g transform="translate(38, 37.2)">
+                <path d="M0 0L7.04 2.42" fill="#000000" stroke="#353F34" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(45.04, 39.62)">
+                <path d="M0 0L5.76 1.98" fill="#000000" stroke="#E9B58F" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(43.2, 41.6)">
+                <path d="M7.6 0L0 4.8" fill="#000000" stroke="#E9B58F" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(43.2, 46.4)">
+                <path d="M0 0L4 2.4" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58, 30)">
+                <path d="M0 2.8L4.4 0" fill="#000000" stroke="#E9B58F" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58.6, 25.6)">
+                <path d="M0 4.4C0 6.5 1.7 8.2 3.8 8.2C5.9 8.2 7.6 6.5 7.6 4.4C7.6 2.3 5.9 0.6 3.8 0.6C1.7 0.6 0 2.3 0 4.4Z" fill="#E9B58F"/>
+                <path d="M0.4 3.4C0.4 4.61 1.05 5.74 2.1 6.34C3.15 6.95 4.45 6.95 5.5 6.34C6.55 5.74 7.2 4.61 7.2 3.4C7.2 2.19 6.55 1.06 5.5 0.46C4.45 -0.15 3.15 -0.15 2.1 0.46C1.05 1.06 0.4 2.19 0.4 3.4Z" fill="#2B2118"/>
+                <path d="M0.8 5C0.8 6.66 2.14 8 3.8 8C5.46 8 6.8 6.66 6.8 5C6.8 3.34 5.46 2 3.8 2C2.14 2 0.8 3.34 0.8 5Z" fill="#E9B58F"/>
+              </g>
+              <g transform="translate(58, 32.8)">
+                <path d="M0 0L1.6 8.4" fill="#000000" stroke="#C5F467" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(59.6, 41.2)">
+                <path d="M0 0L1.2 8" fill="#000000" stroke="#E9B58F" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(59.3, 47.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#E9B58F"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(24, 706)">
+        <g clip-path="url(#clip12)">
+          <g>
+            <rect width="342" height="84" rx="12" ry="12" fill="#212523"/>
+            <g transform="translate(12, 12)">
+              <rect width="80" height="60" rx="8" ry="8" fill="#292E2B"/>
+            </g>
+            <g transform="translate(112, 18)">
+              <text x="0" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#F5F6F2">Push-up</text>
+            </g>
+            <g transform="translate(112, 47)">
+              <text x="0" y="11" font-family="Inter" font-size="11" fill="#AEB5AF">Full body · 3 × 10 reps</text>
+            </g>
+            <g transform="translate(294, 29)">
+              <text x="24" y="17" font-family="Inter" font-size="17" font-weight="500" fill="#AEB5AF" text-anchor="end">06</text>
+            </g>
+          </g>
+          <g transform="translate(12, 12)">
+            <g clip-path="url(#clip13)">
+              <g transform="translate(0, -4)">
+                <path d="M0 4L80 4L80 64L0 64L0 4Z" fill="#292E2B"/>
+                <path d="M48 18C48 27.94 56.06 36 66 36C75.94 36 84 27.94 84 18C84 8.06 75.94 0 66 0C56.06 0 48 8.06 48 18Z" fill="#444A45"/>
+                <path d="M0 55.6L80 55.6L80 64L0 64L0 55.6Z" fill="#444A45"/>
+                <path d="M14 55.6C14 56.37 25.64 57 40 57C54.36 57 66 56.37 66 55.6C66 54.83 54.36 54.2 40 54.2C25.64 54.2 14 54.83 14 55.6Z" fill="#171A19"/>
+              </g>
+              <g transform="translate(31.48, 42.8)">
+                <path d="M5.72 0L0 1.76" fill="#000000" stroke="#171A19" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(26.8, 44.56)">
+                <path d="M4.68 0L0 1.44" fill="#000000" stroke="#CF9670" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(17.6, 46)">
+                <path d="M9.2 0L0 2.4" fill="#000000" stroke="#CF9670" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(15.6, 48.4)">
+                <path d="M2 0L0 1.6" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(51.2, 38.8)">
+                <path d="M6.4 2L0 0" fill="#000000" stroke="#91AE53" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(51.2, 38.8)">
+                <path d="M0 0L5.6 10.4" fill="#000000" stroke="#CF9670" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(55.3, 47.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#CF9670"/>
+              </g>
+              <g transform="translate(37.2, 40.8)">
+                <path d="M20.4 0L0 2" fill="#000000" stroke="#C5F467" stroke-width="6.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(33.8, 39.4)">
+                <path d="M0 3.4C0 4.61 0.65 5.74 1.7 6.34C2.75 6.95 4.05 6.95 5.1 6.34C6.15 5.74 6.8 4.61 6.8 3.4C6.8 2.19 6.15 1.06 5.1 0.46C4.05 -0.15 2.75 -0.15 1.7 0.46C0.65 1.06 0 2.19 0 3.4" fill="#353F34"/>
+              </g>
+              <g transform="translate(31.7, 42.8)">
+                <path d="M5.5 0L0 1.54" fill="#000000" stroke="#353F34" stroke-width="4.2" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(27.2, 44.34)">
+                <path d="M4.5 0L0 1.26" fill="#000000" stroke="#E9B58F" stroke-width="3.8" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(18, 45.6)">
+                <path d="M9.2 0L0 2.4" fill="#000000" stroke="#E9B58F" stroke-width="3.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(16, 48)">
+                <path d="M2 0L0 2" fill="#000000" stroke="#C5F467" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(57.6, 39.2)">
+                <path d="M0 1.6L4.8 0" fill="#000000" stroke="#E9B58F" stroke-width="2.4" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(58.6, 34.8)">
+                <path d="M0 4.4C0 6.5 1.7 8.2 3.8 8.2C5.9 8.2 7.6 6.5 7.6 4.4C7.6 2.3 5.9 0.6 3.8 0.6C1.7 0.6 0 2.3 0 4.4Z" fill="#E9B58F"/>
+                <path d="M0.4 3.4C0.4 4.61 1.05 5.74 2.1 6.34C3.15 6.95 4.45 6.95 5.5 6.34C6.55 5.74 7.2 4.61 7.2 3.4C7.2 2.19 6.55 1.06 5.5 0.46C4.45 -0.15 3.15 -0.15 2.1 0.46C1.05 1.06 0.4 2.19 0.4 3.4Z" fill="#2B2118"/>
+                <path d="M0.8 5C0.8 6.66 2.14 8 3.8 8C5.46 8 6.8 6.66 6.8 5C6.8 3.34 5.46 2 3.8 2C2.14 2 0.8 3.34 0.8 5Z" fill="#E9B58F"/>
+              </g>
+              <g transform="translate(52.4, 38.4)">
+                <path d="M5.2 2.4L0 0" fill="#000000" stroke="#C5F467" stroke-width="3" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(52.4, 38.4)">
+                <path d="M0 0L5.6 10.8" fill="#000000" stroke="#E9B58F" stroke-width="2.6" stroke-linecap="round"/>
+              </g>
+              <g transform="translate(56.5, 47.7)">
+                <path d="M0 1.5C0 2.33 0.67 3 1.5 3C2.33 3 3 2.33 3 1.5C3 0.67 2.33 0 1.5 0C0.67 0 0 0.67 0 1.5Z" fill="#E9B58F"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(24, 824)">
+        <rect width="342" height="52" rx="8" ry="8" fill="#C5F467"/>
+        <g transform="translate(20, 15.5)">
+          <text x="151" y="15" font-family="Inter" font-size="15" font-weight="600" fill="#171A19" text-anchor="middle">Start workout   →</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1440" height="1230" viewBox="0 0 1440 1230">
+  <defs>
+    <clipPath id="clip0">
+      <rect width="1440" height="1230"/>
+    </clipPath>
+  </defs>
+  <g>
+    <rect width="1440" height="1230" fill="#171A19"/>
+    <g clip-path="url(#clip0)">
+      <g transform="translate(64, 120)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#C5F467" letter-spacing="1.4">01 / DESIGN FOUNDATIONS</text>
+      </g>
+      <g transform="translate(64, 148)">
+        <text x="0" y="44" font-family="Space Grotesk" font-size="44" font-weight="600" fill="#F5F6F2" letter-spacing="-1.6">A focused visual language.</text>
+      </g>
+      <g transform="translate(64, 204)">
+        <text x="0" y="16" font-family="Inter" font-size="16" fill="#AEB5AF">Adapted from the supplied KINETIX Stitch reference. Product name and behavior come from Forma.</text>
+      </g>
+      <g transform="translate(64, 276)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">COLOR / NAMED VARIABLES</text>
+      </g>
+      <g transform="translate(64, 316)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#171A19" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(64, 408)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">base</text>
+      </g>
+      <g transform="translate(190, 408)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#171A19</text>
+      </g>
+      <g transform="translate(324, 316)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#212523" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(324, 408)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">surface</text>
+      </g>
+      <g transform="translate(450, 408)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#212523</text>
+      </g>
+      <g transform="translate(584, 316)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#292E2B" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(584, 408)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">raised</text>
+      </g>
+      <g transform="translate(710, 408)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#292E2B</text>
+      </g>
+      <g transform="translate(844, 316)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#444A45" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(844, 408)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">line</text>
+      </g>
+      <g transform="translate(970, 408)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#444A45</text>
+      </g>
+      <g transform="translate(1104, 316)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#C5F467" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(1104, 408)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">accent</text>
+      </g>
+      <g transform="translate(1230, 408)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#C5F467</text>
+      </g>
+      <g transform="translate(64, 472)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#F5F6F2" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(64, 564)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">text</text>
+      </g>
+      <g transform="translate(190, 564)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#F5F6F2</text>
+      </g>
+      <g transform="translate(324, 472)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#AEB5AF" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(324, 564)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">secondary</text>
+      </g>
+      <g transform="translate(450, 564)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#AEB5AF</text>
+      </g>
+      <g transform="translate(584, 472)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#4DAD72" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(584, 564)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">success</text>
+      </g>
+      <g transform="translate(710, 564)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#4DAD72</text>
+      </g>
+      <g transform="translate(844, 472)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#E5B842" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(844, 564)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">warning</text>
+      </g>
+      <g transform="translate(970, 564)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#E5B842</text>
+      </g>
+      <g transform="translate(1104, 472)">
+        <rect width="228" height="80" rx="8" ry="8" fill="#FF5A5F" stroke="#444A45" stroke-width="1"/>
+      </g>
+      <g transform="translate(1104, 564)">
+        <text x="0" y="14" font-family="Inter" font-size="14" font-weight="600" fill="#F5F6F2">error</text>
+      </g>
+      <g transform="translate(1230, 564)">
+        <text x="102" y="12" font-family="Inter" font-size="12" fill="#AEB5AF" text-anchor="end">#FF5A5F</text>
+      </g>
+      <g transform="translate(64, 636)">
+        <rect width="1312" height="1" fill="#444A45"/>
+      </g>
+      <g transform="translate(64, 674)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">TYPOGRAPHY</text>
+      </g>
+      <g transform="translate(64, 710)">
+        <text x="0" y="56" font-family="Space Grotesk" font-size="56" font-weight="600" fill="#F5F6F2" letter-spacing="-2">Train with intention.</text>
+      </g>
+      <g transform="translate(64, 796)">
+        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Space Grotesk / Semibold / Display 56 · Heading 44 · Title 28</text>
+      </g>
+      <g transform="translate(64, 844)">
+        <text x="0" y="20" font-family="Inter" font-size="20" font-weight="500" fill="#F5F6F2">A little time. A plan that fits.</text>
+      </g>
+      <g transform="translate(64, 884)">
+        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Inter / Regular 16 · Medium 14 · Semibold 15 · Label 11</text>
+      </g>
+      <g transform="translate(64, 936)">
+        <rect width="1312" height="1" fill="#444A45"/>
+      </g>
+      <g transform="translate(64, 970)">
+        <text x="0" y="11" font-family="Inter" font-size="11" font-weight="600" fill="#AEB5AF" letter-spacing="1.4">SPACING / 4 PX BASE</text>
+      </g>
+      <g transform="translate(64, 1032)">
+        <rect width="4" height="4" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(64, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">4</text>
+      </g>
+      <g transform="translate(188, 1030)">
+        <rect width="8" height="8" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(188, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">8</text>
+      </g>
+      <g transform="translate(312, 1028)">
+        <rect width="12" height="12" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(312, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">12</text>
+      </g>
+      <g transform="translate(436, 1026)">
+        <rect width="16" height="16" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(436, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">16</text>
+      </g>
+      <g transform="translate(560, 1022)">
+        <rect width="24" height="24" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(560, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">24</text>
+      </g>
+      <g transform="translate(684, 1018)">
+        <rect width="32" height="32" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(684, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">32</text>
+      </g>
+      <g transform="translate(808, 1010)">
+        <rect width="48" height="48" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(808, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">48</text>
+      </g>
+      <g transform="translate(932, 1002)">
+        <rect width="64" height="64" rx="1" ry="1" fill="#C5F467"/>
+      </g>
+      <g transform="translate(932, 1084)">
+        <text x="0" y="13" font-family="Inter" font-size="13" fill="#AEB5AF">64</text>
+      </g>
+      <g transform="translate(64, 1144)">
+        <text x="0" y="14" font-family="Inter" font-size="14" fill="#AEB5AF">Control radius 8   /   Card radius 12   /   Pill radius 9999
+Desktop: 1440 px, 64 px margins. Mobile: 390 px, 24 px margins. Content adapts in one column.</text>
+      </g>
+    </g>
+  </g>
+</svg>

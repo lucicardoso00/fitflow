@@ -1,0 +1,108 @@
+/*
+ * Design tokens — the KINETIX athletic design system (design/source/code.html).
+ * Every color, font, size, radius and shadow used in Forma lives here.
+ * Components never use raw values: they use these variables.
+ */
+
+:root {
+  /* ---------- Colors ---------- */
+
+  /* Dark surfaces, from the page behind the app up to the cards on top */
+  --color-canvas: #0F1211;        /* behind the 1440px frame */
+  --color-base: #171A19;          /* app background */
+  --color-surface-1: #212523;     /* panels */
+  --color-surface-2: #292E2B;     /* cards, chips, secondary buttons */
+  --color-surface-hover: #343B37;
+  --color-player: #111413;        /* video canvas */
+  --color-overlay: rgba(23, 26, 25, 0.9);  /* floating cards over the video */
+  --color-scrim: rgba(0, 0, 0, 0.3);        /* dims a thumbnail under a play icon */
+
+  --color-border: #444A45;        /* hairline borders */
+  --color-border-hover: #5A625B;
+
+  /* Lime accent — primary actions, selected muscles, progress */
+  --color-accent: #C5F467;
+  --color-accent-hover: #B0DE50;
+  --color-accent-edge: #D6F88E;              /* outline of a selected muscle */
+  --color-accent-muted: rgba(197, 244, 103, 0.15);
+  --color-accent-glow: rgba(197, 244, 103, 0.35);
+  --color-on-accent: #171A19;                /* text on lime */
+
+  --color-text: #F5F6F2;
+  --color-text-secondary: #AEB5AF;
+  --color-text-muted: #727B74;
+
+  --color-success: #4DAD72;
+  --color-success-soft: rgba(77, 173, 114, 0.5);  /* border of a completed card */
+  --color-surface-completed: #232825;
+  --color-warning: #E5B842;
+  --color-error: #FF5A5F;
+
+  /* Body map */
+  --color-muscle: var(--color-surface-2);
+  --color-muscle-hover: #373E3A;
+  --color-muscle-selected: var(--color-accent);
+
+  /* ---------- Typography ---------- */
+
+  --font-heading: 'Space Grotesk', system-ui, sans-serif; /* titles and numbers */
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  --text-2xs: 10px;  /* tags */
+  --text-xs: 11px;   /* captions */
+  --text-sm: 13px;
+  --text-md: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+
+  --heading-xs: 15px;   /* exercise card name */
+  --heading-sm: 22px;   /* summary dock numbers */
+  --heading-md: 24px;   /* H3 — panel and workout titles */
+  --heading-lg: 32px;   /* H2 — exercise name in the player */
+  --heading-xl: 40px;   /* H1 — screen titles, big numbers */
+  --heading-2xl: 56px;  /* Display — "Workout complete" */
+
+  /* ---------- Shape ---------- */
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-control: 8px;  /* buttons, segmented controls */
+  --radius-card: 12px;    /* cards, panels */
+  --radius-pill: 9999px;
+
+  /* ---------- Spacing (8px grid) ---------- */
+
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
+  /* ---------- Layout ---------- */
+
+  --frame-width: 1440px;
+  --frame-padding: 80px;  /* side margins of the 12-column grid */
+  --gutter: 24px;
+
+  /* ---------- Sizes ---------- */
+
+  --control-height: 40px;        /* buttons, size M */
+  --control-height-large: 48px;  /* buttons, size L */
+  --control-height-small: 32px;  /* shortcut buttons */
+  --chip-height: 34px;
+
+  /* ---------- Effects ---------- */
+
+  --shadow-card: 0 12px 28px rgba(0, 0, 0, 0.6);
+  --shadow-player: 0 20px 50px rgba(0, 0, 0, 0.7);
+  --shadow-accent: 0 4px 12px var(--color-accent-glow);
+  --glow-muscle: drop-shadow(0 0 6px rgba(197, 244, 103, 0.45));
+
+  --focus-ring: 2px solid var(--color-accent);
+  --transition: 0.15s ease;
+}
