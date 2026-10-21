@@ -5,8 +5,8 @@
 
 .summary-dock {
   position: sticky;
-  z-index: 2;
   bottom: var(--space-24);
+  z-index: 2;
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -57,15 +57,39 @@
   margin-top: var(--space-4);
 }
 
+/* ---------- Narrower windows ---------- */
+
 @media (max-width: 75rem) {
-  .summary-dock { flex-wrap: wrap; }
-  .summary-dock__metrics { flex-wrap: wrap; gap: var(--space-16); }
+  .summary-dock,
+  .summary-dock__metrics {
+    flex-wrap: wrap;
+  }
+
+  .summary-dock__metrics {
+    gap: var(--space-16);
+  }
 }
 
 @media (max-width: 48rem) {
-  .summary-dock { bottom: 0; flex-wrap: nowrap; gap: var(--space-12); padding: var(--space-12) var(--space-16); padding-bottom: max(var(--space-12), env(safe-area-inset-bottom)); }
-  .summary-dock__divider { display: none; }
-  .summary-dock .summary-stat:not(:first-child) { display: none; }
-  .summary-dock .caption { font-size: var(--text-2xs); }
-  .summary-dock > .button { flex: 1; }
+  .summary-dock {
+    bottom: 0;
+    flex-wrap: nowrap;
+    gap: var(--space-12);
+    padding: var(--space-12) var(--space-16);
+    padding-bottom: max(var(--space-12), env(safe-area-inset-bottom));
+  }
+
+  /* Only the duration fits next to the button on a phone */
+  .summary-dock__divider,
+  .summary-dock .summary-stat:not(:first-child) {
+    display: none;
+  }
+
+  .summary-dock .caption {
+    font-size: var(--text-2xs);
+  }
+
+  .summary-dock > .button {
+    flex: 1;
+  }
 }

@@ -76,15 +76,6 @@
   border-radius: 50%;
 }
 
-.map-legend__dot--default {
-  background: var(--color-muscle);
-  border: 1px solid var(--color-border);
-}
-
-.map-legend__dot--hover {
-  background: var(--color-muscle-hover);
-}
-
 .map-legend__dot--selected {
   background: var(--color-muscle-selected);
 }

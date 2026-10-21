@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FitFlow — Build your workout</title>
-  <meta name="description" content="Build a workout around your time, body areas and equipment. Learn each movement with exercise guides and video demonstrations.">
+  <meta name="description" content="Build a workout around your time, body areas and equipment, with a guide and a video for every movement.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="css/main.css">
@@ -35,7 +35,7 @@
       </a>
     </header>
 
-    <main id="main-content" tabindex="-1" class="site-main builder">
+    <main id="main-content" tabindex="-1" class="site-main">
 
       <div class="builder__intro">
         <span class="caption builder__eyebrow">A little time. A stronger you.</span>
@@ -49,7 +49,12 @@
         <div class="builder__choices">
 
           <section class="panel muscle-selector" aria-label="Body areas">
-            <div class="section-heading"><span class="section-heading__number" aria-hidden="true">01</span><h2>Choose your focus</h2><span id="targeted-count"></span></div>
+            <div class="section-heading">
+              <span class="section-heading__number" aria-hidden="true">01</span>
+              <h2>Choose your focus</h2>
+              <span class="section-heading__count" id="targeted-count"></span>
+            </div>
+
             <div class="muscle-selector__map">
               <!-- Drawn by js/components/body-map.js -->
               <div id="body-map"></div>
@@ -96,7 +101,11 @@
           </section>
 
           <section class="panel duration" aria-label="Time and equipment">
-            <div class="section-heading"><span class="section-heading__number" aria-hidden="true">02</span><h2>Make it yours</h2></div>
+            <div class="section-heading">
+              <span class="section-heading__number" aria-hidden="true">02</span>
+              <h2>Make it yours</h2>
+            </div>
+
             <fieldset>
               <legend class="caption duration__legend">Time available</legend>
               <div class="segmented">
@@ -114,7 +123,7 @@
               </div>
             </fieldset>
 
-            <p class="duration__note" id="equipment-note">A mat is optional.</p>
+            <p class="duration__note">A mat is optional. Leave enough space to move freely.</p>
           </section>
 
         </div>
@@ -138,11 +147,13 @@
             <span class="empty-state__hint">Click the body map, a chip, or the Full body shortcut.</span>
           </div>
 
+          <!-- One row per exercise, added by js/pages/builder.js -->
           <ol class="plan-list" id="plan-list"></ol>
-          <div class="routine__guide-note">
-            <span class="routine__guide-icon" aria-hidden="true">↗</span>
-            <p>Select a movement for its guide and video demo.<br><span id="guide-status" role="status"></span></p>
-          </div>
+
+          <p class="routine__hint">
+            <span class="routine__hint-icon" aria-hidden="true">↗</span>
+            Select a movement for its guide and video demo.
+          </p>
         </section>
 
       </div>
@@ -177,7 +188,7 @@
     </main>
   </div>
 
-  <!-- One exercise card of the routine, copied by js/pages/builder.js -->
+  <!-- One row of the routine, copied by js/components/plan-item.js -->
   <template id="plan-item-template">
     <li class="plan-item">
       <div class="plan-item__row">
@@ -188,12 +199,44 @@
           <h3><button class="plan-item__name" type="button" aria-expanded="false"></button></h3>
           <span class="plan-item__area"></span>
         </div>
-        <div class="plan-item__footer">
-          <span class="plan-item__amount tabular"></span>
-        </div>
+        <span class="plan-item__amount tabular"></span>
         <svg class="line-icon plan-item__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
       </div>
+      <!-- The preview panel below is moved in here when the row is opened -->
+      <div class="plan-item__preview"></div>
     </li>
+  </template>
+
+  <!-- The video and guide of one exercise, wired up by js/components/exercise-preview.js -->
+  <template id="exercise-preview-template">
+    <div class="exercise-preview">
+      <div class="exercise-video">
+        <div class="exercise-video__media">
+          <img class="exercise-video__poster" alt="">
+          <iframe class="exercise-video__player" title="Video demonstration" allowfullscreen hidden></iframe>
+          <button class="button button--primary exercise-video__watch" type="button">Watch video</button>
+        </div>
+        <div class="exercise-video__footer">
+          <a class="exercise-video__link" target="_blank" rel="noopener"></a>
+          <button class="button button--secondary button--small exercise-video__restore" type="button" hidden>Show illustration</button>
+        </div>
+      </div>
+
+      <details class="exercise-guide">
+        <summary class="exercise-guide__summary">Movement guide</summary>
+        <p class="exercise-guide__setup"></p>
+        <p class="exercise-guide__status" role="status"></p>
+        <div class="exercise-guide__instructions"></div>
+        <p class="exercise-guide__muscles"></p>
+        <p class="exercise-guide__credit" hidden>
+          <a class="exercise-guide__source" target="_blank" rel="noopener"></a> ·
+          <span class="exercise-guide__author"></span> ·
+          <a class="exercise-guide__license" target="_blank" rel="noopener"></a> ·
+          Formatting simplified.
+        </p>
+        <button class="button button--secondary button--small exercise-guide__retry" type="button" hidden>Try again</button>
+      </details>
+    </div>
   </template>
 </body>
 </html>

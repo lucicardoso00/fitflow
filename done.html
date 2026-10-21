@@ -58,8 +58,8 @@
 
         <section class="done__deck" aria-label="Exercises done">
           <span class="caption">Your routine</span>
-          <!-- Filled by js/pages/done.js with the cards below -->
-          <ol class="plan-list plan-list--completed" id="done-list"></ol>
+          <!-- One row per exercise, added by js/pages/done.js -->
+          <ol class="plan-list" id="done-list"></ol>
         </section>
       </section>
 
@@ -75,7 +75,7 @@
     </main>
   </div>
 
-  <!-- One exercise card of the routine, copied by js/pages/done.js -->
+  <!-- One row of the routine, copied by js/components/plan-item.js -->
   <template id="plan-item-template">
     <li class="plan-item">
       <div class="plan-item__row">
@@ -86,12 +86,44 @@
           <h3><button class="plan-item__name" type="button" aria-expanded="false"></button></h3>
           <span class="plan-item__area"></span>
         </div>
-        <div class="plan-item__footer">
-          <span class="plan-item__amount tabular"></span>
-        </div>
+        <span class="plan-item__amount tabular"></span>
         <span class="plan-item__check" aria-label="Completed">✓</span>
       </div>
+      <!-- The preview panel below is moved in here when the row is opened -->
+      <div class="plan-item__preview"></div>
     </li>
+  </template>
+
+  <!-- The video and guide of one exercise, wired up by js/components/exercise-preview.js -->
+  <template id="exercise-preview-template">
+    <div class="exercise-preview">
+      <div class="exercise-video">
+        <div class="exercise-video__media">
+          <img class="exercise-video__poster" alt="">
+          <iframe class="exercise-video__player" title="Video demonstration" allowfullscreen hidden></iframe>
+          <button class="button button--primary exercise-video__watch" type="button">Watch video</button>
+        </div>
+        <div class="exercise-video__footer">
+          <a class="exercise-video__link" target="_blank" rel="noopener"></a>
+          <button class="button button--secondary button--small exercise-video__restore" type="button" hidden>Show illustration</button>
+        </div>
+      </div>
+
+      <details class="exercise-guide">
+        <summary class="exercise-guide__summary">Movement guide</summary>
+        <p class="exercise-guide__setup"></p>
+        <p class="exercise-guide__status" role="status"></p>
+        <div class="exercise-guide__instructions"></div>
+        <p class="exercise-guide__muscles"></p>
+        <p class="exercise-guide__credit" hidden>
+          <a class="exercise-guide__source" target="_blank" rel="noopener"></a> ·
+          <span class="exercise-guide__author"></span> ·
+          <a class="exercise-guide__license" target="_blank" rel="noopener"></a> ·
+          Formatting simplified.
+        </p>
+        <button class="button button--secondary button--small exercise-guide__retry" type="button" hidden>Try again</button>
+      </details>
+    </div>
   </template>
 </body>
 </html>

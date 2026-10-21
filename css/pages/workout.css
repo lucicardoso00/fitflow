@@ -1,13 +1,29 @@
 /*
- * Workout screen: exercise details, inline media and persistent set controls.
+ * Workout screen (workout.html) — the current exercise with its illustration
+ * or video, and the set / rest controls underneath.
  */
+
+.workout__heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-16);
+}
+
+.workout__heading .caption {
+  margin-bottom: var(--space-8);
+}
 
 .workout__title {
   font-size: var(--heading-md);
 }
-.workout__heading { display: flex; justify-content: space-between; align-items: end; gap: var(--space-16); }
-.workout__heading .caption { margin-bottom: var(--space-8); }
-.workout__count { color: var(--color-text-secondary); font-size: var(--text-sm); }
+
+.workout__count {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- The player card ---------- */
 
 .player {
   width: 100%;
@@ -19,19 +35,17 @@
   background: var(--color-surface-1);
 }
 
-/* ---------- Exercise details and inline picture/video ---------- */
-.player__canvas { background: var(--color-player); }
+.player__canvas {
+  background: var(--color-player);
+}
+
 .player__top {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   gap: var(--space-16);
   padding: var(--space-20) var(--space-24);
 }
-.player .exercise-video__media { max-height: 45vh; border-radius: 0; }
-.player .exercise-video__footer { padding: var(--space-12) var(--space-24); }
-.player .exercise-video__status { margin: 0; padding: 0 var(--space-24) var(--space-12); }
-.workout__guide { width: 100%; max-width: 1140px; margin-inline: auto; }
 
 .player__meta {
   display: flex;
@@ -39,10 +53,10 @@
   gap: var(--space-4);
 }
 
+/* "Now performing" / "Rest" badge */
 .badge-live {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
   width: fit-content;
   margin-bottom: var(--space-4);
   padding: 4px 10px;
@@ -56,12 +70,10 @@
   color: var(--color-accent);
 }
 
-.badge-live__dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  box-shadow: 0 0 6px var(--color-accent);
+.player.is-resting .badge-live {
+  border-color: var(--color-border);
+  background: var(--color-surface-2);
+  color: var(--color-text);
 }
 
 .player__exercise {
@@ -74,9 +86,16 @@
   font-weight: 500;
   color: var(--color-text-secondary);
 }
-.player.is-resting .badge-live { color: var(--color-text); background: var(--color-surface-2); border-color: var(--color-border); }
-.player.is-resting .rest-view { padding-block: var(--space-16); }
-.player.is-resting .rest-widget__title { color: var(--color-accent); font-family: var(--font-heading); font-size: var(--heading-md); }
+
+/* The video component sits flush inside the card */
+.player .exercise-video__media {
+  max-height: 45vh;
+  border-radius: 0;
+}
+
+.player .exercise-video__footer {
+  padding: var(--space-12) var(--space-24);
+}
 
 /* ---------- Controls strip ---------- */
 
@@ -98,6 +117,16 @@
   gap: var(--space-16);
 }
 
+.player.is-resting .rest-view {
+  padding-block: var(--space-16);
+}
+
+.player.is-resting .rest-widget__title {
+  font-family: var(--font-heading);
+  font-size: var(--heading-md);
+  color: var(--color-accent);
+}
+
 .player__hint {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
@@ -108,17 +137,51 @@
   gap: 10px;
 }
 
-#workout-status:empty { display: none; }
+/* ---------- The written guide under the player ---------- */
+
+.workout__guide {
+  width: 100%;
+  max-width: 1140px;
+  margin-inline: auto;
+}
+
+/* ---------- Narrower windows ---------- */
 
 @media (max-width: 48rem) {
-  .player__top { flex-direction: column; align-items: stretch; padding: var(--space-16); }
-  .player .exercise-video__footer { padding-inline: var(--space-16); }
-  .player .exercise-video__status { padding-inline: var(--space-16); }
-  .player__meta { width: 100%; }
-  .player__exercise { font-size: var(--heading-lg); }
-  .player.is-resting .up-next { display: none; }
-  .up-next { width: 100%; }
-  .player__controls { padding: var(--space-16); }
-  .set-view, .rest-view { flex-direction: column; align-items: stretch; }
-  .player__buttons > .button { flex: 1; }
+  .player__top {
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--space-16);
+  }
+
+  .player .exercise-video__footer {
+    padding-inline: var(--space-16);
+  }
+
+  .player__meta,
+  .up-next {
+    width: 100%;
+  }
+
+  .player__exercise {
+    font-size: var(--heading-lg);
+  }
+
+  .player.is-resting .up-next {
+    display: none;
+  }
+
+  .player__controls {
+    padding: var(--space-16);
+  }
+
+  .set-view,
+  .rest-view {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .player__buttons > .button {
+    flex: 1;
+  }
 }

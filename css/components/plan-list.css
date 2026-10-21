@@ -1,9 +1,22 @@
-/* Ordered movement rows with a single, expandable inline preview. */
-.plan-list { display: flex; flex-direction: column; counter-reset: exercise; }
+/*
+ * Plan list — the routine as numbered rows (the number is a CSS counter).
+ * Clicking a row's name opens its preview (video and guide) underneath.
+ * Markup: <template id="plan-item-template"> in index.html and done.html.
+ */
+
+.plan-list {
+  display: flex;
+  flex-direction: column;
+  counter-reset: exercise;
+}
+
 .plan-item {
   border-bottom: 1px solid var(--color-border);
   counter-increment: exercise;
 }
+
+/* ---------- The row: number · picture · name and area · amount · arrow ---------- */
+
 .plan-item__row {
   position: relative;
   display: grid;
@@ -12,46 +25,155 @@
   gap: var(--space-12);
   padding: var(--space-16) 0;
 }
+
 .plan-item__row::before {
   content: counter(exercise, decimal-leading-zero);
-  color: var(--color-text-secondary);
   font-family: var(--font-heading);
   font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
+  color: var(--color-text-secondary);
 }
-.plan-item__thumb { overflow: hidden; border-radius: var(--radius-sm); background: var(--color-base); }
-.plan-item__image { width: 72px; height: 60px; object-fit: cover; }
-.plan-item__body { min-width: 0; display: flex; flex-direction: column; gap: var(--space-4); }
-.plan-item__body h3 { font-size: inherit; }
+
+.plan-item__thumb {
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-base);
+}
+
+.plan-item__image {
+  width: 72px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.plan-item__body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.plan-item__body h3 {
+  font-size: inherit;
+}
+
+/* The name is a button; its ::after stretches the click area over the whole row */
 .plan-item__name {
   padding: 0;
   border: 0;
   background: transparent;
   text-align: left;
-  font: 600 var(--text-base)/1.3 var(--font-heading);
+  font: 600 var(--text-base) / 1.3 var(--font-heading);
   overflow-wrap: anywhere;
 }
-.plan-item__name::after { content: ''; position: absolute; inset: 0; border-radius: var(--radius-sm); }
-.plan-item__name:focus-visible::after { outline: var(--focus-ring); outline-offset: 2px; }
-.plan-item__area { font-size: var(--text-sm); color: var(--color-text-secondary); }
-.plan-item__amount { font-family: var(--font-heading); font-size: var(--text-md); white-space: nowrap; }
-.plan-item__arrow { width: 16px; color: var(--color-text-secondary); }
-.plan-item__check { color: var(--color-accent); font-size: var(--text-lg); }
-.plan-item__preview { padding-bottom: var(--space-16); }
-.plan-item__preview .exercise-guide { margin-top: var(--space-16); }
-.plan-item__name[aria-expanded="true"] { color: var(--color-accent); }
-@media (hover: hover) {
-  .plan-item__row:hover { background: var(--color-surface-hover); }
-  .plan-item__row:hover .plan-item__name, .plan-item__row:hover .plan-item__arrow { color: var(--color-accent); }
+
+.plan-item__name::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-sm);
 }
+
+.plan-item__name:focus-visible {
+  outline: none;
+}
+
+.plan-item__name:focus-visible::after {
+  outline: var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.plan-item__name[aria-expanded="true"] {
+  color: var(--color-accent);
+}
+
+.plan-item__area {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.plan-item__amount {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  white-space: nowrap;
+}
+
+.plan-item__arrow {
+  width: 16px;
+  color: var(--color-text-secondary);
+}
+
+/* On the done screen the arrow is replaced by a check mark */
+.plan-item__check {
+  font-size: var(--text-lg);
+  color: var(--color-accent);
+}
+
+@media (hover: hover) {
+  .plan-item__row:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .plan-item__row:hover .plan-item__name,
+  .plan-item__row:hover .plan-item__arrow {
+    color: var(--color-accent);
+  }
+}
+
+/* ---------- The preview under an open row ---------- */
+
+.plan-item__preview:empty {
+  display: none;
+}
+
+.plan-item__preview {
+  padding-bottom: var(--space-16);
+}
+
+.exercise-preview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+/* ---------- Narrow windows: picture on the left, text stacked ---------- */
+
 @media (max-width: 38rem) {
-  .plan-item__row { grid-template-columns: 20px 60px minmax(0, 1fr) 16px; gap: var(--space-8); }
-  .plan-item__thumb { grid-row: span 2; }
-  .plan-item__image { width: 60px; height: 60px; }
-  .plan-item__row::before { grid-row: span 2; }
-  .plan-item__body { grid-column: 3; }
-  .plan-item__footer { grid-column: 3; grid-row: 2; }
-  .plan-item__arrow, .plan-item__check { grid-column: 4; grid-row: 1 / 3; }
-  .plan-item__name { font-size: var(--text-md); }
-  .plan-item__area { font-size: var(--text-xs); }
+  .plan-item__row {
+    grid-template-columns: 20px 60px minmax(0, 1fr) 16px;
+    gap: var(--space-8);
+  }
+
+  .plan-item__row::before,
+  .plan-item__thumb {
+    grid-row: span 2;
+  }
+
+  .plan-item__image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .plan-item__body {
+    grid-column: 3;
+  }
+
+  .plan-item__amount {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
+  .plan-item__arrow,
+  .plan-item__check {
+    grid-column: 4;
+    grid-row: 1 / 3;
+  }
+
+  .plan-item__name {
+    font-size: var(--text-md);
+  }
+
+  .plan-item__area {
+    font-size: var(--text-xs);
+  }
 }

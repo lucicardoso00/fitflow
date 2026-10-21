@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-block: var(--space-16) 110px; /* keeps focused rows above the dock */
+}
+
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -18,7 +22,6 @@ body {
   background: var(--color-canvas);
   -webkit-font-smoothing: antialiased;
 }
-html { scroll-padding-block: var(--space-16) 110px; }
 
 h1,
 h2,
@@ -77,23 +80,6 @@ strong {
   display: none !important;
 }
 
-.skip-link {
-  position: fixed;
-  top: var(--space-8);
-  left: var(--space-8);
-  z-index: 10;
-  padding: var(--space-12);
-  background: var(--color-surface-1);
-  transform: translateY(-200%);
-}
-
-.skip-link:focus { transform: translateY(0); }
-
-.notice {
-  padding: var(--space-16);
-  border: 1px solid var(--color-border);
-}
-
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
@@ -126,10 +112,6 @@ strong {
   letter-spacing: -0.02em;
 }
 
-.muted {
-  color: var(--color-text-secondary);
-}
-
 /* ---------- Icons: line icons with a 1.5px stroke ---------- */
 
 .line-icon {
@@ -151,4 +133,27 @@ strong {
 .line-icon--filled {
   fill: currentColor;
   stroke: none;
+}
+
+/* ---------- Page-level helpers ---------- */
+
+/* "Skip to content": only visible while focused with the keyboard */
+.skip-link {
+  position: fixed;
+  top: var(--space-8);
+  left: var(--space-8);
+  z-index: 10;
+  padding: var(--space-12);
+  background: var(--color-surface-1);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* The message shown when JavaScript is off */
+.notice {
+  padding: var(--space-16);
+  border: 1px solid var(--color-border);
 }

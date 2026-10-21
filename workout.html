@@ -31,14 +31,20 @@
       </a>
     </header>
 
-    <main id="main-content" tabindex="-1" class="site-main workout">
+    <main id="main-content" tabindex="-1" class="site-main">
 
-      <div class="workout__heading"><div><p class="caption">Stay with it</p><h1 class="heading workout__title" id="workout-title"></h1></div><p id="workout-count" class="workout__count tabular"></p></div>
-      <p id="workout-status" role="status"></p>
+      <div class="workout__heading">
+        <div>
+          <p class="caption">Stay with it</p>
+          <h1 class="heading workout__title" id="workout-title"></h1>
+        </div>
+        <p class="workout__count tabular" id="workout-count"></p>
+      </div>
+      <p class="plan-status" id="workout-status" role="status"></p>
 
       <section class="player" id="workout-player" aria-label="Current exercise">
 
-        <!-- Details stay outside the picture/video area so controls remain usable. -->
+        <!-- The exercise: its details, then its illustration or video -->
         <div class="player__canvas">
           <div class="player__top">
             <div class="player__meta">
@@ -57,7 +63,19 @@
               </span>
             </div>
           </div>
-          <div id="exercise-media"></div>
+
+          <!-- Wired up by js/components/exercise-video.js -->
+          <div class="exercise-video" id="exercise-video">
+            <div class="exercise-video__media">
+              <img class="exercise-video__poster" alt="">
+              <iframe class="exercise-video__player" title="Video demonstration" allowfullscreen hidden></iframe>
+              <button class="button button--primary exercise-video__watch" type="button">Watch video</button>
+            </div>
+            <div class="exercise-video__footer">
+              <a class="exercise-video__link" target="_blank" rel="noopener"></a>
+              <button class="button button--secondary button--small exercise-video__restore" type="button" hidden>Show illustration</button>
+            </div>
+          </div>
         </div>
 
         <!-- Controls strip -->
@@ -95,7 +113,23 @@
         </div>
 
       </section>
-      <div class="workout__guide" id="exercise-guide"></div>
+
+      <!-- Wired up by js/components/exercise-guide.js -->
+      <details class="exercise-guide workout__guide" id="exercise-guide">
+        <summary class="exercise-guide__summary">Movement guide</summary>
+        <p class="exercise-guide__setup"></p>
+        <p class="exercise-guide__status" role="status"></p>
+        <div class="exercise-guide__instructions"></div>
+        <p class="exercise-guide__muscles"></p>
+        <p class="exercise-guide__credit" hidden>
+          <a class="exercise-guide__source" target="_blank" rel="noopener"></a> ·
+          <span class="exercise-guide__author"></span> ·
+          <a class="exercise-guide__license" target="_blank" rel="noopener"></a> ·
+          Formatting simplified.
+        </p>
+        <button class="button button--secondary button--small exercise-guide__retry" type="button" hidden>Try again</button>
+      </details>
+
     </main>
   </div>
 </body>

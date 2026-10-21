@@ -1,13 +1,14 @@
 /*
- * What the routine panel shows when there is no plan to display.
+ * Messages shown instead of content.
  *
- *   .plan-status   one line of text while loading or after an error
+ *   .plan-status   one line of text when something could not be saved
  *   .empty-state   dashed box asking for a first body area
  */
 
 .plan-status {
+  padding: var(--space-12) 0;
   font-size: var(--text-sm);
-  color: var(--color-text-secondary);
+  color: var(--color-warning);
 }
 
 .plan-status:empty {

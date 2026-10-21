@@ -1,119 +1,94 @@
 # FitFlow
 
-A workout planner made with plain HTML, CSS and JavaScript. The browser builds
-plans, tracks sets and rests, and remembers progress on this device. There is
-no backend, framework, package installation or build step required to host it.
-Exercise guides come from the public wger API. Demonstrations use the public
-YouTube IFrame Player API, with reviewed video matches for all 13 movements.
-Neither integration requires an API key.
+A workout planner made with plain HTML, CSS and JavaScript. Pick the body areas
+you want to train, how much time you have and whether you own dumbbells; the
+browser builds the routine, walks you through it set by set with rest timers,
+and remembers your progress on this device.
 
-## GitHub Pages
+There is no framework, no build step and no backend. Written exercise guides
+come from the public [wger](https://wger.de) API and video demonstrations are
+embedded from YouTube; neither needs an API key.
 
-The repository root is ready to publish as it is:
+## Run it
 
-1. Push the files to `main` in `lucicardoso00/fitflow`.
-2. In **Settings → Pages**, select **Deploy from a branch**.
-3. Select **main** and **/ (root)**, then save.
-4. Open <https://lucicardoso00.github.io/fitflow/> after deployment finishes.
-
-`.nojekyll` disables Jekyll processing. All page, module, stylesheet, image and
-font paths are relative, including navigation and redirects. Each screen has
-its own HTML file, so refreshing does not need a routing fallback.
-See [GitHub's Pages guide](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
-
-## Local preview
-
-Use any static HTTP server. With Node.js 22 or newer:
+Any static web server works. With Node.js 22 or newer:
 
 ```sh
 npm start
 ```
 
-Open **http://127.0.0.1:3000**. `npm run dev` uses port **9999**. Refresh after
-edits. Node is only a local preview/test tool; GitHub Pages does not run it.
-Opening HTML through `file://` is unsupported because browsers restrict ES
-module loading. For a Pages-style preview:
+Open **http://127.0.0.1:3000**. Opening the HTML files directly (`file://`)
+does not work, because browsers refuse to load JavaScript modules that way.
+
+To publish on GitHub Pages, push the repository and choose **Deploy from a
+branch → main → / (root)** in *Settings → Pages*. Every path in the app is
+relative, so it works at `/` and at `/<repository>/`. To preview the latter:
 
 ```sh
 BASE_PATH=/fitflow/ npm start
 ```
 
-Open **http://127.0.0.1:3000/fitflow/**. `HOST` and `PORT` can override the
-preview server's bind address and port.
+## How it works
 
-## Project structure
+```
+index.html ──(Start workout)──▶ workout.html ──(Finish workout)──▶ done.html
+builder.js                       workout.js                         done.js
+```
 
-| Location | Responsibility |
+1. **Choose** — `builder.js` reads the saved choices (or the defaults), and after
+   every click rebuilds the plan with `buildPlan(choices)` and redraws the page.
+   *Start workout* saves the plan in `sessionStorage`.
+2. **Train** — `workout.js` reads that plan and walks through it: three sets per
+   exercise, a 45-second rest between sets (+15 s or skip). Progress is saved
+   after every set, so a refresh continues where it was, even mid-rest.
+   *Finish workout* saves the result in `localStorage`.
+3. **Done** — `done.js` shows the result: elapsed minutes, exercises, sets, the
+   areas trained, and the routine. *Save plan* keeps a copy; the builder's
+   *History* button reopens this page.
+
+Every exercise row (and the workout page) has a **Movement guide** with written
+instructions fetched from wger when it is opened, and a **Watch video** button
+that embeds the YouTube demonstration.
+
+## Find your way around
+
+Every file has one job, stated in the comment at its top.
+
+| Location | Job |
 | --- | --- |
-| `index.html`, `workout.html`, `done.html` | Page structure and native controls |
-| `css/` | Tokens, local fonts, shared components and responsive page layouts |
-| `js/pages/` | Page events, state and rendering |
-| `js/components/` | Body map, movement rows, inline videos, guide disclosures and rest timer |
-| `js/lib/planner.js` | Pure exercise-selection rules |
-| `js/lib/choices.js` | Choice validation and labels |
-| `js/lib/storage.js` | Browser persistence and snapshot validation |
-| `js/lib/format.js` | Shared display formatting |
-| `js/lib/exercise-api.js` | Public exercise requests, validation and bounded cache |
-| `js/lib/youtube-player.js` | On-demand player loading, errors and cleanup |
-| `js/data/` | Body areas, workout settings and exercise catalogue |
-| `assets/` | Local SVG illustrations and licensed fonts |
-| `scripts/serve.js` | Optional static local preview |
-| `test/` | Planner, storage and static-hosting regression checks |
-| `docs/architecture.md` | Module boundaries and workout data flow |
-| `design/` | Editable Figma file, reference assets and optional design tooling |
+| `index.html`, `workout.html`, `done.html` | The three screens. All markup lives here, including the `<template>`s the scripts copy. |
+| `css/tokens.css` | Every color, font, size and radius (the design system) |
+| `css/base.css`, `css/layout.css` | Resets, text styles, the 1440px frame and the header |
+| `css/components/` | One file per reusable piece: buttons, chips, body map, plan rows, rest timer… |
+| `css/pages/` | Layout of each screen |
+| `js/pages/` | One script per screen: finds its elements, reacts to clicks, redraws |
+| `js/components/` | Pieces used by more than one screen: body map, plan row, exercise video and guide, rest timer |
+| `js/lib/planner.js` | The rules that turn choices into a plan (pure function) |
+| `js/lib/choices.js`, `js/lib/format.js` | Small helpers: validate choices, turn data into text |
+| `js/lib/storage.js` | Saving and loading from the browser's storage |
+| `js/lib/exercise-guides.js` | Fetching a guide from wger |
+| `js/data/` | The facts: body areas, exercises, guide/video ids, settings |
+| `assets/` | Illustrations, fonts and the favicon |
+| `scripts/serve.js` | The optional local preview server |
+| `test/` | Checks for the planner, storage, guides and the preview server |
+| `design/` | The Figma file and the tools that build it (not used by the website) |
 
-## Behavior and storage
+Page scripts all follow the same order: *page elements → state → actions →
+drawing → events → start*. Components take an element that already holds
+their markup and only fill it in and wire up its buttons.
 
-Choose body areas, 15/30/45 minutes and equipment. These presets produce 4/6/8
-exercises; they are not a guarantee of elapsed duration. Complete three sets
-per exercise, with 45-second rests that can be extended or skipped. Refreshing
-the workout restores progress and an active rest. The summary shows elapsed
-time and totals.
+## Storage
 
-Choices and results use localStorage; the active workout uses sessionStorage.
-Data stays in this browser and origin, with no account or cloud sync. Storage
-must be available to carry an active workout between pages. Failed saves are
-reported, and invalid saved snapshots return to the builder. The internal
-`forma:` storage keys are retained so the FitFlow rename preserves existing data.
-
-## Public APIs
-
-| Service | Integration | When it is contacted |
+| Key | Where | Holds |
 | --- | --- | --- |
-| [wger REST API](https://wger.readthedocs.io/en/latest/api/api.html) | English movement descriptions, muscle names, authors and licences from `/api/v2/exerciseinfo/?id__in=…` | One batch for the visible plan, debounced after changes; retry from a guide |
-| [YouTube IFrame Player API](https://developers.google.com/youtube/iframe_api_reference) | Actual embedded demonstration players, readiness/error events and cleanup on movement/set changes | Only after **Watch video**; playback starts with the player's controls |
+| `fitflow:choices` | localStorage | The last areas, time and equipment picked |
+| `fitflow:current-workout` | sessionStorage | The workout in progress (this tab only) |
+| `fitflow:last-workout` | localStorage | The last finished workout |
+| `fitflow:saved-plans` | localStorage | Plans kept with *Save plan* |
 
-Select a movement on the planner or summary to expand its preview inline.
-During a workout, **Watch video** replaces the main exercise illustration with
-the player; **Show illustration** switches it back. Written instructions are
-under **Movement guide**. No popup is needed. Completing a set, switching
-movements or collapsing a preview stops its video. Videos also have a direct
-YouTube link if embedding is unavailable. Exact movement-to-provider IDs live in
-`js/data/exercise-sources.js`; the app does not guess from search results.
-The bodyweight option can include chair/bench dips; the planner and guide
-explain when a stable support is needed.
-
-Guides cache for 24 hours. If a refresh fails, previously downloaded guides
-remain available for up to seven days with an explicit stale label. Requests
-time out after eight seconds and changing the plan cancels the old request.
-Missing, invalid or untranslated records show an unavailable state and retry.
-The local planner, set tracking and rest timer continue when a service fails.
-This is outage tolerance, not an offline-installable app; first page loads
-and videos still require a network connection.
-
-Each description shows its author, original wger record and licence. The
-renderer rebuilds permitted text formatting and discards external HTML
-attributes, scripts and media. API services receive normal browser requests;
-workout history and progress are not uploaded. No proxy, account, secret,
-YouTube Data API subscription or paid exercise service is required.
-
-## Design references
-
-The Mobbin audit informed specific interactions: [Tempo's workout plan](https://mobbin.com/screens/33fed058-0e7e-4a95-91aa-fc9a1ce659d1)
-for ordered movement rows, [Gymshark's plan editor](https://mobbin.com/screens/8a121f5a-20a3-4d27-96fc-31c77927a29a)
-for visible prescriptions and a persistent action, and [Google Health's workout flow](https://mobbin.com/flows/69f9b525-c45b-40f5-adc4-51eb2f2922e9)
-for distinct active/rest/completion states. FitFlow retains its own typography,
-colours and local artwork; no reference screenshots are shipped in the app.
+Everything stays in this browser; nothing is uploaded. If the browser blocks
+storage, the page says that it could not save instead of pretending it did.
+A saved workout whose exercise no longer exists in the catalogue is discarded.
 
 ## Check changes
 
@@ -121,45 +96,24 @@ colours and local artwork; no reference screenshots are shipped in the app.
 npm test
 ```
 
-`npm run check:apis` optionally verifies all live wger records and YouTube
-metadata without credentials. It requires network access; playback and embed
-permissions must also be checked in a browser.
+The tests cover every body-area/time/equipment combination, the exercise
+catalogue and its images, saving and loading, guide parsing and fetching, and
+the preview server. `npm run check:apis` additionally asks wger and YouTube
+whether every guide and video is still available (needs a network).
 
-Tests cover all 762 nonempty body-area/time/equipment combinations, catalogue
-assets, malformed storage, API batching/cache/timeout/cancellation/error cases,
-static serving under `/fitflow/`, and the Figma
-prototype's choice and workout state transitions. Also walk
-through Builder → Workout → Rest → Done with a keyboard and a narrow viewport.
+Also walk through Choose → Train → Rest → Done in a browser once.
 
-To add an exercise, edit `js/data/exercises.js`, add reviewed guide/video IDs in
-`js/data/exercise-sources.js`, and add its matching SVG to
-`assets/images/exercises/`. Catalogue order determines priority within an area;
-`full-body` marks fallback movements. Refresh the browser after editing.
+## Add an exercise
 
-## Figma design and prototype
+1. Add it to `js/data/exercises.js`. Within one body area, the exercise listed
+   first is picked first; tag the ones that may fill any plan with `full-body`.
+2. Add its wger id, YouTube video id and creator to `js/data/exercise-sources.js`.
+3. Add its illustration as `assets/images/exercises/<id>.svg`.
 
-The Figma artifacts capture the preceding Forma design; the website now uses
-FitFlow branding and inline playback.
+Refresh the browser; there is nothing to build.
 
-Import [`design/Forma.fig`](design/Forma.fig), then select **Desktop workout**
-or **Mobile workout** in Present. The ZIP contains that same file, fonts and
-previews. Importing an earlier revision into Figma does not keep it synced with
-this repository; import the new file to get these changes.
+## Design
 
-The library uses native component sets, text properties, instances, Auto layout,
-14 shared type styles, primitive tokens and semantic aliases. Prototype state
-lives in its own collection. Choices regenerate the plan; completing sets,
-the rest countdown, repeated extensions, skip, finish, save and history are
-connected using native variables and conditional actions. Prototype saves last
-for the presentation session, and its summary shows planned minutes.
-Movement rows and the workout's guide button open a variable-driven guide
-with attributed snapshots and native links to the matching video and source.
-The website performs live API requests and embeds playback; the Figma
-prototype uses the checked-in snapshots in `design/source/exercise-guides.js`.
-
-See [`design/OPEN-IN-FIGMA.txt`](design/OPEN-IN-FIGMA.txt) for the file structure
-and verification limits. The exported actions have been decoded and simulated
-for all combinations on both viewports; native Figma Present verification is
-still required. With the optional OpenPencil tooling installed, `npm run
-design:build` rebuilds, checks, renders and packages the design. These tools are
-independent of the static website.
+The look follows the KINETIX athletic design system exported from Google Stitch:
+dark surfaces, a lime accent, Space Grotesk headings and Inter text.
+`design/FitFlow.fig` is the editable Figma file; see `design/OPEN-IN-FIGMA.txt`.

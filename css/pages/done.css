@@ -1,6 +1,6 @@
 /*
- * Done screen (done.html) — the finished workout in numbers, and the
- * body map showing what was trained.
+ * Done screen (done.html) — the finished workout in numbers, the routine
+ * that was completed, and the body map showing what was trained.
  */
 
 .done {
@@ -36,12 +36,6 @@
   gap: var(--space-12);
 }
 
-.done__map {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-12);
-}
-
 .done__deck {
   width: 100%;
   display: flex;
@@ -49,9 +43,29 @@
   gap: var(--space-12);
 }
 
+.done__map {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+/* ---------- Narrower windows ---------- */
+
 @media (max-width: 65rem) {
-  .done { grid-template-columns: 1fr; gap: var(--space-24); }
-  .done__map { width: min(100%, 480px); }
-  .done__title { font-size: clamp(32px, 7vw, 56px); }
-  .done__actions { flex-wrap: wrap; }
+  .done {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+
+  .done__map {
+    width: min(100%, 480px);
+  }
+
+  .done__title {
+    font-size: clamp(32px, 7vw, 56px);
+  }
+
+  .done__actions {
+    flex-wrap: wrap;
+  }
 }

@@ -10,6 +10,6 @@
     "dev": "node scripts/serve.js --dev",
     "test": "node --test --test-isolation=none test/*.test.js",
     "check:apis": "node scripts/check-public-apis.mjs",
-    "design:build": "node design/build-figma.mjs && node design/validate-prototype.mjs && node design/render-previews.mjs && node design/package-kit.mjs"
+    "design:build": "node design/build-figma.mjs && node design/validate-prototype.mjs"
   }
 }

@@ -1,17 +1,76 @@
-/* Native inline disclosure for exercise instructions and attribution. */
-.exercise-guide { border-top: 1px solid var(--color-border); }
-.exercise-guide__summary { padding-block: var(--space-16); cursor: pointer; font: 600 var(--text-lg)/1.4 var(--font-heading); }
-.exercise-guide__content { display: flex; flex-direction: column; gap: var(--space-12); padding-bottom: var(--space-16); }
-.exercise-guide__setup, .exercise-guide__muscles { font-size: var(--text-sm); color: var(--color-text-secondary); }
-.exercise-guide__status { font-size: var(--text-sm); color: var(--color-text-secondary); }
-.exercise-guide__status:empty { display: none; }
-.exercise-guide__credit { font-size: var(--text-xs); color: var(--color-text-secondary); line-height: 1.8; overflow-wrap: anywhere; }
-.exercise-guide__credit a { text-underline-offset: 3px; }
-.exercise-guide__section-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--space-12); }
-.exercise-guide__instructions { font-size: var(--text-md); line-height: 1.75; }
-.exercise-guide__instructions > * + * { margin-top: var(--space-12); }
-.exercise-guide__instructions ol, .exercise-guide__instructions ul { padding-left: var(--space-24); }
-.exercise-guide__instructions ol { list-style: decimal; }
-.exercise-guide__instructions ul { list-style: disc; }
-.exercise-guide__instructions li { padding-left: var(--space-4); margin-block: var(--space-8); }
-.exercise-guide__instructions[aria-busy="true"] { min-height: 72px; background: var(--color-surface-2); border-radius: var(--radius-sm); }
+/*
+ * Exercise guide — a <details> box with the written instructions.
+ * Wired up by js/components/exercise-guide.js.
+ */
+
+.exercise-guide {
+  border-top: 1px solid var(--color-border);
+}
+
+.exercise-guide__summary {
+  padding: var(--space-16) 0;
+  font: 600 var(--text-lg) / 1.4 var(--font-heading);
+  cursor: pointer;
+}
+
+.exercise-guide__setup,
+.exercise-guide__muscles,
+.exercise-guide__status {
+  margin-bottom: var(--space-12);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.exercise-guide__setup:empty,
+.exercise-guide__muscles:empty,
+.exercise-guide__status:empty {
+  display: none;
+}
+
+/* ---------- The instructions themselves (copied from wger's HTML) ---------- */
+
+.exercise-guide__instructions {
+  margin-bottom: var(--space-12);
+  font-size: var(--text-md);
+  line-height: 1.75;
+}
+
+.exercise-guide__instructions > * + * {
+  margin-top: var(--space-12);
+}
+
+.exercise-guide__instructions ol,
+.exercise-guide__instructions ul {
+  padding-left: var(--space-24);
+}
+
+.exercise-guide__instructions ol {
+  list-style: decimal;
+}
+
+.exercise-guide__instructions ul {
+  list-style: disc;
+}
+
+.exercise-guide__instructions li {
+  margin: var(--space-8) 0;
+  padding-left: var(--space-4);
+}
+
+/* ---------- Author and licence ---------- */
+
+.exercise-guide__credit {
+  margin-bottom: var(--space-16);
+  font-size: var(--text-xs);
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.exercise-guide__credit a {
+  text-underline-offset: 3px;
+}
+
+.exercise-guide__retry {
+  margin-bottom: var(--space-16);
+}

@@ -1,22 +1,57 @@
-.exercise-video { min-width: 0; }
+/*
+ * Exercise video — an illustration with a "Watch video" button; the YouTube
+ * player takes the illustration's place while it is shown.
+ * Wired up by js/components/exercise-video.js.
+ */
+
+.exercise-video {
+  min-width: 0;
+}
+
 .exercise-video__media {
   position: relative;
   display: grid;
   place-items: center;
-  min-height: 200px;
-  min-width: 0;
   width: 100%;
+  min-height: 200px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: var(--radius-control);
   background: var(--color-player);
 }
-.exercise-video__poster { position: absolute; width: 100%; height: 100%; object-fit: contain; opacity: 0.7; }
-.exercise-video__watch { position: relative; }
-.exercise-video__player { position: absolute; inset: 0; }
-.exercise-video__player iframe { display: block; width: 100%; height: 100%; border: 0; }
-.exercise-video__footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-8); padding-top: var(--space-12); }
-.exercise-video__credit { font-size: var(--text-xs); color: var(--color-text-secondary); overflow-wrap: anywhere; }
-.exercise-video__credit a { text-underline-offset: 3px; }
-.exercise-video__status { margin-top: var(--space-8); font-size: var(--text-sm); color: var(--color-text-secondary); }
-.exercise-video__status:empty { display: none; }
+
+.exercise-video__poster {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+.exercise-video__player {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.exercise-video__watch {
+  position: relative; /* above the poster */
+}
+
+.exercise-video__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding-top: var(--space-12);
+}
+
+.exercise-video__link {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}

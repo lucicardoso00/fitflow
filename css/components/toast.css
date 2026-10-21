@@ -1,5 +1,7 @@
 /*
- * Toast — a short confirmation with a green edge ("Plan saved to history").
+ * Toast — a short confirmation with a green edge ("Plan saved in this browser.").
+ * The element is always in the page so screen readers hear the message;
+ * it only takes space once it has text.
  */
 
 .toast {
@@ -15,11 +17,6 @@
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
 }
 
-.toast__icon {
-  color: var(--color-success);
-}
-
-/* Keep the live region mounted before it receives a message. */
 .toast:empty {
   padding: 0;
   border: 0;
