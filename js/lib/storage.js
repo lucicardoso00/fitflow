@@ -1,7 +1,7 @@
 /**
  * Storage — remembers data between pages and visits.
  *
- *   localStorage    kept between visits: last choices, last workout, saved plans
+ *   localStorage    kept between visits: last choices, last workout, saved plans, music genre
  *   sessionStorage  kept for this tab only: the workout in progress
  *
  * Browsers can block storage (private mode, strict settings). Reads then
@@ -15,6 +15,7 @@ const KEYS = {
   currentWorkout: 'fitflow:current-workout',
   lastWorkout: 'fitflow:last-workout',
   savedPlans: 'fitflow:saved-plans',
+  musicGenre: 'fitflow:music-genre',
 };
 
 function read(storageName, key) {
@@ -102,4 +103,14 @@ export function savePlan(plan) {
   const savedPlans = read('localStorage', KEYS.savedPlans);
   const list = Array.isArray(savedPlans) ? savedPlans : [];
   return write('localStorage', KEYS.savedPlans, [...list, plan]);
+}
+
+// ---------- Music genre ----------
+
+export function loadMusicGenre() {
+  return read('localStorage', KEYS.musicGenre);
+}
+
+export function saveMusicGenre(genre) {
+  return write('localStorage', KEYS.musicGenre, genre);
 }

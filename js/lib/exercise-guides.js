@@ -2,26 +2,23 @@
  * Exercise guides — written instructions from the public wger API.
  *
  *   const guide = await fetchGuide('plank');
- *   // { id, name, description (HTML), muscles, author, license: { name, url } }
+ *   // { id, name, description (HTML), muscles, author }
  *
  * A guide is fetched the first time it is needed and then kept in memory
  * for the rest of the page. Nothing else in the app depends on this file:
  * the plan, the sets and the rest timer work without a network.
  */
 
-import { EXERCISE_SOURCES, WGER_LICENSES } from '../data/exercise-sources.js';
+import { EXERCISE_SOURCES } from '../data/exercise-sources.js';
 
 const API_URL = 'https://wger.de/api/v2/exerciseinfo/';
 const TIMEOUT_MS = 8000;
 const ENGLISH = 2; // wger's id for the English language
+const SPANNISH = 4; // wger's id for the English language
 
-/** exerciseId → guide. Exported so tests can start from an empty cache. */
-export const guideCache = new Map();
+/** exerciseId → guide. Exported so tests can start from an empty cache. */    
 
 export async function fetchGuide(exerciseId, fetcher = fetch) {
-  if (guideCache.has(exerciseId)) {
-    return guideCache.get(exerciseId);
-  }
 
   const wgerId = EXERCISE_SOURCES[exerciseId].wger;
   const response = await fetcher(`${API_URL}?id__in=${wgerId}&limit=1`, {
@@ -33,7 +30,6 @@ export async function fetchGuide(exerciseId, fetcher = fetch) {
 
   const { results } = await response.json();
   const guide = parseGuide(results.find((record) => record.id === wgerId));
-  guideCache.set(exerciseId, guide);
   return guide;
 }
 
@@ -43,10 +39,9 @@ export async function fetchGuide(exerciseId, fetcher = fetch) {
  * a guide is only shown together with its author and licence.
  */
 export function parseGuide(record) {
-  const english = record?.translations?.find((translation) => translation.language === ENGLISH);
-  const license = WGER_LICENSES[english?.license];
+  const english = record?.translations?.find((translation) => translation.language === SPANNISH);
 
-  if (!english?.name || !english.description || !license) {
+  if (!english?.name || !english.description ) {
     throw new Error('No English guide with a known licence');
   }
 
@@ -56,6 +51,5 @@ export function parseGuide(record) {
     description: english.description,
     muscles: (record.muscles ?? []).map((muscle) => muscle.name_en || muscle.name),
     author: english.license_author || 'wger contributors',
-    license,
   };
 }

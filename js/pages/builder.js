@@ -33,7 +33,7 @@ const dockMinutes = document.getElementById('dock-minutes');
 const dockCount = document.getElementById('dock-count');
 const dockParts = document.getElementById('dock-parts');
 const startLink = document.getElementById('start-workout');
-const historyLink = document.getElementById('history-link');
+
 
 const bodyMap = createBodyMap(document.getElementById('body-map'), { onPartClick: pickPart });
 const preview = createExercisePreview(document.getElementById('exercise-preview-template'));
@@ -160,5 +160,4 @@ startLink.addEventListener('click', startWorkout);
 
 // ---------- Start ----------
 
-historyLink.hidden = loadLastWorkout() === null;
 update();

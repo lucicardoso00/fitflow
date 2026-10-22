@@ -38,6 +38,8 @@
           <p class="caption">Stay with it</p>
           <h1 class="heading workout__title" id="workout-title"></h1>
         </div>
+
+
         <p class="workout__count tabular" id="workout-count"></p>
       </div>
       <p class="plan-status" id="workout-status" role="status"></p>
@@ -54,7 +56,21 @@
                 <span id="set-counter"></span> · Target: <strong><span id="set-amount"></span> <span id="set-unit"></span></strong>
               </p>
             </div>
-
+        <!-- Wired up by js/components/music-player.js -->
+        <div class="music-player" id="music-player" aria-label="Workout music">
+          <audio class="music-player__audio" preload="none"></audio>
+          <img class="music-player__artwork" alt="" hidden>
+          <div class="music-player__text">
+            <p class="music-player__title">Workout music</p>
+            <p class="music-player__subtitle">
+              <a class="music-player__link" target="_blank" rel="noopener" hidden></a>
+              <span class="music-player__status" role="status">Loading music…</span>
+            </p>
+          </div>
+          <select class="music-player__genre" aria-label="Music genre"></select>
+          <button class="button button--secondary button--small music-player__play" type="button">Play</button>
+          <button class="button button--ghost button--small music-player__next" type="button" disabled>Next</button>
+        </div>
             <div class="up-next">
               <img class="up-next__image" id="up-next-image" alt="">
               <span class="up-next__text">

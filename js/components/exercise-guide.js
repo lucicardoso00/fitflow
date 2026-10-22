@@ -18,7 +18,6 @@ export function createExerciseGuide(root) {
   const credit = root.querySelector('.exercise-guide__credit');
   const sourceLink = root.querySelector('.exercise-guide__source');
   const author = root.querySelector('.exercise-guide__author');
-  const licenseLink = root.querySelector('.exercise-guide__license');
   const retryButton = root.querySelector('.exercise-guide__retry');
 
   let exercise = null;
@@ -75,8 +74,6 @@ export function createExerciseGuide(root) {
     sourceLink.href = `https://wger.de/en/exercise/${guide.id}/view/`;
     sourceLink.textContent = `${guide.name} on wger`;
     author.textContent = guide.author;
-    licenseLink.href = guide.license.url;
-    licenseLink.textContent = guide.license.name;
     credit.hidden = false;
   }
 

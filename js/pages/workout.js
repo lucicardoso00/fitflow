@@ -10,6 +10,7 @@ import { loadCurrentWorkout, saveCurrentWorkout, clearCurrentWorkout, saveLastWo
 import { createRestTimer } from '../components/rest-timer.js';
 import { createExerciseVideo } from '../components/exercise-video.js';
 import { createExerciseGuide } from '../components/exercise-guide.js';
+import { createMusicPlayer } from '../components/music-player.js';
 
 // ---------- Page elements ----------
 
@@ -188,6 +189,7 @@ if (workout === null) {
   window.location.replace('index.html');
 } else {
   workoutTitle.textContent = workout.title;
+  createMusicPlayer(document.getElementById('music-player'));
 
   doneSetButton.addEventListener('click', completeSet);
   skipRestButton.addEventListener('click', endRest);

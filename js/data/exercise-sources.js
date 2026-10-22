@@ -1,4 +1,5 @@
-/** Reviewed movement matches, not search results. Public endpoints need no API key. */
+// matches the exercise name in the catalogue, 
+// with the wger exercise ID and a YouTube video ID
 export const EXERCISE_SOURCES = {
   'shoulder-press': { wger: 567, video: 'qEwKCR5JCog', creator: 'ScottHermanFitness', setup: 'Dumbbells and a stable seat with back support.' },
   'bent-over-row': { wger: 2669, video: '6TSP1TRMUzs', creator: 'ScottHermanFitness' },
@@ -12,14 +13,5 @@ export const EXERCISE_SOURCES = {
   'mountain-climber': { wger: 996, video: 'nmwgirgXLYM', creator: 'Howcast' },
   'glute-bridge': { wger: 265, video: '8bbE64NuDTU', creator: 'ScottHermanFitness' },
   squat: { wger: 1312, video: 'aclHkVaku9U', creator: 'BowFlex' },
-  lunge: { wger: 984, video: 'QOVaHwm-Q6U', creator: 'BowFlex' },
-};
-
-// IDs and licences from https://wger.de/api/v2/license/ (reviewed 2026-10-20).
-export const WGER_LICENSES = {
-  1: { name: 'CC BY-SA 3.0', url: 'https://creativecommons.org/licenses/by-sa/3.0/' },
-  2: { name: 'CC BY-SA 4.0', url: 'https://creativecommons.org/licenses/by-sa/4.0/' },
-  3: { name: 'CC0 1.0', url: 'https://creativecommons.org/publicdomain/zero/1.0/' },
-  4: { name: 'CC BY 4.0', url: 'https://creativecommons.org/licenses/by/4.0/' },
-  5: { name: 'ODbL', url: 'https://opendatacommons.org/licenses/odbl/' },
+  lunge: { wger: 984, video: 'QOVaHwm-Q6U', creator: 'BowFlex' }
 };
