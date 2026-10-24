@@ -37,7 +37,7 @@ export async function fetchGuide(exerciseId, fetcher = fetch) {
  * a guide is only shown together with its author and licence.
  */
 export function parseGuide(record) {
-  const english = record?.translations?.find((translation) => translation.language === SPANNISH);
+  const english = record?.translations?.find((translation) => translation.language === ENGLISH);
 
   if (!english?.name || !english.description ) {
     throw new Error('No English guide with a known licence');
