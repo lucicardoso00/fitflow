@@ -14,7 +14,6 @@ import { EXERCISE_SOURCES } from '../data/exercise-sources.js';
 const API_URL = 'https://wger.de/api/v2/exerciseinfo/';
 const TIMEOUT_MS = 8000;
 const ENGLISH = 2; // wger's id for the English language
-
 /** exerciseId → guide. Exported so tests can start from an empty cache. */    
 
 export async function fetchGuide(exerciseId, fetcher = fetch) {
